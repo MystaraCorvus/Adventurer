@@ -2,6 +2,7 @@ package Adventurer.relics;
 
 import Adventurer.AdventurerMod;
 import basemod.abstracts.CustomRelic;
+import basemod.interfaces.PostCampfireSubscriber;
 import com.badlogic.gdx.graphics.Texture;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import Adventurer.util.TextureLoader;
@@ -9,7 +10,8 @@ import Adventurer.util.TextureLoader;
 import static Adventurer.AdventurerMod.makeRelicOutlinePath;
 import static Adventurer.AdventurerMod.makeRelicPath;
 
-public class PlaceholderRelic extends CustomRelic {
+public class PlaceholderRelic extends CustomRelic
+{
 
     /*
      * https://github.com/daviscook477/BaseMod/wiki/Custom-Relics
@@ -50,5 +52,5 @@ public class PlaceholderRelic extends CustomRelic {
     public String getUpdatedDescription() {
         return DESCRIPTIONS[0];
     }
-
+    public void onEnterRestRoom() {}
 }
