@@ -7,9 +7,10 @@ import Adventurer.util.ClassManager;
 
 
 public class AdventurerNovice extends CustomRelic {
+
     public static final String ID = "Adventurer:AdventurerNovice";
-    private static final String IMG = "Adventurer/images/relics/AdventurerNovice.png";
-    private static final String IMG_OTL = "Adventurer/images/relics/outline/AdventurerNovice.png";
+    private static final String IMG = "images/relics/AdventurerNovice.png";
+    private static final String IMG_OTL = "images/relics/outline/ClassRelic.png";
 
     public AdventurerNovice() {
         super(ID,  ImageMaster.loadImage(IMG), ImageMaster.loadImage(IMG_OTL), RelicTier.UNCOMMON, LandingSound.MAGICAL);

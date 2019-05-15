@@ -109,44 +109,44 @@ public class AdventurerMod implements
     // ONCE YOU CHANGE YOUR MOD ID (BELOW, YOU CAN'T MISS IT) CHANGE THESE PATHS!!!!!!!!!!!
   
     // Card backgrounds - The actual rectangular card.
-    private static final String ATTACK_DEFAULT_GRAY = "AdventurerResources/images/512/bg_attack_default_gray.png";
-    private static final String SKILL_DEFAULT_GRAY = "AdventurerResources/images/512/bg_skill_default_gray.png";
-    private static final String POWER_DEFAULT_GRAY = "AdventurerResources/images/512/bg_power_default_gray.png";
+    private static final String ATTACK_DEFAULT_GRAY = "images/512/bg_attack_default_gray.png";
+    private static final String SKILL_DEFAULT_GRAY = "images/512/bg_skill_default_gray.png";
+    private static final String POWER_DEFAULT_GRAY = "images/512/bg_power_default_gray.png";
     
-    private static final String ENERGY_ORB_DEFAULT_GRAY = "AdventurerResources/images/512/card_default_gray_orb.png";
-    private static final String CARD_ENERGY_ORB = "AdventurerResources/images/512/card_small_orb.png";
+    private static final String ENERGY_ORB_DEFAULT_GRAY = "images/512/card_default_gray_orb.png";
+    private static final String CARD_ENERGY_ORB = "images/512/card_small_orb.png";
     
-    private static final String ATTACK_DEFAULT_GRAY_PORTRAIT = "AdventurerResources/images/1024/bg_attack_default_gray.png";
-    private static final String SKILL_DEFAULT_GRAY_PORTRAIT = "AdventurerResources/images/1024/bg_skill_default_gray.png";
-    private static final String POWER_DEFAULT_GRAY_PORTRAIT = "AdventurerResources/images/1024/bg_power_default_gray.png";
-    private static final String ENERGY_ORB_DEFAULT_GRAY_PORTRAIT = "AdventurerResources/images/1024/card_default_gray_orb.png";
+    private static final String ATTACK_DEFAULT_GRAY_PORTRAIT = "images/1024/bg_attack_default_gray.png";
+    private static final String SKILL_DEFAULT_GRAY_PORTRAIT = "images/1024/bg_skill_default_gray.png";
+    private static final String POWER_DEFAULT_GRAY_PORTRAIT = "images/1024/bg_power_default_gray.png";
+    private static final String ENERGY_ORB_DEFAULT_GRAY_PORTRAIT = "images/1024/card_default_gray_orb.png";
     
     // Character assets
-    private static final String THE_DEFAULT_BUTTON = "AdventurerResources/images/charSelect/DefaultCharacterButton.png";
-    private static final String THE_DEFAULT_PORTRAIT = "AdventurerResources/images/charSelect/DefaultCharacterPortraitBG.png";
-    public static final String THE_DEFAULT_SHOULDER_1 = "AdventurerResources/images/char/defaultCharacter/shoulder.png";
-    public static final String THE_DEFAULT_SHOULDER_2 = "AdventurerResources/images/char/defaultCharacter/shoulder2.png";
-    public static final String THE_DEFAULT_CORPSE = "AdventurerResources/images/char/defaultCharacter/corpse.png";
+    private static final String THE_DEFAULT_BUTTON = "images/charSelect/DefaultCharacterButton.png";
+    private static final String THE_DEFAULT_PORTRAIT = "images/charSelect/DefaultCharacterPortraitBG.png";
+    public static final String THE_DEFAULT_SHOULDER_1 = "images/char/defaultCharacter/shoulder.png";
+    public static final String THE_DEFAULT_SHOULDER_2 = "images/char/defaultCharacter/shoulder2.png";
+    public static final String THE_DEFAULT_CORPSE = "images/char/defaultCharacter/corpse.png";
     
     //Mod Badge - A small icon that appears in the mod settings menu next to your mod.
-    public static final String BADGE_IMAGE = "AdventurerResources/images/Badge.png";
+    public static final String BADGE_IMAGE = "images/Badge.png";
     
     // Atlas and JSON files for the Animations
-    public static final String THE_DEFAULT_SKELETON_ATLAS = "AdventurerResources/images/char/defaultCharacter/skeleton.atlas";
-    public static final String THE_DEFAULT_SKELETON_JSON = "AdventurerResources/images/char/defaultCharacter/skeleton.json";
+    public static final String THE_DEFAULT_SKELETON_ATLAS = "images/char/defaultCharacter/skeleton.atlas";
+    public static final String THE_DEFAULT_SKELETON_JSON = "images/char/defaultCharacter/skeleton.json";
     
     // =============== MAKE IMAGE PATHS =================
     
     public static String makeCardPath(String resourcePath) {
-        return getModID() + "Resources/images/cards/" + resourcePath;
+        return getModID() + "images/cards/" + resourcePath;
     }
     
     public static String makeRelicPath(String resourcePath) {
-        return getModID() + "Resources/images/relics/" + resourcePath;
+        return getModID() + "images/relics/" + resourcePath;
     }
     
     public static String makeRelicOutlinePath(String resourcePath) {
-        return getModID() + "Resources/images/relics/outline/" + resourcePath;
+        return getModID() + "images/relics/outline/" + resourcePath;
     }
     
     public static String makeOrbPath(String resourcePath) {
@@ -154,11 +154,11 @@ public class AdventurerMod implements
     }
     
     public static String makePowerPath(String resourcePath) {
-        return getModID() + "Resources/images/powers/" + resourcePath;
+        return getModID() + "images/powers/" + resourcePath;
     }
     
     public static String makeEventPath(String resourcePath) {
-        return getModID() + "Resources/images/events/" + resourcePath;
+        return getModID() + "images/events/" + resourcePath;
     }
     
     // =============== /MAKE IMAGE PATHS/ =================
@@ -187,7 +187,7 @@ public class AdventurerMod implements
         // cool
         // TODO: NOW READ THIS!!!!!!!!!!!!!!!:
         
-        // 1. Go to your resources folder in the project panel, and refactor> rename AdventurerResources to
+        // 1. Go to your resources folder in the project panel, and refactor> rename Resources to
         // yourModIDResources.
         
         // 2. Click on the localization > eng folder and press ctrl+shift+r, then select "Directory" (rather than in Project)
@@ -452,31 +452,31 @@ public class AdventurerMod implements
         
         // CardStrings
         BaseMod.loadCustomStringsFile(CardStrings.class,
-                getModID() + "Resources/localization/eng/Adventurer-Card-Strings.json");
+                getModID() + "localization/eng/Adventurer-Card-Strings.json");
         
         // PowerStrings
         BaseMod.loadCustomStringsFile(PowerStrings.class,
-                getModID() + "Resources/localization/eng/Adventurer-Power-Strings.json");
+                getModID() + "localization/eng/Adventurer-Power-Strings.json");
         
         // RelicStrings
         BaseMod.loadCustomStringsFile(RelicStrings.class,
-                getModID() + "Resources/localization/eng/Adventurer-Relic-Strings.json");
+                getModID() + "localization/eng/Adventurer-Relic-Strings.json");
         
         // Event Strings
         BaseMod.loadCustomStringsFile(EventStrings.class,
-                getModID() + "Resources/localization/eng/Adventurer-Event-Strings.json");
+                getModID() + "localization/eng/Adventurer-Event-Strings.json");
         
         // PotionStrings
         BaseMod.loadCustomStringsFile(PotionStrings.class,
-                getModID() + "Resources/localization/eng/Adventurer-Potion-Strings.json");
+                getModID() + "localization/eng/Adventurer-Potion-Strings.json");
         
         // CharacterStrings
         BaseMod.loadCustomStringsFile(CharacterStrings.class,
-                getModID() + "Resources/localization/eng/Adventurer-Character-Strings.json");
+                getModID() + "localization/eng/Adventurer-Character-Strings.json");
         
         // OrbStrings
         BaseMod.loadCustomStringsFile(OrbStrings.class,
-                getModID() + "Resources/localization/eng/Adventurer-Orb-Strings.json");
+                getModID() + "localization/eng/Adventurer-Orb-Strings.json");
         
         logger.info("Done edittting strings");
     }
@@ -496,7 +496,7 @@ public class AdventurerMod implements
         // In Keyword-Strings.json you would have PROPER_NAME as A Long Keyword and the first element in NAMES be a long keyword, and the second element be a_long_keyword
         
         Gson gson = new Gson();
-        String json = Gdx.files.internal(getModID() + "Resources/localization/eng/Adventurer-Keyword-Strings.json").readString(String.valueOf(StandardCharsets.UTF_8));
+        String json = Gdx.files.internal(getModID() + "localization/eng/Adventurer-Keyword-Strings.json").readString(String.valueOf(StandardCharsets.UTF_8));
         com.evacipated.cardcrawl.mod.stslib.Keyword[] keywords = gson.fromJson(json, com.evacipated.cardcrawl.mod.stslib.Keyword[].class);
         
         if (keywords != null) {

@@ -83,17 +83,17 @@ public class Adventurer extends CustomPlayer {
     // =============== TEXTURES OF BIG ENERGY ORB ===============
 
     public static final String[] orbTextures = {
-            "AdventurerResources/images/char/defaultCharacter/orb/layer1.png",
-            "AdventurerResources/images/char/defaultCharacter/orb/layer2.png",
-            "AdventurerResources/images/char/defaultCharacter/orb/layer3.png",
-            "AdventurerResources/images/char/defaultCharacter/orb/layer4.png",
-            "AdventurerResources/images/char/defaultCharacter/orb/layer5.png",
-            "AdventurerResources/images/char/defaultCharacter/orb/layer6.png",
-            "AdventurerResources/images/char/defaultCharacter/orb/layer1d.png",
-            "AdventurerResources/images/char/defaultCharacter/orb/layer2d.png",
-            "AdventurerResources/images/char/defaultCharacter/orb/layer3d.png",
-            "AdventurerResources/images/char/defaultCharacter/orb/layer4d.png",
-            "AdventurerResources/images/char/defaultCharacter/orb/layer5d.png",};
+            "images/char/defaultCharacter/orb/layer1.png",
+            "images/char/defaultCharacter/orb/layer2.png",
+            "images/char/defaultCharacter/orb/layer3.png",
+            "images/char/defaultCharacter/orb/layer4.png",
+            "images/char/defaultCharacter/orb/layer5.png",
+            "images/char/defaultCharacter/orb/layer6.png",
+            "images/char/defaultCharacter/orb/layer1d.png",
+            "images/char/defaultCharacter/orb/layer2d.png",
+            "images/char/defaultCharacter/orb/layer3d.png",
+            "images/char/defaultCharacter/orb/layer4d.png",
+            "images/char/defaultCharacter/orb/layer5d.png",};
 
     // =============== /TEXTURES OF BIG ENERGY ORB/ ===============
 
@@ -101,9 +101,9 @@ public class Adventurer extends CustomPlayer {
 
     public Adventurer(String name, PlayerClass setClass) {
         super(name, setClass, orbTextures,
-                "AdventurerResources/images/char/defaultCharacter/orb/vfx.png", null,
+                "images/char/defaultCharacter/orb/vfx.png", null,
                 new SpriterAnimation(
-                        "AdventurerResources/images/char/defaultCharacter/Spriter/theDefaultAnimation.scml"));
+                        "images/char/defaultCharacter/Spriter/theDefaultAnimation.scml"));
 
 
         // =============== TEXTURES, ENERGY, LOADOUT =================  

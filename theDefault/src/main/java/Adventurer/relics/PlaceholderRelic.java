@@ -12,13 +12,6 @@ import static Adventurer.AdventurerMod.makeRelicPath;
 
 public class PlaceholderRelic extends CustomRelic
 {
-
-    /*
-     * https://github.com/daviscook477/BaseMod/wiki/Custom-Relics
-     *
-     * Gain 1 energy.
-     */
-
     // ID, images, text.
     public static final String ID = AdventurerMod.makeID("PlaceholderRelic");
 
