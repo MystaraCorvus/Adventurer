@@ -1,14 +1,12 @@
 package Adventurer.relics;
 
+import Adventurer.AdventurerMod;
 import basemod.abstracts.CustomRelic;
-import basemod.interfaces.PostCampfireSubscriber;
+import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.helpers.ImageMaster;
 import com.megacrit.cardcrawl.relics.AbstractRelic;
-import Adventurer.util.ClassManager;
 
-
-public class AdventurerNovice extends CustomRelic
-        implements PostCampfireSubscriber {
+public class AdventurerNovice extends CustomRelic {
 
     public static final String ID = "Adventurer:AdventurerNovice";
     private static final String IMG = "AdventurerResources/images/relics/Novice.png";
@@ -20,9 +18,12 @@ public class AdventurerNovice extends CustomRelic
         super(ID,  ImageMaster.loadImage(IMG), ImageMaster.loadImage(IMG_OTL), RelicTier.UNCOMMON, LandingSound.MAGICAL);
     }
 
-
     @Override
-    public void onEquip() { }
+    public void onEquip() {
+        if (AbstractDungeon.player.hasRelic(AdventurerNovice.ID)) {
+            AdventurerMod.maxOptionsRestRoom++;
+        }
+    }
 
     @Override
     public String getUpdatedDescription() {
@@ -35,18 +36,5 @@ public class AdventurerNovice extends CustomRelic
         return new AdventurerNovice();
     }
 
-
-    @Override
-    public boolean receivePostCampfire() {
-        if (restRoomRepeats > 0)
-        {
-            restRoomRepeats--;
-            return true;
-        }
-        else {
-            restRoomRepeats = restRoomRepeatsMax;
-            return false;
-        }
-    }
 }
 

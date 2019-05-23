@@ -16,6 +16,7 @@ import com.evacipated.cardcrawl.modthespire.lib.SpireConfig;
 import com.evacipated.cardcrawl.modthespire.lib.SpireInitializer;
 import com.google.gson.Gson;
 import com.megacrit.cardcrawl.core.Settings;
+import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.dungeons.TheCity;
 import com.megacrit.cardcrawl.helpers.CardHelper;
 import com.megacrit.cardcrawl.helpers.FontHelper;
@@ -71,7 +72,8 @@ public class AdventurerMod implements
         EditStringsSubscriber,
         EditKeywordsSubscriber,
         EditCharactersSubscriber,
-        PostInitializeSubscriber {
+        PostInitializeSubscriber,
+        PostCampfireSubscriber {
     // Make sure to implement the subscribers *you* are using (read basemod wiki). Editing cards? EditCardsSubscriber.
     // Making relics? EditRelicsSubscriber. etc., etc., for a full list and how to make your own, visit the basemod wiki.
     public static final Logger logger = LogManager.getLogger(AdventurerMod.class.getName());
@@ -510,5 +512,20 @@ public class AdventurerMod implements
     // in order to avoid conflicts if any other mod uses the same ID.
     public static String makeID(String idText) {
         return getModID() + ":" + idText;
+    }
+
+
+    public static int maxOptionsRestRoom = 1;
+    public static int curOptionsRestRoom = 0;
+
+    @Override
+    public boolean receivePostCampfire() {
+        curOptionsRestRoom++;
+        if(curOptionsRestRoom < maxOptionsRestRoom){
+            return false;
+        } else {
+            curOptionsRestRoom = 0;
+            return true;
+        }
     }
 }
