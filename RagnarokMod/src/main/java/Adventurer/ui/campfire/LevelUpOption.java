@@ -17,7 +17,7 @@ import static Adventurer.AdventurerMod.logger;
 
 public class LevelUpOption extends AbstractCampfireOption
 {
-    private static final UIStrings uiStrings = CardCrawlGame.languagePack.getUIString("Adventurer:LevelUpAction");
+    private static final UIStrings uiStrings = CardCrawlGame.languagePack.getUIString("Adventurer:LevelUpOption");
     public static final String[] TEXT = uiStrings.TEXT;
 
     public LevelUpOption() {
