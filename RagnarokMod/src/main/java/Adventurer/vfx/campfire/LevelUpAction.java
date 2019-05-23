@@ -12,12 +12,12 @@ import com.megacrit.cardcrawl.rooms.AbstractRoom;
 import com.megacrit.cardcrawl.rooms.RestRoom;
 import com.megacrit.cardcrawl.vfx.AbstractGameEffect;
 
-public class LevelUpOption extends AbstractGameEffect {
+public class LevelUpAction extends AbstractGameEffect {
     private static final float DURATION = 2.0f;
     private boolean hasEmpowered;
     private Color screenColor;
 
-    public LevelUpOption() {
+    public LevelUpAction() {
         this.hasEmpowered = false;
         this.screenColor = AbstractDungeon.fadeColor.cpy();
         this.duration = DURATION;

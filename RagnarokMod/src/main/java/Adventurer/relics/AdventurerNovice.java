@@ -1,6 +1,7 @@
 package Adventurer.relics;
 
 import Adventurer.AdventurerMod;
+import Adventurer.characters.Adventurer;
 import basemod.abstracts.CustomRelic;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.helpers.ImageMaster;
@@ -11,11 +12,12 @@ public class AdventurerNovice extends CustomRelic {
     public static final String ID = "Adventurer:AdventurerNovice";
     private static final String IMG = "AdventurerResources/images/relics/Novice.png";
     private static final String IMG_OTL = "AdventurerResources/images/relics/outline/ClassRelic.png";
-    private static int restRoomRepeatsMax = 2;
-    private static int restRoomRepeats = 2;
+
+
 
     public AdventurerNovice() {
         super(ID,  ImageMaster.loadImage(IMG), ImageMaster.loadImage(IMG_OTL), RelicTier.UNCOMMON, LandingSound.MAGICAL);
+        this.counter = Adventurer.LEVEL_UP;
     }
 
     @Override
@@ -34,6 +36,10 @@ public class AdventurerNovice extends CustomRelic {
     @Override
     public AbstractRelic makeCopy() { // always override this method to return a new instance of your relic
         return new AdventurerNovice();
+    }
+
+    public void updateCounter() {
+        this.counter = Adventurer.LEVEL_UP;
     }
 
 }

@@ -49,7 +49,7 @@ public class Adventurer extends CustomPlayer {
 
     public static class Enums {
         @SpireEnum
-        public static AbstractPlayer.PlayerClass THE_DEFAULT;
+        public static AbstractPlayer.PlayerClass ADVENTURER;
         @SpireEnum(name = "DEFAULT_GRAY_COLOR") // These two HAVE to have the same absolutely identical name.
         public static AbstractCard.CardColor COLOR_GRAY;
         @SpireEnum(name = "DEFAULT_GRAY_COLOR") @SuppressWarnings("unused")
@@ -67,6 +67,8 @@ public class Adventurer extends CustomPlayer {
     public static final int STARTING_GOLD = 99;
     public static final int CARD_DRAW = 9;
     public static final int ORB_SLOTS = 3;
+
+    public static int LEVEL_UP = 0;
 
     // =============== /BASE STATS/ =================
 

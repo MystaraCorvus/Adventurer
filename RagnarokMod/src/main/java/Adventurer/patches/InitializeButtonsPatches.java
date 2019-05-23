@@ -1,5 +1,6 @@
 package Adventurer.patches;
 
+import Adventurer.characters.Adventurer;
 import Adventurer.ui.campfire.LevelUpOption;
 import basemod.ReflectionHacks;
 import com.evacipated.cardcrawl.modthespire.lib.SpirePatch;
@@ -24,7 +25,7 @@ public class InitializeButtonsPatches {
         try {
             @SuppressWarnings("unchecked")
             ArrayList<AbstractCampfireOption> campfireButtons = (ArrayList<AbstractCampfireOption>) ReflectionHacks.getPrivate(campfire, CampfireUI.class, "buttons");
-            //if(AbstractDungeon.player.chosenClass == AdventurerEnum.ADVENTURER) {
+            if(AbstractDungeon.player.chosenClass == Adventurer.Enums.ADVENTURER) {
                 campfireButtons.add(new LevelUpOption());
                 float x = 950.f;
                 float y = 990.0f - (270.0f * (float)((campfireButtons.size() + 1) / 2));
@@ -34,7 +35,7 @@ public class InitializeButtonsPatches {
                 }
                 campfireButtons.get(campfireButtons.size() - 1).setPosition(x * Settings.scale, y * Settings.scale);
                 //campfireButtons.get(campfireButtons.size() - 1).setPosition((550) * Settings.scale, (721) * Settings.scale);
-           // }
+            }
         } catch (SecurityException | IllegalArgumentException e) {
             e.printStackTrace();
         }

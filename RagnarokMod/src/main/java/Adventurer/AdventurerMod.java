@@ -16,7 +16,6 @@ import com.evacipated.cardcrawl.modthespire.lib.SpireConfig;
 import com.evacipated.cardcrawl.modthespire.lib.SpireInitializer;
 import com.google.gson.Gson;
 import com.megacrit.cardcrawl.core.Settings;
-import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.dungeons.TheCity;
 import com.megacrit.cardcrawl.helpers.CardHelper;
 import com.megacrit.cardcrawl.helpers.FontHelper;
@@ -282,13 +281,13 @@ public class AdventurerMod implements
     
     @Override
     public void receiveEditCharacters() {
-        logger.info("Beginning to edit characters. " + "Add " + Adventurer.Enums.THE_DEFAULT.toString());
+        logger.info("Beginning to edit characters. " + "Add " + Adventurer.Enums.ADVENTURER.toString());
         
-        BaseMod.addCharacter(new Adventurer("the Adventurer", Adventurer.Enums.THE_DEFAULT),
-                THE_DEFAULT_BUTTON, THE_DEFAULT_PORTRAIT, Adventurer.Enums.THE_DEFAULT);
+        BaseMod.addCharacter(new Adventurer("the Adventurer", Adventurer.Enums.ADVENTURER),
+                THE_DEFAULT_BUTTON, THE_DEFAULT_PORTRAIT, Adventurer.Enums.ADVENTURER);
         
         receiveEditPotions();
-        logger.info("Added " + Adventurer.Enums.THE_DEFAULT.toString());
+        logger.info("Added " + Adventurer.Enums.ADVENTURER.toString());
     }
     
     // =============== /LOAD THE CHARACTER/ =================
@@ -351,9 +350,9 @@ public class AdventurerMod implements
         logger.info("Beginning to edit potions");
         
         // Class Specific Potion. If you want your potion to not be class-specific,
-        // just remove the player class at the end (in this case the "TheDefaultEnum.THE_DEFAULT".
+        // just remove the player class at the end (in this case the "TheDefaultEnum.ADVENTURER".
         // Remember, you can press ctrl+P inside parentheses like addPotions)
-        BaseMod.addPotion(PlaceholderPotion.class, PLACEHOLDER_POTION_LIQUID, PLACEHOLDER_POTION_HYBRID, PLACEHOLDER_POTION_SPOTS, PlaceholderPotion.POTION_ID, Adventurer.Enums.THE_DEFAULT);
+        BaseMod.addPotion(PlaceholderPotion.class, PLACEHOLDER_POTION_LIQUID, PLACEHOLDER_POTION_HYBRID, PLACEHOLDER_POTION_SPOTS, PlaceholderPotion.POTION_ID, Adventurer.Enums.ADVENTURER);
         
         logger.info("Done editing potions");
     }
@@ -476,6 +475,8 @@ public class AdventurerMod implements
         // OrbStrings
         BaseMod.loadCustomStringsFile(OrbStrings.class,
                 getModID() + "Resources/localization/eng/Adventurer-Orb-Strings.json");
+
+        BaseMod.loadCustomStringsFile(UIStrings.class, (getModID() + "Resources/localization/eng/Adventurer-Ui-Strings.json"));
 
         logger.info("Done edittting strings");
     }
