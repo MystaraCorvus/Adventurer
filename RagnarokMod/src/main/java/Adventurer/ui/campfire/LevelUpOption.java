@@ -11,6 +11,7 @@ import com.megacrit.cardcrawl.helpers.RelicLibrary;
 import com.megacrit.cardcrawl.localization.UIStrings;
 import com.megacrit.cardcrawl.ui.campfire.AbstractCampfireOption;
 
+import Adventurer.AdventurerMod;
 import java.lang.reflect.Method;
 
 import static Adventurer.AdventurerMod.logger;
@@ -29,19 +30,9 @@ public class LevelUpOption extends AbstractCampfireOption
     @Override
     public void useOption() {
         AdventurerNovice playerClass = (AdventurerNovice)AbstractDungeon.player.getRelic(AdventurerNovice.ID);
-        Adventurer.LEVEL_UP++;
+        AdventurerNovice.LEVEL_UP++;
         playerClass.updateCounter();
         playerClass.flash();
-        playerClass.description = RelicLibrary.getRelic(playerClass.ID).description;
-        playerClass.tips.clear();
-        playerClass.tips.add(new PowerTip(playerClass.name, playerClass.description));
-        try {
-            Method m = playerClass.getClass().getDeclaredMethod("initializeTips");
-            m.setAccessible(true);
-            m.invoke(playerClass);
-        } catch(Exception e) {
-            logger.info(e);
-        }
         AbstractDungeon.effectList.add(new LevelUpAction());
     }
 }

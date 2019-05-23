@@ -68,10 +68,8 @@ public class Adventurer extends CustomPlayer {
     public static final int CARD_DRAW = 9;
     public static final int ORB_SLOTS = 3;
 
-    public static int LEVEL_UP = 0;
 
     // =============== /BASE STATS/ =================
-
 
     // =============== STRINGS =================
 
@@ -81,6 +79,7 @@ public class Adventurer extends CustomPlayer {
     private static final String[] TEXT = characterStrings.TEXT;
 
     // =============== /STRINGS/ =================
+
 
 
     // =============== TEXTURES OF BIG ENERGY ORB ===============

@@ -16,10 +16,13 @@ import com.evacipated.cardcrawl.modthespire.lib.SpireConfig;
 import com.evacipated.cardcrawl.modthespire.lib.SpireInitializer;
 import com.google.gson.Gson;
 import com.megacrit.cardcrawl.core.Settings;
+import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.dungeons.TheCity;
 import com.megacrit.cardcrawl.helpers.CardHelper;
 import com.megacrit.cardcrawl.helpers.FontHelper;
 import com.megacrit.cardcrawl.localization.*;
+import com.megacrit.cardcrawl.rooms.AbstractRoom;
+import com.megacrit.cardcrawl.rooms.RestRoom;
 import com.megacrit.cardcrawl.unlock.UnlockTracker;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -521,12 +524,17 @@ public class AdventurerMod implements
 
     @Override
     public boolean receivePostCampfire() {
+        if (AbstractDungeon.player.hasRelic(AdventurerNovice.ID)) {
+            maxOptionsRestRoom = 2;
+        }
         curOptionsRestRoom++;
         if(curOptionsRestRoom < maxOptionsRestRoom){
             return false;
         } else {
+            maxOptionsRestRoom = 1;
             curOptionsRestRoom = 0;
             return true;
         }
     }
+
 }

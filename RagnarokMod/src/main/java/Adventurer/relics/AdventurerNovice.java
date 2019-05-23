@@ -13,20 +13,22 @@ public class AdventurerNovice extends CustomRelic {
     private static final String IMG = "AdventurerResources/images/relics/Novice.png";
     private static final String IMG_OTL = "AdventurerResources/images/relics/outline/ClassRelic.png";
 
-
+    public static int LEVEL_UP = 0;
 
     public AdventurerNovice() {
         super(ID,  ImageMaster.loadImage(IMG), ImageMaster.loadImage(IMG_OTL), RelicTier.UNCOMMON, LandingSound.MAGICAL);
-        this.counter = Adventurer.LEVEL_UP;
+        this.counter = LEVEL_UP;
     }
 
     @Override
     public void onEquip() {
-        if (AbstractDungeon.player.hasRelic(AdventurerNovice.ID)) {
-            AdventurerMod.maxOptionsRestRoom++;
-        }
+        LEVEL_UP = 0;
+        this.counter = LEVEL_UP;
     }
-
+    @Override
+    public void onEnterRestRoom() {
+        AdventurerMod.curOptionsRestRoom = 0;
+    }
     @Override
     public String getUpdatedDescription() {
         return DESCRIPTIONS[0]; // DESCRIPTIONS pulls from your localization file
@@ -39,7 +41,7 @@ public class AdventurerNovice extends CustomRelic {
     }
 
     public void updateCounter() {
-        this.counter = Adventurer.LEVEL_UP;
+        this.counter = LEVEL_UP;
     }
 
 }
