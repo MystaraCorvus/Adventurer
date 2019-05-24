@@ -13,22 +13,19 @@ public class AdventurerNovice extends CustomRelic {
     private static final String IMG = "AdventurerResources/images/relics/Novice.png";
     private static final String IMG_OTL = "AdventurerResources/images/relics/outline/ClassRelic.png";
 
-    public static int LEVEL_UP = 0;
-
     public AdventurerNovice() {
         super(ID,  ImageMaster.loadImage(IMG), ImageMaster.loadImage(IMG_OTL), RelicTier.UNCOMMON, LandingSound.MAGICAL);
-        this.counter = LEVEL_UP;
     }
 
     @Override
     public void onEquip() {
-        LEVEL_UP = 0;
-        this.counter = LEVEL_UP;
+        this.counter = 0;
     }
     @Override
     public void onEnterRestRoom() {
         AdventurerMod.curOptionsRestRoom = 0;
     }
+
     @Override
     public String getUpdatedDescription() {
         return DESCRIPTIONS[0]; // DESCRIPTIONS pulls from your localization file
@@ -38,10 +35,6 @@ public class AdventurerNovice extends CustomRelic {
     @Override
     public AbstractRelic makeCopy() { // always override this method to return a new instance of your relic
         return new AdventurerNovice();
-    }
-
-    public void updateCounter() {
-        this.counter = LEVEL_UP;
     }
 
 }
