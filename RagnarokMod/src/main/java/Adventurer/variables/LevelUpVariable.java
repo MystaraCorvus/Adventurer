@@ -34,7 +34,7 @@ public class LevelUpVariable extends DynamicVariable
     public int value(AbstractCard card)
     {
         AdventurerNovice playerClass = (AdventurerNovice) AbstractDungeon.player.getRelic(AdventurerNovice.ID);
-        return playerClass.counter;
+        return card.damage + playerClass.counter;
     }
     
     // The baseValue the variable should display.
@@ -43,7 +43,7 @@ public class LevelUpVariable extends DynamicVariable
     public int baseValue(AbstractCard card)
     {
         AdventurerNovice playerClass = (AdventurerNovice) AbstractDungeon.player.getRelic(AdventurerNovice.ID);
-        return playerClass.counter;
+        return card.baseDamage + playerClass.counter;
     }
     
     // If the card has it's damage upgraded, this variable will glow green on the upgrade selection screen as well.

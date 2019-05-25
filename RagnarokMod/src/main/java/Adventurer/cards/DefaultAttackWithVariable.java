@@ -53,8 +53,6 @@ public class DefaultAttackWithVariable extends AbstractDynamicCard {
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
         // Create an int which equals to your current energy.
-        AdventurerNovice playerClass = (AdventurerNovice)AbstractDungeon.player.getRelic(AdventurerNovice.ID);
-        damage = DAMAGE + playerClass.counter;
         int effect = EnergyPanel.totalCount;
 
         // For each energy, create 1 damage action.
