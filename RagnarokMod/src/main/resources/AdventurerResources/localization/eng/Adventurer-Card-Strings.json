@@ -1,7 +1,7 @@
 {
   "Adventurer:DefaultCommonAttack": {
     "NAME": "Strike",
-    "DESCRIPTION": "adventurer:Level NL Deal !Adventurer:L! Damage."
+    "DESCRIPTION": "adventurer:Level NL Deal !D! Damage."
   },
   "Adventurer:DefaultCommonSkill": {
     "NAME": "Defend",

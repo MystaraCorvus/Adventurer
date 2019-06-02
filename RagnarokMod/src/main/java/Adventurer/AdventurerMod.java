@@ -2,7 +2,6 @@ package Adventurer;
 
 import Adventurer.characters.Adventurer;
 import Adventurer.relics.*;
-import Adventurer.variables.LevelUpVariable;
 import basemod.BaseMod;
 import basemod.ModLabeledToggleButton;
 import basemod.ModPanel;
@@ -22,8 +21,6 @@ import com.megacrit.cardcrawl.dungeons.TheCity;
 import com.megacrit.cardcrawl.helpers.CardHelper;
 import com.megacrit.cardcrawl.helpers.FontHelper;
 import com.megacrit.cardcrawl.localization.*;
-import com.megacrit.cardcrawl.rooms.AbstractRoom;
-import com.megacrit.cardcrawl.rooms.RestRoom;
 import com.megacrit.cardcrawl.unlock.UnlockTracker;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -399,7 +396,6 @@ public class AdventurerMod implements
         // Add the Custom Dynamic variabls
         BaseMod.addDynamicVariable(new DefaultCustomVariable());
         BaseMod.addDynamicVariable(new DefaultSecondMagicNumber());
-        BaseMod.addDynamicVariable(new LevelUpVariable());
         
         logger.info("Adding cards");
         // Add the cards

@@ -4,14 +4,22 @@ import Adventurer.characters.Adventurer;
 import Adventurer.relics.AdventurerNovice;
 import basemod.abstracts.CustomCard;
 import basemod.helpers.BaseModCardTags;
+import com.badlogic.gdx.math.MathUtils;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;
+import com.megacrit.cardcrawl.cards.red.HeavyBlade;
+import com.megacrit.cardcrawl.cards.red.PerfectedStrike;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import com.megacrit.cardcrawl.powers.AbstractPower;
+import com.megacrit.cardcrawl.powers.StrengthPower;
+
+import java.util.ArrayList;
+import java.util.Iterator;
 
 import static Adventurer.AdventurerMod.makeCardPath;
 import static Adventurer.AdventurerMod.makeID;
@@ -76,8 +84,7 @@ public class DefaultCommonAttack extends CustomCard {
 
         // Aside from baseDamage/MagicNumber/Block there's also a few more.
         // Just type this.base and let intelliJ auto complete for you, or, go read up AbstractCard
-
-        baseDamage = DAMAGE;
+        this.baseDamage = DAMAGE;
 
         this.tags.add(BaseModCardTags.BASIC_STRIKE); //Tag your strike, defend and form (Wraith form, Demon form, Echo form, etc.) cards so that they function correctly.
         this.tags.add(CardTags.STRIKE);
@@ -86,21 +93,19 @@ public class DefaultCommonAttack extends CustomCard {
     // Actions the card should do.
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        AdventurerNovice playerClass = (AdventurerNovice)AbstractDungeon.player.getRelic(AdventurerNovice.ID);
-        baseDamage = baseDamage + playerClass.counter;
-        this.applyPowers();
-        AbstractDungeon.actionManager.addToBottom( // The action managed queues all the actions a card should do.
-                // addToTop - first
-                // addToBottom - last
-                // 99.99% of the time you just want to addToBottom all of them.
-                // Please do that unless you need to add to top for some specific reason.
-                new DamageAction(m, new DamageInfo(p, damage, damageTypeForTurn),
-                        // a list of existing actions can be found at com.megacrit.cardcrawl.actions but
-                        // Chances are you'd instead look at "hey my card is similar to this basegame card"
-                        // Let's find out what action *it* uses.
-                        // I.e. i want energy gain or card draw, lemme check out Adrenaline
-                        // P.s. if you want to damage ALL enemies OUTSIDE of a card, check out the custom orb.
-                        AbstractGameAction.AttackEffect.SLASH_HORIZONTAL)); // The animation the damage action uses to hit.
+        AbstractDungeon.actionManager.addToBottom(
+                new DamageAction(m, new DamageInfo(p, this.damage, damageTypeForTurn),
+                        AbstractGameAction.AttackEffect.SLASH_HORIZONTAL));
+
+    }
+
+    public void applyPowers()
+    {
+        if ((AbstractDungeon.player != null) && (AbstractDungeon.player.hasRelic(AdventurerNovice.ID))) {
+            this.baseDamage = (this.DAMAGE + AbstractDungeon.player.getRelic(AdventurerNovice.ID).counter);
+            super.applyPowers();
+            initializeDescription();
+        }
     }
 
     // Upgraded stats.
