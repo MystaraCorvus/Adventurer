@@ -7,21 +7,21 @@
     "DESCRIPTION": "Whenever you play a card, gain 1 dexterity this turn only."
   },
   {
-    "NAMES": [
-      "level",
-      "levels"
-    ],
-    "DESCRIPTION": "This card scales with your Level. Formal: NL Base Damage + Level"
-  },
-  {
     "PROPER_NAME": "Multiword Keyword",
     "NAMES": [
       "Multiword Keyword",
+      "Multiword_Keyword2",
       "multiword_keyword",
       "multiword_keywords",
       "multikey",
       "multikeyword"
     ],
     "DESCRIPTION": "Make sure the first element in the NAMES is the same as your PROPER_NAME. The rest is to match keywords like the single word keyword."
+  },
+  {
+    "NAMES": [
+      "level"
+    ],
+    "DESCRIPTION": "This card gains a bonus from your Level. You can raise your Level in Events and Restsites."
   }
 ]

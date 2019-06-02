@@ -158,7 +158,16 @@ public class Adventurer extends CustomPlayer {
         ArrayList<String> retVal = new ArrayList<>();
 
         logger.info("Begin loading starter Deck Strings");
+        retVal.add(Strike_Adventurer.ID);
+        retVal.add(Strike_Adventurer.ID);
+        retVal.add(Strike_Adventurer.ID);
+        retVal.add(Strike_Adventurer.ID);
+        retVal.add(Defend_Adventurer.ID);
+        retVal.add(Defend_Adventurer.ID);
+        retVal.add(Defend_Adventurer.ID);
+        retVal.add(Defend_Adventurer.ID);
 
+        /*
         retVal.add(DefaultCommonAttack.ID);
         retVal.add(DefaultUncommonAttack.ID);
         retVal.add(DefaultRareAttack.ID);
@@ -174,6 +183,9 @@ public class Adventurer extends CustomPlayer {
         retVal.add(DefaultAttackWithVariable.ID);
         retVal.add(DefaultSecondMagicNumberSkill.ID);
         retVal.add(OrbSkill.ID);
+
+            */
+
         return retVal;
     }
 

@@ -2,6 +2,7 @@ package Adventurer;
 
 import Adventurer.characters.Adventurer;
 import Adventurer.relics.*;
+import Adventurer.variables.LevelScalingOneSixth;
 import basemod.BaseMod;
 import basemod.ModLabeledToggleButton;
 import basemod.ModPanel;
@@ -396,12 +397,17 @@ public class AdventurerMod implements
         // Add the Custom Dynamic variabls
         BaseMod.addDynamicVariable(new DefaultCustomVariable());
         BaseMod.addDynamicVariable(new DefaultSecondMagicNumber());
-        
+        BaseMod.addDynamicVariable(new LevelScalingOneSixth());
+
+
         logger.info("Adding cards");
         // Add the cards
         // Don't comment out/delete these cards (yet). You need 1 of each type and rarity (technically) for your game not to crash
         // when generating card rewards/shop screen items.
-        
+
+        BaseMod.addCard(new Strike_Adventurer());
+        BaseMod.addCard(new Defend_Adventurer());
+
         BaseMod.addCard(new OrbSkill());
         BaseMod.addCard(new DefaultSecondMagicNumberSkill());
         BaseMod.addCard(new DefaultCommonAttack());
@@ -419,6 +425,10 @@ public class AdventurerMod implements
         // Unlock the cards
         // This is so that they are all "seen" in the library, for people who like to look at the card list
         // before playing your mod.
+
+        UnlockTracker.unlockCard(Strike_Adventurer.ID);
+        UnlockTracker.unlockCard(Defend_Adventurer.ID);
+
         UnlockTracker.unlockCard(OrbSkill.ID);
         UnlockTracker.unlockCard(DefaultSecondMagicNumberSkill.ID);
         UnlockTracker.unlockCard(DefaultCommonAttack.ID);

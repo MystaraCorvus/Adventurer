@@ -1,11 +1,19 @@
 {
+  "Adventurer:Strike_Adventurer": {
+    "NAME": "Lesser Strike",
+    "DESCRIPTION": "Deal !D! Damage. NL (Bonus from adventurer:Level: !Adventurer:OneSixth!. The factor is 0.6)"
+  },
+  "Adventurer:Defend_Adventurer": {
+    "NAME": "Lesser Defend",
+    "DESCRIPTION": "Gain !B! Block. NL (Bonus from adventurer:Level: !Adventurer:OneSixth!. The factor is 0.6)"
+  },
   "Adventurer:DefaultCommonAttack": {
-    "NAME": "Strike",
-    "DESCRIPTION": "adventurer:Level NL Deal !D! Damage."
+    "NAME": "Basic Strike",
+    "DESCRIPTION": "Deal !D! Damage. NL (Bonus from adventurer:Level: !Adventurer:OneSixth!. The factor is 1)"
   },
   "Adventurer:DefaultCommonSkill": {
-    "NAME": "Defend",
-    "DESCRIPTION": "Gain !B! Block. NL adventurer:Multiword_Keyword."
+    "NAME": "Basic Defend",
+    "DESCRIPTION": "Gain !B! Block. NL adventurer:Level (Bonus from : !Adventurer:OneSixth!. The factor is 1)"
   },
   "Adventurer:DefaultCommonPower": {
     "NAME": "Hold Place",

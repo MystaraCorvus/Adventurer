@@ -11,7 +11,7 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import static Adventurer.AdventurerMod.makeCardPath;
 import static Adventurer.AdventurerMod.makeID;
 
-public class DefaultCommonSkill extends AbstractDynamicCard {
+public class Defend_Adventurer extends AbstractDynamicCard {
 
     /*
      * Wiki-page: https://github.com/daviscook477/BaseMod/wiki/Custom-Cards
@@ -22,15 +22,15 @@ public class DefaultCommonSkill extends AbstractDynamicCard {
 
     // TEXT DECLARATION
 
-    public static final String ID = makeID(DefaultCommonSkill.class.getSimpleName());
+    public static final String ID = makeID(Defend_Adventurer.class.getSimpleName());
     public static final String IMG = makeCardPath("Skill.png");
 
     // /TEXT DECLARATION/
 
 
-    // STAT DECLARATION 	
+    // STAT DECLARATION
 
-    private static final CardRarity RARITY = CardRarity.COMMON;
+    private static final CardRarity RARITY = CardRarity.BASIC;
     private static final CardTarget TARGET = CardTarget.SELF;
     private static final CardType TYPE = CardType.SKILL;
     public static final CardColor COLOR = Adventurer.Enums.COLOR_GRAY;
@@ -43,15 +43,17 @@ public class DefaultCommonSkill extends AbstractDynamicCard {
     // /STAT DECLARATION/
 
 
-    public DefaultCommonSkill() {
+    public Defend_Adventurer() {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
         baseBlock = BLOCK;
+
+        this.tags.add(BaseModCardTags.BASIC_DEFEND); //Tag your strike, defend and form (Wraith form, Demon form, Echo form, etc.) cards so that they function correctly.
     }
 
     public void applyPowers()
     {
         if ((AbstractDungeon.player != null) && (AbstractDungeon.player.hasRelic(AdventurerNovice.ID))) {
-            this.baseBlock = (this.BLOCK + AbstractDungeon.player.getRelic(AdventurerNovice.ID).counter);
+            this.baseBlock = (this.BLOCK + (int)(AbstractDungeon.player.getRelic(AdventurerNovice.ID).counter * 0.6));
             super.applyPowers();
             initializeDescription();
         }
