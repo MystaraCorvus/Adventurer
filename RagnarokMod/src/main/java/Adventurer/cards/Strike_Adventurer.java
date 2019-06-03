@@ -94,7 +94,11 @@ public class Strike_Adventurer extends CustomCard {
     public void applyPowers()
     {
         if ((AbstractDungeon.player != null) && (AbstractDungeon.player.hasRelic(AdventurerNovice.ID))) {
-            this.baseDamage = (this.DAMAGE + (int)(AbstractDungeon.player.getRelic(AdventurerNovice.ID).counter * 0.6));
+            if (!upgraded) {
+                this.baseDamage = (this.DAMAGE + (int) (AbstractDungeon.player.getRelic(AdventurerNovice.ID).counter * 0.6));
+            } else {
+                this.baseDamage = (this.DAMAGE + this.UPGRADE_PLUS_DMG + (int)(AbstractDungeon.player.getRelic(AdventurerNovice.ID).counter * 0.6));
+            }
             super.applyPowers();
             initializeDescription();
         }

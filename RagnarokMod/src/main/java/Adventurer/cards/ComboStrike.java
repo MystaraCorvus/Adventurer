@@ -94,17 +94,27 @@ public class ComboStrike extends CustomCard {
     public void applyPowers()
     {
         if ((AbstractDungeon.player != null) && (AbstractDungeon.player.hasRelic(AdventurerNovice.ID))) {
-        int ComboBonus = 0;
+            int ComboBonus = 0;
 
-        if(!AbstractDungeon.actionManager.cardsPlayedThisTurn.isEmpty()) {
-            ArrayList<AbstractCard> played = AbstractDungeon.actionManager.cardsPlayedThisTurn;
-            if (played.get(played.size() - 1).toString() == Strike_Adventurer.NAME) {
-                ComboBonus = 2 + (int) (AbstractDungeon.player.getRelic(AdventurerNovice.ID).counter * 1.5);
+            if(!AbstractDungeon.actionManager.cardsPlayedThisTurn.isEmpty()) {
+                ArrayList<AbstractCard> played = AbstractDungeon.actionManager.cardsPlayedThisTurn;
+                if (played.get(played.size() - 1).toString() == Strike_Adventurer.NAME) {
+                    if (!upgraded) {
+                        ComboBonus = 2 + (int) (AbstractDungeon.player.getRelic(AdventurerNovice.ID).counter * 1.5);
+                    } else {
+                        ComboBonus = 2 + (int) (AbstractDungeon.player.getRelic(AdventurerNovice.ID).counter * 1.5);
+
+                    }
+
+                }
             }
-        }
-        this.baseDamage = (this.DAMAGE + ComboBonus);
-        super.applyPowers();
-        initializeDescription();
+            if (!upgraded) {
+                this.baseDamage = (this.DAMAGE + ComboBonus);
+            } else {
+                this.baseDamage = (this.DAMAGE + this.UPGRADE_PLUS_DMG + ComboBonus);
+            }
+            super.applyPowers();
+            initializeDescription();
         }
     }
 
