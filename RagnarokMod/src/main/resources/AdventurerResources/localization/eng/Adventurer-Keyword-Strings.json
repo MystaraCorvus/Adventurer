@@ -23,5 +23,11 @@
       "level"
     ],
     "DESCRIPTION": "This card gains a bonus from your Level. You can raise your Level in Events and Restsites."
+  },
+  {
+    "NAMES": [
+      "combo"
+    ],
+    "DESCRIPTION": "Play this card after the card this combos with for an improved effect."
   }
 ]

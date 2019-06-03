@@ -23,9 +23,6 @@ import com.megacrit.cardcrawl.unlock.UnlockTracker;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import Adventurer.cards.*;
-import Adventurer.relics.DefaultClickableRelic;
-import Adventurer.relics.PlaceholderRelic;
-import Adventurer.relics.PlaceholderRelic2;
 
 import java.util.ArrayList;
 
@@ -168,7 +165,7 @@ public class Adventurer extends CustomPlayer {
         retVal.add(Defend_Adventurer.ID);
 
         /*
-        retVal.add(DefaultCommonAttack.ID);
+        retVal.add(ComboStrike.ID);
         retVal.add(DefaultUncommonAttack.ID);
         retVal.add(DefaultRareAttack.ID);
 
@@ -251,7 +248,7 @@ public class Adventurer extends CustomPlayer {
     //Which card should be obtainable from the Match and Keep event?
     @Override
     public AbstractCard getStartCardForEvent() {
-        return new DefaultCommonAttack();
+        return new ComboStrike();
     }
 
     // The class name as it appears next to your player name in-game

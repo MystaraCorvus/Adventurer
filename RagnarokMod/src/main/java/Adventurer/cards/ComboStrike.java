@@ -3,23 +3,17 @@ package Adventurer.cards;
 import Adventurer.characters.Adventurer;
 import Adventurer.relics.AdventurerNovice;
 import basemod.abstracts.CustomCard;
-import basemod.helpers.BaseModCardTags;
-import com.badlogic.gdx.math.MathUtils;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
+import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.DamageInfo;
-import com.megacrit.cardcrawl.cards.red.HeavyBlade;
-import com.megacrit.cardcrawl.cards.red.PerfectedStrike;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import com.megacrit.cardcrawl.powers.AbstractPower;
-import com.megacrit.cardcrawl.powers.StrengthPower;
 
 import java.util.ArrayList;
-import java.util.Iterator;
 
 import static Adventurer.AdventurerMod.makeCardPath;
 import static Adventurer.AdventurerMod.makeID;
@@ -34,7 +28,7 @@ import static Adventurer.AdventurerMod.makeID;
 // Abstract Dynamic Card builds up on Abstract Default Card even more and makes it so that you don't need to add
 // the NAME and the DESCRIPTION into your card - it'll get it automatically. Of course, this functionality could have easily
 // Been added to the default card rather than creating a new Dynamic one, but was done so to deliberately.
-public class DefaultCommonAttack extends CustomCard {
+public class ComboStrike extends CustomCard {
 
     /*
      * Wiki-page: https://github.com/daviscook477/BaseMod/wiki/Custom-Cards
@@ -44,7 +38,7 @@ public class DefaultCommonAttack extends CustomCard {
 
     // TEXT DECLARATION
 
-    public static final String ID = makeID(DefaultCommonAttack.class.getSimpleName());
+    public static final String ID = makeID(ComboStrike.class.getSimpleName());
     private static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
 
     public static final String IMG = makeCardPath("Attack.png");
@@ -79,7 +73,7 @@ public class DefaultCommonAttack extends CustomCard {
 
     // /STAT DECLARATION/
 
-    public DefaultCommonAttack() {
+    public ComboStrike() {
         super(ID, NAME, IMG, COST, DESCRIPTION, TYPE, COLOR, RARITY, TARGET);
 
         // Aside from baseDamage/MagicNumber/Block there's also a few more.
@@ -99,17 +93,18 @@ public class DefaultCommonAttack extends CustomCard {
 
     public void applyPowers()
     {
-        int ComboBonus = 5;
+        if ((AbstractDungeon.player != null) && (AbstractDungeon.player.hasRelic(AdventurerNovice.ID))) {
+        int ComboBonus = 0;
 
-        if(AbstractDungeon.actionManager.lastCard != null) {
-            if (AbstractDungeon.actionManager.lastCard.cardID == Strike_Adventurer.ID) {
-                ComboBonus = 10;
+        if(!AbstractDungeon.actionManager.cardsPlayedThisTurn.isEmpty()) {
+            ArrayList<AbstractCard> played = AbstractDungeon.actionManager.cardsPlayedThisTurn;
+            if (played.get(played.size() - 1).toString() == Strike_Adventurer.NAME) {
+                ComboBonus = 2 + (int) (AbstractDungeon.player.getRelic(AdventurerNovice.ID).counter * 1.5);
             }
         }
-        if ((AbstractDungeon.player != null) && (AbstractDungeon.player.hasRelic(AdventurerNovice.ID))) {
-            this.baseDamage = (this.DAMAGE + AbstractDungeon.player.getRelic(AdventurerNovice.ID).counter + ComboBonus);
-            super.applyPowers();
-            initializeDescription();
+        this.baseDamage = (this.DAMAGE + ComboBonus);
+        super.applyPowers();
+        initializeDescription();
         }
     }
 
