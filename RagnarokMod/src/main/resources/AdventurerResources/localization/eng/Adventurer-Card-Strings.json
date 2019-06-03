@@ -46,6 +46,10 @@
     "NAME": "In-Progress Form",
     "DESCRIPTION": "At the start of your turn, play a TOUCH."
   },
+  "Adventurer:AdventurerForm": {
+    "NAME": "Adventurer Form",
+    "DESCRIPTION": "At the start of your turn, play a TOUCH."
+  },
   "Adventurer:TakeRest": {
     "NAME": "Take a rest",
     "DESCRIPTION": "At the end of combat, heal !M! HP."

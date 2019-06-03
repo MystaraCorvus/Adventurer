@@ -1,6 +1,6 @@
 package Adventurer.variables;
 
-import Adventurer.cards.AbstractDefaultCard;
+import Adventurer.cards.AdventurerCard;
 import basemod.abstracts.DynamicVariable;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 
@@ -20,22 +20,22 @@ public class DefaultSecondMagicNumber extends DynamicVariable {
 
     @Override
     public boolean isModified(AbstractCard card) {
-        return ((AbstractDefaultCard) card).isDefaultSecondMagicNumberModified;
+        return ((AdventurerCard) card).isDefaultSecondMagicNumberModified;
 
     }
 
     @Override
     public int value(AbstractCard card) {
-        return ((AbstractDefaultCard) card).defaultSecondMagicNumber;
+        return ((AdventurerCard) card).defaultSecondMagicNumber;
     }
 
     @Override
     public int baseValue(AbstractCard card) {
-        return ((AbstractDefaultCard) card).defaultBaseSecondMagicNumber;
+        return ((AdventurerCard) card).defaultBaseSecondMagicNumber;
     }
 
     @Override
     public boolean upgraded(AbstractCard card) {
-        return ((AbstractDefaultCard) card).upgradedDefaultSecondMagicNumber;
+        return ((AdventurerCard) card).upgradedDefaultSecondMagicNumber;
     }
 }

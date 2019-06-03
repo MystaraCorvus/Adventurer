@@ -11,7 +11,7 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import static Adventurer.AdventurerMod.makeCardPath;
 import static Adventurer.AdventurerMod.makeID;
 
-public class DefaultCommonSkill extends AbstractDynamicCard {
+public class DefaultCommonSkill extends AdventurerCard {
 
     /*
      * Wiki-page: https://github.com/daviscook477/BaseMod/wiki/Custom-Cards

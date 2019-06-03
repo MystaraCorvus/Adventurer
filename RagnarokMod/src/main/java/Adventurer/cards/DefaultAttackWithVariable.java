@@ -13,7 +13,7 @@ import com.megacrit.cardcrawl.ui.panels.EnergyPanel;
 import static Adventurer.AdventurerMod.makeCardPath;
 import static Adventurer.AdventurerMod.makeID;
 
-public class DefaultAttackWithVariable extends AbstractDynamicCard {
+public class DefaultAttackWithVariable extends AdventurerCard {
 
     /*
      * Wiki-page: https://github.com/daviscook477/BaseMod/wiki/Custom-Cards

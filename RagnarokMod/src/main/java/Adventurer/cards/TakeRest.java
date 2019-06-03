@@ -11,7 +11,7 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import static Adventurer.AdventurerMod.makeCardPath;
 import static Adventurer.AdventurerMod.makeID;
 
-public class TakeRest extends AbstractDynamicCard {
+public class TakeRest extends AdventurerCard {
 
     /*
      * Wiki-page: https://github.com/daviscook477/BaseMod/wiki/Custom-Cards

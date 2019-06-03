@@ -13,7 +13,7 @@ import com.megacrit.cardcrawl.powers.VulnerablePower;
 import static Adventurer.AdventurerMod.makeCardPath;
 import static Adventurer.AdventurerMod.makeID;
 
-public class DefaultSecondMagicNumberSkill extends AbstractDynamicCard {
+public class DefaultSecondMagicNumberSkill extends AdventurerCard {
 
     /*
      * Wiki-page: https://github.com/daviscook477/BaseMod/wiki/Custom-Cards

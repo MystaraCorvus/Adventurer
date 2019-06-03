@@ -1,6 +1,7 @@
 package Adventurer.cards;
 
 import Adventurer.characters.Adventurer;
+import Adventurer.powers.AdventurerFormPower;
 import Adventurer.powers.RarePower;
 import basemod.helpers.BaseModCardTags;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
@@ -10,7 +11,7 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 
 import static Adventurer.AdventurerMod.*;
 
-public class DefaultRarePower extends AbstractDynamicCard {
+public class AdventurerForm extends AdventurerCard {
 
     /*
      * Wiki-page: https://github.com/daviscook477/BaseMod/wiki/Custom-Cards
@@ -20,7 +21,7 @@ public class DefaultRarePower extends AbstractDynamicCard {
 
     // TEXT DECLARATION 
 
-    public static final String ID = makeID(DefaultRarePower.class.getSimpleName());
+    public static final String ID = makeID(AdventurerForm.class.getSimpleName());
     public static final String IMG = makeCardPath("Power.png");
 
     // /TEXT DECLARATION/
@@ -41,7 +42,7 @@ public class DefaultRarePower extends AbstractDynamicCard {
     // /STAT DECLARATION/
 
 
-    public DefaultRarePower() {
+    public AdventurerForm() {
 
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
         magicNumber = baseMagicNumber = MAGIC;
@@ -53,8 +54,7 @@ public class DefaultRarePower extends AbstractDynamicCard {
     // Actions the card should do.
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        AbstractDungeon.actionManager.addToBottom(
-                new ApplyPowerAction(p, p, new RarePower(p, p, magicNumber), magicNumber));
+        AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(p, p, new AdventurerFormPower(p, p, this.magicNumber), this.magicNumber));
     }
 
     //Upgraded stats.

@@ -10,7 +10,7 @@ import com.megacrit.cardcrawl.powers.PlatedArmorPower;
 import static Adventurer.AdventurerMod.makeCardPath;
 import static Adventurer.AdventurerMod.makeID;
 
-public class DefaultUncommonSkill extends AbstractDynamicCard {
+public class DefaultUncommonSkill extends AdventurerCard {
 
     /*
      * Wiki-page: https://github.com/daviscook477/BaseMod/wiki/Custom-Cards

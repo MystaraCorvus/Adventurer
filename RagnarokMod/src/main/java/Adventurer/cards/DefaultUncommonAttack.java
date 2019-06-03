@@ -9,7 +9,7 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import static Adventurer.AdventurerMod.*;
 
-public class DefaultUncommonAttack extends AbstractDynamicCard {
+public class DefaultUncommonAttack extends AdventurerCard {
 
     /*
      * Wiki-page: https://github.com/daviscook477/BaseMod/wiki/Custom-Cards

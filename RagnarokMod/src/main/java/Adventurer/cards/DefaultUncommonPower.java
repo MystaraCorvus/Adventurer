@@ -10,7 +10,7 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.ui.panels.EnergyPanel;
 
 import static Adventurer.AdventurerMod.*;
-public class DefaultUncommonPower extends AbstractDynamicCard {
+public class DefaultUncommonPower extends AdventurerCard {
 
     /*
      * Wiki-page: https://github.com/daviscook477/BaseMod/wiki/Custom-Cards

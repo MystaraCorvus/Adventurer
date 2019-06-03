@@ -2,10 +2,11 @@ package Adventurer.cards;
 
 import Adventurer.characters.Adventurer;
 import Adventurer.relics.AdventurerNovice;
-import basemod.abstracts.CustomCard;
+import Adventurer.util.AdventurerTags;
 import basemod.helpers.BaseModCardTags;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
+import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
@@ -26,7 +27,7 @@ import static Adventurer.AdventurerMod.makeID;
 // Abstract Dynamic Card builds up on Abstract Default Card even more and makes it so that you don't need to add
 // the NAME and the DESCRIPTION into your card - it'll get it automatically. Of course, this functionality could have easily
 // Been added to the default card rather than creating a new Dynamic one, but was done so to deliberately.
-public class Strike_Adventurer extends CustomCard {
+public class Strike_Adventurer extends AdventurerCard {
 
     /*
      * Wiki-page: https://github.com/daviscook477/BaseMod/wiki/Custom-Cards
@@ -37,7 +38,6 @@ public class Strike_Adventurer extends CustomCard {
     // TEXT DECLARATION
 
     public static final String ID = makeID(Strike_Adventurer.class.getSimpleName());
-    private static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
 
     public static final String IMG = makeCardPath("Attack.png");
     // Setting the image as as easy as can possibly be now. You just need to provide the image name
@@ -45,13 +45,6 @@ public class Strike_Adventurer extends CustomCard {
     // There's makeCardPath, makeRelicPath, power, orb, event, etc..
     // The list of all of them can be found in the main DefaultMod.java file in the
     // ==INPUT TEXTURE LOCATION== section under ==MAKE IMAGE PATHS==
-
-
-    public static final String NAME = cardStrings.NAME;
-    public static final String DESCRIPTION = cardStrings.DESCRIPTION;
-
-    // /TEXT DECLARATION/
-
 
     // STAT DECLARATION
 
@@ -72,7 +65,7 @@ public class Strike_Adventurer extends CustomCard {
     // /STAT DECLARATION/
 
     public Strike_Adventurer() {
-        super(ID, NAME, IMG, COST, DESCRIPTION, TYPE, COLOR, RARITY, TARGET);
+        super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
 
         // Aside from baseDamage/MagicNumber/Block there's also a few more.
         // Just type this.base and let intelliJ auto complete for you, or, go read up AbstractCard
@@ -80,6 +73,7 @@ public class Strike_Adventurer extends CustomCard {
 
         this.tags.add(BaseModCardTags.BASIC_STRIKE); //Tag your strike, defend and form (Wraith form, Demon form, Echo form, etc.) cards so that they function correctly.
         this.tags.add(CardTags.STRIKE);
+        this.tags.add(AdventurerTags.LESSER_STRIKE);
     }
 
     // Actions the card should do.

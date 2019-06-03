@@ -419,7 +419,7 @@ public class AdventurerMod implements
         BaseMod.addCard(new DefaultUncommonPower());
         BaseMod.addCard(new DefaultRareAttack());
         BaseMod.addCard(new DefaultRareSkill());
-        BaseMod.addCard(new DefaultRarePower());
+        BaseMod.addCard(new AdventurerForm());
         
         logger.info("Making sure the cards are unlocked.");
         // Unlock the cards
@@ -440,7 +440,7 @@ public class AdventurerMod implements
         UnlockTracker.unlockCard(DefaultUncommonPower.ID);
         UnlockTracker.unlockCard(DefaultRareAttack.ID);
         UnlockTracker.unlockCard(DefaultRareSkill.ID);
-        UnlockTracker.unlockCard(DefaultRarePower.ID);
+        UnlockTracker.unlockCard(AdventurerForm.ID);
         
         logger.info("Done adding cards!");
     }

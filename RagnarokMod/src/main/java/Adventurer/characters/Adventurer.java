@@ -175,7 +175,7 @@ public class Adventurer extends CustomPlayer {
 
         retVal.add(DefaultCommonPower.ID);
         retVal.add(DefaultUncommonPower.ID);
-        retVal.add(DefaultRarePower.ID);
+        retVal.add(AdventurerForm.ID);
 
         retVal.add(DefaultAttackWithVariable.ID);
         retVal.add(DefaultSecondMagicNumberSkill.ID);

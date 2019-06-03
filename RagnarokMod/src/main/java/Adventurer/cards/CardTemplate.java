@@ -12,7 +12,7 @@ import static Adventurer.AdventurerMod.makeID;
 import static Adventurer.AdventurerMod.makeCardPath;
 
 // public class ${NAME} extends AbstractDynamicCard
-public class CardTemplate extends AbstractDynamicCard {
+public class CardTemplate extends AdventurerCard {
 
     /*
      * "Hey, I wanna make a bunch of cards now." - You, probably.
