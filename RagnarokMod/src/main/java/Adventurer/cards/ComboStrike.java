@@ -1,19 +1,15 @@
 package Adventurer.cards;
 
 import Adventurer.characters.Adventurer;
-import Adventurer.relics.AdventurerNovice;
+import Adventurer.relics.AdventurerRelic;
+import Adventurer.relics.Novice.AdventurerNovice;
 import Adventurer.util.AdventurerTags;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
-import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
-import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
-import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-
-import java.util.ArrayList;
 
 import static Adventurer.AdventurerMod.makeCardPath;
 import static Adventurer.AdventurerMod.makeID;
@@ -62,6 +58,11 @@ public class ComboStrike extends AdventurerCard {
     private static final int DAMAGE = 6;
     private static final int UPGRADE_PLUS_DMG = 3;
 
+    private int ComboAmount = 2;
+    private float Scaling = 1.5f;
+
+    private int modifiedValue = DAMAGE;
+
     // Hey want a second damage/magic/block/unique number??? Great!
     // Go check out DefaultAttackWithVariable and theDefault.variable.DefaultCustomVariable
     // that's how you get your own custom variable that you can use for anything you like.
@@ -89,29 +90,11 @@ public class ComboStrike extends AdventurerCard {
 
     public void applyPowers()
     {
-        if ((AbstractDungeon.player != null) && (AbstractDungeon.player.hasRelic(AdventurerNovice.ID))) {
-            int ComboBonus = 0;
-
-            if(!AbstractDungeon.actionManager.cardsPlayedThisTurn.isEmpty()) {
-                if (CompareLastCardPlayed(AdventurerTags.LESSER_STRIKE)) {
-                    if (!upgraded) {
-                        ComboBonus = 2 + (int) (AbstractDungeon.player.getRelic(AdventurerNovice.ID).counter * 1.5);
-                    } else {
-                        ComboBonus = 2 + (int) (AbstractDungeon.player.getRelic(AdventurerNovice.ID).counter * 1.5);
-
-                    }
-
-                }
-            }
-            if (!upgraded) {
-                this.baseDamage = (this.DAMAGE + ComboBonus);
-            } else {
-                this.baseDamage = (this.DAMAGE + this.UPGRADE_PLUS_DMG + ComboBonus);
-            }
-            super.applyPowers();
-            initializeDescription();
-        }
-    }
+        int ComboBonus = ComboBonus(AdventurerTags.LESSER_STRIKE, ComboAmount, Scaling);
+        this.baseDamage = modifiedValue + ComboBonus;
+        super.applyPowers();
+        initializeDescription();
+}
 
     // Upgraded stats.
     @Override
@@ -119,6 +102,7 @@ public class ComboStrike extends AdventurerCard {
         if (!upgraded) {
             upgradeName();
             upgradeDamage(UPGRADE_PLUS_DMG);
+            modifiedValue += UPGRADE_PLUS_DMG;
             initializeDescription();
         }
     }

@@ -2,6 +2,7 @@ package Adventurer;
 
 import Adventurer.characters.Adventurer;
 import Adventurer.relics.*;
+import Adventurer.relics.Novice.*;
 import Adventurer.variables.LevelScalingOneSixth;
 import basemod.BaseMod;
 import basemod.ModLabeledToggleButton;
@@ -369,16 +370,29 @@ public class AdventurerMod implements
         logger.info("Adding relics");
         
         // This adds a character specific relic. Only when you play with the mentioned color, will you get this relic.
+        /*
         BaseMod.addRelicToCustomPool(new PlaceholderRelic(), Adventurer.Enums.COLOR_GRAY);
         BaseMod.addRelicToCustomPool(new BottledPlaceholderRelic(), Adventurer.Enums.COLOR_GRAY);
         BaseMod.addRelicToCustomPool(new DefaultClickableRelic(), Adventurer.Enums.COLOR_GRAY);
+        */
         BaseMod.addRelicToCustomPool(new AdventurerNovice(), Adventurer.Enums.COLOR_GRAY);
+        BaseMod.addRelicToCustomPool(new AcolyteNovice(), Adventurer.Enums.COLOR_GRAY);
+        BaseMod.addRelicToCustomPool(new ArcherNovice(), Adventurer.Enums.COLOR_GRAY);
+        BaseMod.addRelicToCustomPool(new MagicianNovice(), Adventurer.Enums.COLOR_GRAY);
+        BaseMod.addRelicToCustomPool(new MerchantNovice(), Adventurer.Enums.COLOR_GRAY);
+        BaseMod.addRelicToCustomPool(new SwordsmanNovice(), Adventurer.Enums.COLOR_GRAY);
+
 
         // This adds a relic to the Shared pool. Every character can find this relic.
-        BaseMod.addRelic(new PlaceholderRelic2(), RelicType.SHARED);
+        //BaseMod.addRelic(new PlaceholderRelic2(), RelicType.SHARED);
         
         // Mark relics as seen (the others are all starters so they're marked as seen in the character file
-        UnlockTracker.markRelicAsSeen(BottledPlaceholderRelic.ID);
+        UnlockTracker.markRelicAsSeen(AdventurerNovice.ID);
+        UnlockTracker.markRelicAsSeen(AcolyteNovice.ID);
+        UnlockTracker.markRelicAsSeen(ArcherNovice.ID);
+        UnlockTracker.markRelicAsSeen(MagicianNovice.ID);
+        UnlockTracker.markRelicAsSeen(MerchantNovice.ID);
+        UnlockTracker.markRelicAsSeen(SwordsmanNovice.ID);
         logger.info("Done adding relics!");
     }
     
@@ -405,12 +419,44 @@ public class AdventurerMod implements
         // Don't comment out/delete these cards (yet). You need 1 of each type and rarity (technically) for your game not to crash
         // when generating card rewards/shop screen items.
 
+        // Basic
         BaseMod.addCard(new Strike_Adventurer());
         BaseMod.addCard(new Defend_Adventurer());
 
+        //Common
+
+        ///Attack
+        BaseMod.addCard(new ComboStrike());
+
+        ///Skill
+        BaseMod.addCard(new LesserWeak());
+        BaseMod.addCard(new LesserPoison());
+
+        ///Power
+
+        //Uncommon
+
+        ///Attack
+
+        ///Skill
+        BaseMod.addCard(new LesserVulnerability());
+
+        ///Power
+
+        //Rare
+
+        ///Attack
+
+        ///Skill
+
+        ///Power
+        BaseMod.addCard(new AdventurerForm());
+        BaseMod.addCard(new TakeRest());
+
+
+
         BaseMod.addCard(new OrbSkill());
         BaseMod.addCard(new DefaultSecondMagicNumberSkill());
-        BaseMod.addCard(new ComboStrike());
         BaseMod.addCard(new DefaultAttackWithVariable());
         BaseMod.addCard(new DefaultCommonSkill());
         BaseMod.addCard(new DefaultCommonPower());
@@ -419,7 +465,7 @@ public class AdventurerMod implements
         BaseMod.addCard(new DefaultUncommonPower());
         BaseMod.addCard(new DefaultRareAttack());
         BaseMod.addCard(new DefaultRareSkill());
-        BaseMod.addCard(new AdventurerForm());
+
         
         logger.info("Making sure the cards are unlocked.");
         // Unlock the cards
@@ -440,7 +486,12 @@ public class AdventurerMod implements
         UnlockTracker.unlockCard(DefaultUncommonPower.ID);
         UnlockTracker.unlockCard(DefaultRareAttack.ID);
         UnlockTracker.unlockCard(DefaultRareSkill.ID);
+
         UnlockTracker.unlockCard(AdventurerForm.ID);
+        UnlockTracker.unlockCard(TakeRest.ID);
+        UnlockTracker.unlockCard(LesserVulnerability.ID);
+        UnlockTracker.unlockCard(LesserWeak.ID);
+        UnlockTracker.unlockCard(LesserPoison.ID);
         
         logger.info("Done adding cards!");
     }
@@ -532,9 +583,12 @@ public class AdventurerMod implements
 
     @Override
     public boolean receivePostCampfire() {
+        maxOptionsRestRoom = 1;
+
         if (AbstractDungeon.player.hasRelic(AdventurerNovice.ID)) {
-            maxOptionsRestRoom = 2;
+            maxOptionsRestRoom++;
         }
+
         curOptionsRestRoom++;
         if(curOptionsRestRoom < maxOptionsRestRoom){
             return false;

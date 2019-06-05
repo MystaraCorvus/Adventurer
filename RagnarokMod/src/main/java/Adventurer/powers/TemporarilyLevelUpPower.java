@@ -17,35 +17,17 @@ import static Adventurer.AdventurerMod.makeID;
 import static Adventurer.AdventurerMod.makePowerPath;
 
 public class TemporarilyLevelUpPower
-        extends AbstractPower
+        extends AdventurerPower
 {
-    public static final String POWER_ID = makeID("TemporarilyLevelUpPower");
-    private static final PowerStrings powerStrings = CardCrawlGame.languagePack.getPowerStrings(POWER_ID);
-    public static final String NAME = powerStrings.NAME;
-    public static final String[] DESCRIPTIONS = powerStrings.DESCRIPTIONS;
+    public static final String thisNAME = "TemporarilyLevelUp";
 
-    // We create 2 new textures *Using This Specific Texture Loader* - an 84x84 image and a 32x32 one.
-    // There's a fallback "missing texture" image, so the game shouldn't crash if you accidentally put a non-existent file.
-    private static final Texture tex84 = TextureLoader.getTexture(makePowerPath("placeholder_power84.png"));
-    private static final Texture tex32 = TextureLoader.getTexture(makePowerPath("placeholder_power32.png"));
+    private static final Texture tex84 = TextureLoader.getTexture(makePowerPath(thisNAME + "84.png"));
+    private static final Texture tex32 = TextureLoader.getTexture(makePowerPath(thisNAME + "32.png"));
 
-    public TemporarilyLevelUpPower(AbstractCreature owner, int amount)
+    public TemporarilyLevelUpPower (final AbstractCreature owner, final AbstractCreature source, final int amount)
     {
-        this.name = NAME;
-        this.ID = POWER_ID;
-        this.owner = owner;
-        this.amount = amount;
-        if (this.amount >= 999) {
-            this.amount = 999;
-        }
-
+        super(thisNAME, owner, source, amount, tex84, tex32);
         this.canGoNegative = true;
-
-        // We load those textures here.
-        this.region128 = new TextureAtlas.AtlasRegion(tex84, 0, 0, 84, 84);
-        this.region48 = new TextureAtlas.AtlasRegion(tex32, 0, 0, 32, 32);
-
-        updateDescription();
     }
 
     public void playApplyPowerSfx()
@@ -58,7 +40,7 @@ public class TemporarilyLevelUpPower
         this.fontScale = 8.0F;
         this.amount += stackAmount;
         if (this.amount == 0) {
-            AbstractDungeon.actionManager.addToTop(new RemoveSpecificPowerAction(this.owner, this.owner, TemporarilyLevelUpPower.POWER_ID));
+            AbstractDungeon.actionManager.addToTop(new RemoveSpecificPowerAction(this.owner, this.owner, makeID(TemporarilyLevelUpPower.ME)));
         }
         if (this.amount >= 999) {
             this.amount = 999;
@@ -70,13 +52,10 @@ public class TemporarilyLevelUpPower
         this.fontScale = 8.0F;
         this.amount -= reduceAmount;
         if (this.amount == 0) {
-            AbstractDungeon.actionManager.addToTop(new RemoveSpecificPowerAction(this.owner, this.owner, "Dexterity"));
+            AbstractDungeon.actionManager.addToTop(new RemoveSpecificPowerAction(this.owner, this.owner, "TemporarilyLevelUpPower"));
         }
         if (this.amount >= 999) {
             this.amount = 999;
-        }
-        if (this.amount <= 64537) {
-            this.amount = 64537;
         }
     }
 
@@ -84,13 +63,12 @@ public class TemporarilyLevelUpPower
     {
         if (this.amount > 0)
         {
-            this.description = (DESCRIPTIONS[0] + this.amount + DESCRIPTIONS[2]);
+            this.description = (DESCRIPTIONS[0]);
             this.type = AbstractPower.PowerType.BUFF;
         }
         else
         {
-            int tmp = -this.amount;
-            this.description = (DESCRIPTIONS[1] + tmp + DESCRIPTIONS[2]);
+            this.description = (DESCRIPTIONS[0]);
             this.type = AbstractPower.PowerType.DEBUFF;
         }
     }

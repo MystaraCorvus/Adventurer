@@ -1,6 +1,6 @@
 package Adventurer.characters;
 
-import Adventurer.relics.AdventurerNovice;
+import Adventurer.relics.Novice.AdventurerNovice;
 import basemod.abstracts.CustomPlayer;
 import basemod.animations.SpriterAnimation;
 import com.badlogic.gdx.graphics.Color;

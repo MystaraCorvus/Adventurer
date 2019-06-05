@@ -2,8 +2,10 @@ package Adventurer.cards;
 
 import Adventurer.characters.Adventurer;
 import Adventurer.powers.RarePower;
+import Adventurer.powers.TakeRestPower;
 import basemod.helpers.BaseModCardTags;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
+import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
@@ -34,10 +36,10 @@ public class TakeRest extends AdventurerCard {
     private static final CardType TYPE = CardType.POWER;
     public static final CardColor COLOR = Adventurer.Enums.COLOR_GRAY;
 
-    private static final int COST = 3;
-    private static final int UPGRADE_COST = 2;
+    private static final int COST = 1;
 
-    private static final int MAGIC = 1;
+    private static final int MAGIC = 7;
+    private static final int UPGRADE_MAGIC = 3;
 
     // /STAT DECLARATION/
 
@@ -45,25 +47,30 @@ public class TakeRest extends AdventurerCard {
     public TakeRest() {
 
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
-        magicNumber = baseMagicNumber = MAGIC;
 
-        this.tags.add(BaseModCardTags.FORM); //Tag your strike, defend and form cards so that they work correctly.
+        this.baseMagicNumber = this.MAGIC;
+        this.magicNumber = this.baseMagicNumber;
+        this.tags.add(AbstractCard.CardTags.HEALING);
 
     }
 
     // Actions the card should do.
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        AbstractDungeon.actionManager.addToBottom(
-                new ApplyPowerAction(p, p, new RarePower(p, p, magicNumber), magicNumber));
+
+        AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(p, p, new TakeRestPower(p, p, this.magicNumber), this.magicNumber));
     }
 
+    public AbstractCard makeCopy()
+    {
+        return new TakeRest();
+    }
     //Upgraded stats.
     @Override
     public void upgrade() {
         if (!upgraded) {
             upgradeName();
-            upgradeBaseCost(UPGRADE_COST);
+            upgradeMagicNumber(UPGRADE_MAGIC);
             initializeDescription();
         }
     }

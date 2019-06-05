@@ -1,8 +1,7 @@
 package Adventurer.cards;
 
 import Adventurer.characters.Adventurer;
-import Adventurer.relics.AdventurerNovice;
-import basemod.helpers.BaseModCardTags;
+import Adventurer.relics.Novice.AdventurerNovice;
 import com.megacrit.cardcrawl.actions.common.GainBlockAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;

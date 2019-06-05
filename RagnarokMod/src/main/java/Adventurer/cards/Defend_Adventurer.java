@@ -1,7 +1,7 @@
 package Adventurer.cards;
 
 import Adventurer.characters.Adventurer;
-import Adventurer.relics.AdventurerNovice;
+import Adventurer.relics.Novice.AdventurerNovice;
 import basemod.helpers.BaseModCardTags;
 import com.megacrit.cardcrawl.actions.common.GainBlockAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
@@ -13,22 +13,8 @@ import static Adventurer.AdventurerMod.makeID;
 
 public class Defend_Adventurer extends AdventurerCard {
 
-    /*
-     * Wiki-page: https://github.com/daviscook477/BaseMod/wiki/Custom-Cards
-     *
-     * Defend Gain 5 (8) block.
-     */
-
-
-    // TEXT DECLARATION
-
     public static final String ID = makeID(Defend_Adventurer.class.getSimpleName());
     public static final String IMG = makeCardPath("Skill.png");
-
-    // /TEXT DECLARATION/
-
-
-    // STAT DECLARATION
 
     private static final CardRarity RARITY = CardRarity.BASIC;
     private static final CardTarget TARGET = CardTarget.SELF;
@@ -38,9 +24,9 @@ public class Defend_Adventurer extends AdventurerCard {
     private static final int COST = 1;
     private static final int BLOCK = 5;
     private static final int UPGRADE_PLUS_BLOCK = 3;
+    private int modifiedValue = BLOCK;
 
-
-    // /STAT DECLARATION/
+    private float Scaling = 0.6f;
 
 
     public Defend_Adventurer() {
@@ -52,11 +38,9 @@ public class Defend_Adventurer extends AdventurerCard {
 
     public void applyPowers()
     {
-        if ((AbstractDungeon.player != null) && (AbstractDungeon.player.hasRelic(AdventurerNovice.ID))) {
-            this.baseBlock = (this.BLOCK + (int)(AbstractDungeon.player.getRelic(AdventurerNovice.ID).counter * 0.6));
-            super.applyPowers();
-            initializeDescription();
-        }
+        this.baseBlock = (modifiedValue + LevelScaling(Scaling));
+        super.applyPowers();
+        initializeDescription();
     }
 
     // Actions the card should do.
@@ -71,6 +55,7 @@ public class Defend_Adventurer extends AdventurerCard {
         if (!upgraded) {
             upgradeName();
             upgradeBlock(UPGRADE_PLUS_BLOCK);
+            modifiedValue += UPGRADE_PLUS_BLOCK;
             initializeDescription();
         }
     }

@@ -1,5 +1,9 @@
 package Adventurer.cards;
 
+import Adventurer.powers.AdventurerPower;
+import Adventurer.powers.TemporarilyLevelUpPower;
+import Adventurer.relics.AdventurerRelic;
+import Adventurer.relics.Novice.AdventurerNovice;
 import Adventurer.util.AdventurerTags;
 import basemod.abstracts.CustomCard;
 import com.badlogic.gdx.graphics.Texture;
@@ -55,9 +59,11 @@ public abstract class  AdventurerCard extends CustomCard {
     }
 
     public boolean CompareLastCardPlayed(CardTags t){
-        ArrayList<AbstractCard> played = AbstractDungeon.actionManager.cardsPlayedThisTurn;
-        if (played.get(played.size() - 1).tags.contains(t)) {
-            return true;
+        if(!AbstractDungeon.actionManager.cardsPlayedThisTurn.isEmpty()) {
+            ArrayList<AbstractCard> played = AbstractDungeon.actionManager.cardsPlayedThisTurn;
+            if (played.get(played.size() - 1).tags.contains(t)) {
+                return true;
+            }
         }
         return false;
     }
@@ -70,5 +76,31 @@ public abstract class  AdventurerCard extends CustomCard {
             }
         }
         return false;
+    }
+
+    public int LevelScaling (float scaling) {
+        int Bonus = 0;
+        Bonus += AdventurerRelic.GetLevel();
+        Bonus += AdventurerPower.GetTemporarilyLevel();
+        Bonus = (int) (Bonus * scaling);
+        return Bonus;
+    }
+
+    public int ComboBonus (CardTags tag, int amount, float scale)
+    {
+        int Bonus = 0;
+        if(CompareLastCardPlayed(tag)){
+            Bonus = amount + LevelScaling(scale);
+        }
+        return Bonus;
+    }
+
+    public int ComboBonus (ArrayList<CardTags> tags, int amount, float scale)
+    {
+        int Bonus = 0;
+        if(CompareLastCardPlayed(tags)){
+            Bonus = amount + LevelScaling(scale);
+        }
+        return Bonus;
     }
 }

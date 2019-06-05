@@ -1,16 +1,4 @@
 {
-  "Adventurer:Strike_Adventurer": {
-    "NAME": "Lesser Strike",
-    "DESCRIPTION": "Deal !D! Damage. NL (Bonus from adventurer:Level: !Adventurer:OneSixth!. The factor is 0.6)"
-  },
-  "Adventurer:Defend_Adventurer": {
-    "NAME": "Lesser Defend",
-    "DESCRIPTION": "Gain !B! Block. NL (Bonus from adventurer:Level: !Adventurer:OneSixth!. The factor is 0.6)"
-  },
-  "Adventurer:ComboStrike": {
-    "NAME": "Improved Strike",
-    "DESCRIPTION": "Deal !D! Damage. NL adventurer:Combo: Lesser Strike NL (Combo bonus damage: 2 + 1.5 Level)"
-  },
   "Adventurer:DefaultCommonSkill": {
     "NAME": "Basic Defend",
     "DESCRIPTION": "Gain !B! Block. NL adventurer:Level (Bonus from : !Adventurer:OneSixth!. The factor is 1)"
@@ -46,14 +34,6 @@
     "NAME": "In-Progress Form",
     "DESCRIPTION": "At the start of your turn, play a TOUCH."
   },
-  "Adventurer:AdventurerForm": {
-    "NAME": "Adventurer Form",
-    "DESCRIPTION": "At the start of your turn, play a TOUCH."
-  },
-  "Adventurer:TakeRest": {
-    "NAME": "Take a rest",
-    "DESCRIPTION": "At the end of combat, heal !M! HP."
-  },
   "Adventurer:DefaultAttackWithVariable": {
     "NAME": "Special Strike",
     "DESCRIPTION": "Deal !D! Damage [E] times. NL (Deal !Adventurer:ENERGY_DAMAGE! damage total.)"
@@ -65,5 +45,37 @@
   "Adventurer:OrbSkill": {
     "NAME": "Get Orb",
     "DESCRIPTION": "Channel 1 Default Orb."
+  },
+  "Adventurer:Strike_Adventurer": {
+    "NAME": "Lesser Strike",
+    "DESCRIPTION": "Deal !D! Damage. NL (Bonus from adventurer:Level: !Adventurer:OneSixth!. The factor is 0.6)"
+  },
+  "Adventurer:Defend_Adventurer": {
+    "NAME": "Lesser Defend",
+    "DESCRIPTION": "Gain !B! Block. NL (Bonus from adventurer:Level: !Adventurer:OneSixth!. The factor is 0.6)"
+  },
+  "Adventurer:AdventurerForm": {
+    "NAME": "Adventurer Form",
+    "DESCRIPTION": "Gain !M! temporarily Level and !M! at the start of your turn"
+  },
+  "Adventurer:TakeRest": {
+    "NAME": "Take a rest",
+    "DESCRIPTION": "At the end of combat, heal !M! HP and increase playtime by 1 minute."
+  },
+  "Adventurer:ComboStrike": {
+    "NAME": "Improved Strike",
+    "DESCRIPTION": "Deal !D! Damage. NL adventurer:Combo: Lesser Strike NL (Combo bonus damage: 2 + 1.5 Level)"
+  },
+  "Adventurer:LesserVulnerability": {
+    "NAME": "Lesser Vulnerability",
+    "DESCRIPTION": "Apply !M! Vulnerability."
+  },
+  "Adventurer:LesserWeak": {
+    "NAME": "Lesser Weak",
+    "DESCRIPTION": "Apply !M! Weak."
+  },
+  "Adventurer:LesserPoison": {
+    "NAME": "Lesser Poison",
+    "DESCRIPTION": "Apply !M! Poison."
   }
 }

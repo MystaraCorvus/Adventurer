@@ -1,4 +1,51 @@
 {
+  "Adventurer:AcolyteNovice": {
+    "NAME": "Acolyte Novice",
+    "FLAVOR": "The snake is a friend.",
+    "DESCRIPTIONS": [
+      "Gain #b1 [E] ."
+    ]
+  },
+  "Adventurer:AdventurerNovice": {
+    "NAME": "Adventurer Novice",
+    "FLAVOR": "Test Test Test Test",
+    "DESCRIPTIONS": [
+      "Double Test",
+      "YOU ARE MINE!"
+    ]
+  },
+  "Adventurer:ArcherNovice": {
+    "NAME": "Archer Novice",
+    "FLAVOR": "Test Test Test Test",
+    "DESCRIPTIONS": [
+      "Double Test",
+      "YOU ARE MINE!"
+    ]
+  },
+  "Adventurer:MagicianNovice": {
+    "NAME": "Magician Novice",
+    "FLAVOR": "Test Test Test Test",
+    "DESCRIPTIONS": [
+      "Double Test",
+      "YOU ARE MINE!"
+    ]
+  },
+  "Adventurer:MerchantNovice": {
+    "NAME": "Merchant Novice",
+    "FLAVOR": "Test Test Test Test",
+    "DESCRIPTIONS": [
+      "Double Test",
+      "YOU ARE MINE!"
+    ]
+  },
+  "Adventurer:SwordsmanNovice": {
+    "NAME": "Swordsman Novice",
+    "FLAVOR": "Test Test Test Test",
+    "DESCRIPTIONS": [
+      "Double Test",
+      "YOU ARE MINE!"
+    ]
+  },
   "Adventurer:PlaceholderRelic": {
     "NAME": "Placeholder Energy Relic",
     "FLAVOR": "The snake is a friend.",
@@ -18,14 +65,6 @@
     "FLAVOR": "The more you right-click it, the more orbs you've evoked in your lifetime.",
     "DESCRIPTIONS": [
       "[#2aecd7]Usable [#2aecd7]once [#2aecd7]per [#2aecd7]turn.[] NL #yEvoke your rightmost Orb.",
-      "YOU ARE MINE!"
-    ]
-  },
-  "Adventurer:AdventurerNovice": {
-    "NAME": "AdventurerNovice",
-    "FLAVOR": "Test Test Test Test",
-    "DESCRIPTIONS": [
-      "Double Test",
       "YOU ARE MINE!"
     ]
   },

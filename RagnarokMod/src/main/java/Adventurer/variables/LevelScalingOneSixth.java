@@ -1,10 +1,10 @@
 package Adventurer.variables;
 
-import Adventurer.relics.AdventurerNovice;
+import Adventurer.relics.AdventurerRelic;
+import Adventurer.relics.Novice.AdventurerNovice;
 import basemod.abstracts.DynamicVariable;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
-import com.megacrit.cardcrawl.ui.panels.EnergyPanel;
 
 import static Adventurer.AdventurerMod.makeID;
 
@@ -32,7 +32,7 @@ public class LevelScalingOneSixth extends DynamicVariable
     // In our case, it displays the damage the card would do, multiplied by the amount of energy the player currently has.
     @Override
     public int value(AbstractCard card) {
-        return (int) (AbstractDungeon.player.getRelic(AdventurerNovice.ID).counter * 0.6);
+        return (int)(AdventurerRelic.GetLevel() * 0.6);
     }
 
     // The baseValue the variable should display.
@@ -40,7 +40,7 @@ public class LevelScalingOneSixth extends DynamicVariable
     @Override
     public int baseValue(AbstractCard card)
     {
-        return (int)(AbstractDungeon.player.getRelic(AdventurerNovice.ID).counter * 0.6);
+        return (int)(AdventurerRelic.GetLevel() * 0.6);
     }
     // If the card has it's damage upgraded, this variable will glow green on the upgrade selection screen as well.
     @Override

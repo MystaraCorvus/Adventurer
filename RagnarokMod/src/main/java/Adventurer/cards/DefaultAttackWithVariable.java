@@ -1,7 +1,6 @@
 package Adventurer.cards;
 
 import Adventurer.characters.Adventurer;
-import Adventurer.relics.AdventurerNovice;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;

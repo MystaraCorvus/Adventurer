@@ -20,33 +20,16 @@ import static Adventurer.AdventurerMod.makeID;
 import static Adventurer.AdventurerMod.makePowerPath;
 
 public class AdventurerFormPower
-        extends AbstractPower implements CloneablePowerInterface
+        extends AdventurerPower implements CloneablePowerInterface
 {
-    public static final String POWER_ID = makeID("AdventurerFormPower");
-    private static final PowerStrings powerStrings =  CardCrawlGame.languagePack.getPowerStrings(POWER_ID);
-    public static final String NAME = powerStrings.NAME;
-    public static final String[] DESCRIPTIONS = powerStrings.DESCRIPTIONS;
-    public AbstractCreature source;
+    public static final String thisName = "AdventurerForm";
 
-    // We create 2 new textures *Using This Specific Texture Loader* - an 84x84 image and a 32x32 one.
-    // There's a fallback "missing texture" image, so the game shouldn't crash if you accidentally put a non-existent file.
-    private static final Texture tex84 = TextureLoader.getTexture(makePowerPath("placeholder_power84.png"));
-    private static final Texture tex32 = TextureLoader.getTexture(makePowerPath("placeholder_power32.png"));
+    private static final Texture tex84 = TextureLoader.getTexture(makePowerPath(thisName + "84.png"));
+    private static final Texture tex32 = TextureLoader.getTexture(makePowerPath(thisName + "32.png"));
 
     public AdventurerFormPower(final AbstractCreature owner, final AbstractCreature source, final int amount)
     {
-        this.name = this.NAME;
-        this.ID = this.POWER_ID;
-
-        this.owner = owner;
-        this.amount = amount;
-        this.source = source;
-
-        // We load those textures here.
-        this.region128 = new TextureAtlas.AtlasRegion(tex84, 0, 0, 84, 84);
-        this.region48 = new TextureAtlas.AtlasRegion(tex32, 0, 0, 32, 32);
-
-        updateDescription();
+        super(thisName, owner, source, amount, tex84, tex32);
     }
 
     public void updateDescription()
@@ -57,13 +40,13 @@ public class AdventurerFormPower
     public void onInitialApplication()
     {
         flash();
-        AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(this.owner, this.owner, new TemporarilyLevelUpPower(this.owner, 1), 0));
+        AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(this.owner, this.owner, new TemporarilyLevelUpPower(this.owner, this.owner, this.amount), this.amount));
     }
 
     public void atStartOfTurnPostDraw()
     {
         flash();
-        AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(this.owner, this.owner, new TemporarilyLevelUpPower(this.owner, this.amount), this.amount));
+        AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(this.owner, this.owner, new TemporarilyLevelUpPower(this.owner, this.owner, this.amount), this.amount));
     }
 
     @Override

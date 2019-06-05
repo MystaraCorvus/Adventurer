@@ -1,18 +1,38 @@
 {
-"Adventurer:CommonPower": {
-        "NAME": "Placeholder Power",
-        "DESCRIPTIONS": ["You applied #b", " keyword.", " keywords."]
-},
-"Adventurer:RarePower": {
-        "NAME": "Placeholder Power",
-        "DESCRIPTIONS": ["At the start of your turn, TOUCH #b", " enemy." , " enemies."]
-},
-"Adventurer:AdventurerFormPower": {
-        "NAME": "Adventurer Form",
-        "DESCRIPTIONS": ["At the start of your turn, TOUCH #b", " enemy." , " enemies."]
-},
-"Adventurer:TemporarilyLevelUpPower": {
-        "NAME": "Temporarily LevelUp",
-        "DESCRIPTIONS": ["At the start of your turn, TOUCH #b", " enemy." , " enemies."]
-}
+        "Adventurer:CommonPower": {
+                "NAME": "Placeholder Power",
+                "DESCRIPTIONS": [
+                        "You applied #b",
+                        " keyword.",
+                        " keywords."
+                ]
+        },
+        "Adventurer:RarePower": {
+                "NAME": "Placeholder Power",
+                "DESCRIPTIONS": [
+                        "At the start of your turn, TOUCH #b",
+                        " enemy.",
+                        " enemies."
+                ]
+        },
+        "Adventurer:AdventurerForm": {
+                "NAME": "Adventurer Form",
+                "DESCRIPTIONS": [
+                        "At the start of your turn gain #b",
+                        " temporarily Level."
+                ]
+        },
+        "Adventurer:TemporarilyLevelUp": {
+                "NAME": "Temporarily LevelUp",
+                "DESCRIPTIONS": [
+                        "Temporarily Level counts as Level for this combat."
+                ]
+        },
+        "Adventurer:TakeRest": {
+                "NAME": "Resting after Battle",
+                "DESCRIPTIONS": [
+                        "At the end of combat, heal #b",
+                        " HP and rest for 1 minute."
+                ]
+        }
 }

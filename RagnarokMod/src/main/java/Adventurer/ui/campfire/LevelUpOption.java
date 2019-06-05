@@ -1,19 +1,15 @@
 package Adventurer.ui.campfire;
 
-import Adventurer.characters.Adventurer;
-import Adventurer.relics.AdventurerNovice;
+import Adventurer.relics.AdventurerRelic;
+import Adventurer.relics.Novice.AdventurerNovice;
 import Adventurer.vfx.campfire.LevelUpAction;
-import basemod.ReflectionHacks;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.helpers.ImageMaster;
 import com.megacrit.cardcrawl.helpers.PowerTip;
-import com.megacrit.cardcrawl.helpers.RelicLibrary;
 import com.megacrit.cardcrawl.localization.UIStrings;
-import com.megacrit.cardcrawl.relics.AbstractRelic;
 import com.megacrit.cardcrawl.ui.campfire.AbstractCampfireOption;
 
-import Adventurer.AdventurerMod;
 import java.lang.reflect.Method;
 
 import static Adventurer.AdventurerMod.logger;
@@ -31,18 +27,20 @@ public class LevelUpOption extends AbstractCampfireOption
 
     @Override
     public void useOption() {
-        AdventurerNovice playerClass = (AdventurerNovice)AbstractDungeon.player.getRelic(AdventurerNovice.ID);
-        playerClass.counter++;
-        playerClass.tips.clear();
-        playerClass.tips.add(new PowerTip(playerClass.name, playerClass.description));
-        try {
-            Method m = playerClass.getClass().getDeclaredMethod("initializeTips", new Class[0]);
-            m.setAccessible(true);
-            m.invoke(playerClass, new Object[0]);
-        } catch (Exception e) {
-            logger.info(e);
+        if (AdventurerRelic.HasClassRelic()){
+            AdventurerRelic curClass = AdventurerRelic.GetClassRelic();
+            curClass.counter++;
+            curClass.tips.clear();
+            curClass.tips.add(new PowerTip(curClass.name, curClass.description));
+            try {
+                Method m = curClass.getClass().getDeclaredMethod("initializeTips", new Class[0]);
+                m.setAccessible(true);
+                m.invoke(curClass, new Object[0]);
+            } catch (Exception e) {
+                logger.info(e);
+            }
+            curClass.flash();
+            AbstractDungeon.effectList.add(new LevelUpAction());
         }
-        playerClass.flash();
-        AbstractDungeon.effectList.add(new LevelUpAction());
     }
 }
