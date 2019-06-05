@@ -453,19 +453,6 @@ public class AdventurerMod implements
         BaseMod.addCard(new AdventurerForm());
         BaseMod.addCard(new TakeRest());
 
-
-
-        BaseMod.addCard(new OrbSkill());
-        BaseMod.addCard(new DefaultSecondMagicNumberSkill());
-        BaseMod.addCard(new DefaultAttackWithVariable());
-        BaseMod.addCard(new DefaultCommonSkill());
-        BaseMod.addCard(new DefaultCommonPower());
-        BaseMod.addCard(new DefaultUncommonSkill());
-        BaseMod.addCard(new DefaultUncommonAttack());
-        BaseMod.addCard(new DefaultUncommonPower());
-        BaseMod.addCard(new DefaultRareAttack());
-        BaseMod.addCard(new DefaultRareSkill());
-
         
         logger.info("Making sure the cards are unlocked.");
         // Unlock the cards
@@ -475,17 +462,7 @@ public class AdventurerMod implements
         UnlockTracker.unlockCard(Strike_Adventurer.ID);
         UnlockTracker.unlockCard(Defend_Adventurer.ID);
 
-        UnlockTracker.unlockCard(OrbSkill.ID);
-        UnlockTracker.unlockCard(DefaultSecondMagicNumberSkill.ID);
         UnlockTracker.unlockCard(ComboStrike.ID);
-        UnlockTracker.unlockCard(DefaultAttackWithVariable.ID);
-        UnlockTracker.unlockCard(DefaultCommonSkill.ID);
-        UnlockTracker.unlockCard(DefaultCommonPower.ID);
-        UnlockTracker.unlockCard(DefaultUncommonSkill.ID);
-        UnlockTracker.unlockCard(DefaultUncommonAttack.ID);
-        UnlockTracker.unlockCard(DefaultUncommonPower.ID);
-        UnlockTracker.unlockCard(DefaultRareAttack.ID);
-        UnlockTracker.unlockCard(DefaultRareSkill.ID);
 
         UnlockTracker.unlockCard(AdventurerForm.ID);
         UnlockTracker.unlockCard(TakeRest.ID);

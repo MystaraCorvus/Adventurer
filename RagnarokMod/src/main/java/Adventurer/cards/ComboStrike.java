@@ -34,8 +34,8 @@ public class ComboStrike extends AdventurerCard {
 
     // TEXT DECLARATION
 
-    public static final String ID = makeID(ComboStrike.class.getSimpleName());
-    public static final String IMG = makeCardPath("Attack.png");
+
+    public static final String ID = ComboStrike.class.getSimpleName();
 
     // Setting the image as as easy as can possibly be now. You just need to provide the image name
     // and make sure it's in the correct folder. That's all.
@@ -71,7 +71,7 @@ public class ComboStrike extends AdventurerCard {
     // /STAT DECLARATION/
 
     public ComboStrike() {
-        super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
+        super(ID, COST, TYPE, COLOR, RARITY, TARGET);
 
         // Aside from baseDamage/MagicNumber/Block there's also a few more.
         // Just type this.base and let intelliJ auto complete for you, or, go read up AbstractCard

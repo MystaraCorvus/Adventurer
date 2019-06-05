@@ -15,6 +15,8 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+import static Adventurer.AdventurerMod.makeCardPath;
+import static Adventurer.AdventurerMod.makeID;
 import static com.megacrit.cardcrawl.core.CardCrawlGame.languagePack;
 
 public abstract class  AdventurerCard extends CustomCard {
@@ -25,14 +27,13 @@ public abstract class  AdventurerCard extends CustomCard {
     public boolean isDefaultSecondMagicNumberModified; // A boolean to check whether the number has been modified or not, for coloring purposes. (red/green)
 
     public AdventurerCard(final String id,
-                               final String img,
                                final int cost,
                                final CardType type,
                                final CardColor color,
                                final CardRarity rarity,
                                final CardTarget target) {
 
-        super(id, languagePack.getCardStrings(id).NAME, img, cost, languagePack.getCardStrings(id).DESCRIPTION, type, color, rarity, target);
+        super(makeID(id), languagePack.getCardStrings(makeID(id)).NAME, makeCardPath(id + ".png"), cost, languagePack.getCardStrings(makeID(id)).DESCRIPTION, type, color, rarity, target);
 
         // Set all the things to their default values.
         isCostModified = false;

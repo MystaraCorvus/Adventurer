@@ -17,10 +17,8 @@ import static Adventurer.AdventurerMod.makeCardPath;
 import static Adventurer.AdventurerMod.makeID;
 
 public class Strike_Adventurer extends AdventurerCard {
-    public static final String ID = makeID(Strike_Adventurer.class.getSimpleName());
 
-    public static final String IMG = makeCardPath("Attack.png");
-
+    public static final String ID = Strike_Adventurer.class.getSimpleName();
     private static final CardRarity RARITY = CardRarity.BASIC;
     private static final CardTarget TARGET = CardTarget.ENEMY;
     private static final CardType TYPE = CardType.ATTACK;
@@ -35,7 +33,7 @@ public class Strike_Adventurer extends AdventurerCard {
     private static final int COST = 1;
 
     public Strike_Adventurer() {
-        super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
+        super(ID, COST, TYPE, COLOR, RARITY, TARGET);
 
         this.baseDamage = DAMAGE;
 

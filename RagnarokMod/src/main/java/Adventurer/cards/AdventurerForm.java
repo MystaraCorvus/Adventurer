@@ -2,14 +2,11 @@ package Adventurer.cards;
 
 import Adventurer.characters.Adventurer;
 import Adventurer.powers.AdventurerFormPower;
-import Adventurer.powers.RarePower;
 import basemod.helpers.BaseModCardTags;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-
-import static Adventurer.AdventurerMod.*;
 
 public class AdventurerForm extends AdventurerCard {
 
@@ -21,8 +18,7 @@ public class AdventurerForm extends AdventurerCard {
 
     // TEXT DECLARATION 
 
-    public static final String ID = makeID(AdventurerForm.class.getSimpleName());
-    public static final String IMG = makeCardPath("Power.png");
+    public static final String ID = AdventurerForm.class.getSimpleName();
 
     // /TEXT DECLARATION/
 
@@ -44,7 +40,7 @@ public class AdventurerForm extends AdventurerCard {
 
     public AdventurerForm() {
 
-        super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
+        super(ID, COST, TYPE, COLOR, RARITY, TARGET);
         magicNumber = baseMagicNumber = MAGIC;
 
         this.tags.add(BaseModCardTags.FORM); //Tag your strike, defend and form cards so that they work correctly.

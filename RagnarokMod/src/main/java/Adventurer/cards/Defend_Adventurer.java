@@ -13,8 +13,8 @@ import static Adventurer.AdventurerMod.makeID;
 
 public class Defend_Adventurer extends AdventurerCard {
 
-    public static final String ID = makeID(Defend_Adventurer.class.getSimpleName());
-    public static final String IMG = makeCardPath("Skill.png");
+
+    public static final String ID = Defend_Adventurer.class.getSimpleName();
 
     private static final CardRarity RARITY = CardRarity.BASIC;
     private static final CardTarget TARGET = CardTarget.SELF;
@@ -30,7 +30,7 @@ public class Defend_Adventurer extends AdventurerCard {
 
 
     public Defend_Adventurer() {
-        super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
+        super(ID, COST, TYPE, COLOR, RARITY, TARGET);
         baseBlock = BLOCK;
 
         this.tags.add(BaseModCardTags.BASIC_DEFEND); //Tag your strike, defend and form (Wraith form, Demon form, Echo form, etc.) cards so that they function correctly.

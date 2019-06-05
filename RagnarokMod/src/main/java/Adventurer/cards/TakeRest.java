@@ -1,17 +1,12 @@
 package Adventurer.cards;
 
 import Adventurer.characters.Adventurer;
-import Adventurer.powers.RarePower;
 import Adventurer.powers.TakeRestPower;
-import basemod.helpers.BaseModCardTags;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-
-import static Adventurer.AdventurerMod.makeCardPath;
-import static Adventurer.AdventurerMod.makeID;
 
 public class TakeRest extends AdventurerCard {
 
@@ -23,8 +18,7 @@ public class TakeRest extends AdventurerCard {
 
     // TEXT DECLARATION
 
-    public static final String ID = makeID(TakeRest.class.getSimpleName());
-    public static final String IMG = makeCardPath("Power.png");
+    public static final String ID = TakeRest.class.getSimpleName();
 
     // /TEXT DECLARATION/
 
@@ -46,7 +40,7 @@ public class TakeRest extends AdventurerCard {
 
     public TakeRest() {
 
-        super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
+        super(ID, COST, TYPE, COLOR, RARITY, TARGET);
 
         this.baseMagicNumber = this.MAGIC;
         this.magicNumber = this.baseMagicNumber;
