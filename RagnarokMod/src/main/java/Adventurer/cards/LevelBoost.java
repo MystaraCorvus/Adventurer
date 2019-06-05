@@ -1,14 +1,15 @@
 package Adventurer.cards;
 
 import Adventurer.characters.Adventurer;
-import Adventurer.powers.TakeRestPower;
+import Adventurer.powers.AdventurerFormPower;
+import Adventurer.powers.TemporarilyLevelUpPower;
+import basemod.helpers.BaseModCardTags;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
-import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 
-public class TakeRest extends AdventurerCard {
+public class LevelBoost extends AdventurerCard {
 
     /*
      * Wiki-page: https://github.com/daviscook477/BaseMod/wiki/Custom-Cards
@@ -18,53 +19,45 @@ public class TakeRest extends AdventurerCard {
 
     // TEXT DECLARATION
 
-    public static final String ID = TakeRest.class.getSimpleName();
+    public static final String ID = LevelBoost.class.getSimpleName();
 
     // /TEXT DECLARATION/
 
 
     // STAT DECLARATION
 
-    private static final CardRarity RARITY = CardRarity.UNCOMMON;
+    private static final CardRarity RARITY = CardRarity.COMMON;
     private static final CardTarget TARGET = CardTarget.SELF;
     private static final CardType TYPE = CardType.POWER;
     public static final CardColor COLOR = Adventurer.Enums.COLOR_GRAY;
 
     private static final int COST = 1;
+    private static final int UPGRADE_COST = 0;
 
-    private static final int MAGIC = 7;
-    private static final int UPGRADE_MAGIC = 3;
+    private static final int MAGIC = 2;
 
     // /STAT DECLARATION/
 
 
-    public TakeRest() {
+    public LevelBoost() {
 
         super(ID, COST, TYPE, COLOR, RARITY, TARGET);
-
-        this.baseMagicNumber = this.MAGIC;
-        this.magicNumber = this.baseMagicNumber;
-        this.tags.add(AbstractCard.CardTags.HEALING);
-
+        this.magicNumber = this.baseMagicNumber = MAGIC;
     }
 
     // Actions the card should do.
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-
-        AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(p, p, new TakeRestPower(p, p, this.magicNumber), this.magicNumber));
+        flash();
+        AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(p, p, new TemporarilyLevelUpPower(p, p, this.magicNumber), this.magicNumber));
     }
 
-    public AbstractCard makeCopy()
-    {
-        return new TakeRest();
-    }
     //Upgraded stats.
     @Override
     public void upgrade() {
         if (!upgraded) {
             upgradeName();
-            upgradeMagicNumber(UPGRADE_MAGIC);
+            upgradeBaseCost(UPGRADE_COST);
             initializeDescription();
         }
     }

@@ -165,7 +165,7 @@ public class Adventurer extends CustomPlayer {
         retVal.add(Defend_Adventurer.ID);
 
         /*
-        retVal.add(ComboStrike.ID);
+        retVal.add(Strike.ID);
         retVal.add(DefaultUncommonAttack.ID);
         retVal.add(DefaultRareAttack.ID);
 
@@ -248,7 +248,7 @@ public class Adventurer extends CustomPlayer {
     //Which card should be obtainable from the Match and Keep event?
     @Override
     public AbstractCard getStartCardForEvent() {
-        return new ComboStrike();
+        return new Strike();
     }
 
     // The class name as it appears next to your player name in-game

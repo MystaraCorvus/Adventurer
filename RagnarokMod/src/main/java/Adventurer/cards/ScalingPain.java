@@ -1,18 +1,12 @@
 package Adventurer.cards;
 
 import Adventurer.characters.Adventurer;
-import Adventurer.relics.AdventurerRelic;
-import Adventurer.relics.Novice.AdventurerNovice;
-import Adventurer.util.AdventurerTags;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-
-import static Adventurer.AdventurerMod.makeCardPath;
-import static Adventurer.AdventurerMod.makeID;
 
 // "How come this card extends CustomCard and not DynamicCard like all the rest?"
 // Skip this question until you start figuring out the AbstractDefaultCard/AbstractDynamicCard and just extend DynamicCard
@@ -24,7 +18,7 @@ import static Adventurer.AdventurerMod.makeID;
 // Abstract Dynamic Card builds up on Abstract Default Card even more and makes it so that you don't need to add
 // the NAME and the DESCRIPTION into your card - it'll get it automatically. Of course, this functionality could have easily
 // Been added to the default card rather than creating a new Dynamic one, but was done so to deliberately.
-public class ComboStrike extends AdventurerCard {
+public class ScalingPain extends AdventurerCard {
 
     /*
      * Wiki-page: https://github.com/daviscook477/BaseMod/wiki/Custom-Cards
@@ -35,7 +29,7 @@ public class ComboStrike extends AdventurerCard {
     // TEXT DECLARATION
 
 
-    public static final String ID = ComboStrike.class.getSimpleName();
+    public static final String ID = ScalingPain.class.getSimpleName();
 
     // Setting the image as as easy as can possibly be now. You just need to provide the image name
     // and make sure it's in the correct folder. That's all.
@@ -49,16 +43,15 @@ public class ComboStrike extends AdventurerCard {
 
     // STAT DECLARATION
 
-    private static final CardRarity RARITY = CardRarity.COMMON;
+    private static final CardRarity RARITY = CardRarity.RARE;
     private static final CardTarget TARGET = CardTarget.ENEMY;
     private static final CardType TYPE = CardType.ATTACK;
     public static final CardColor COLOR = Adventurer.Enums.COLOR_GRAY;
 
-    private static final int COST = 1;
-    private static final int DAMAGE = 6;
-    private static final int UPGRADE_PLUS_DMG = 3;
+    private static final int COST = 3;
+    private static final int DAMAGE = 12;
+    private static final int UPGRADE_PLUS_DMG = 6;
 
-    private int ComboAmount = 2;
     private float Scaling = 1.5f;
 
     private int modifiedValue = DAMAGE;
@@ -70,7 +63,7 @@ public class ComboStrike extends AdventurerCard {
 
     // /STAT DECLARATION/
 
-    public ComboStrike() {
+    public ScalingPain() {
         super(ID, COST, TYPE, COLOR, RARITY, TARGET);
 
         // Aside from baseDamage/MagicNumber/Block there's also a few more.
@@ -90,8 +83,14 @@ public class ComboStrike extends AdventurerCard {
 
     public void applyPowers()
     {
-        int ComboBonus = ComboBonus(AdventurerTags.LESSER_STRIKE, ComboAmount, Scaling);
-        this.baseDamage = modifiedValue + ComboBonus;
+        int Bonus = 0;
+        AdventurerCard last = GetLastCard();
+        if((last != null) && (last.damage > 0))
+        {
+            Bonus += (int)(GetLastCard().damage * Scaling);
+        }
+        Bonus += LevelScaling(Scaling);
+        this.baseDamage = modifiedValue + Bonus;
         super.applyPowers();
         initializeDescription();
 }

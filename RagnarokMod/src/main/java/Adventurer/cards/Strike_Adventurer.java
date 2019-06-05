@@ -39,7 +39,6 @@ public class Strike_Adventurer extends AdventurerCard {
 
         this.tags.add(BaseModCardTags.BASIC_STRIKE);
         this.tags.add(CardTags.STRIKE);
-        this.tags.add(AdventurerTags.LESSER_STRIKE);
     }
 
     @Override

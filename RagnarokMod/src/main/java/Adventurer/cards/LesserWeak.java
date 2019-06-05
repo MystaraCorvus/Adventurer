@@ -13,7 +13,7 @@ import static Adventurer.AdventurerMod.makeID;
 public class LesserWeak extends AdventurerCard{
 
     public static final String ID = LesserWeak.class.getSimpleName();
-    private static final CardRarity RARITY = CardRarity.UNCOMMON;
+    private static final CardRarity RARITY = CardRarity.COMMON;
     private static final CardTarget TARGET = CardTarget.ENEMY;
     private static final CardType TYPE = CardType.SKILL;
     public static final CardColor COLOR = Adventurer.Enums.COLOR_GRAY;

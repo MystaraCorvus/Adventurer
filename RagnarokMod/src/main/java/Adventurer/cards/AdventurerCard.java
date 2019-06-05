@@ -19,7 +19,7 @@ import static Adventurer.AdventurerMod.makeCardPath;
 import static Adventurer.AdventurerMod.makeID;
 import static com.megacrit.cardcrawl.core.CardCrawlGame.languagePack;
 
-public abstract class  AdventurerCard extends CustomCard {
+public abstract class AdventurerCard extends CustomCard {
 
     public int defaultSecondMagicNumber;        // Just like magic number, or any number for that matter, we want our regular, modifiable stat
     public int defaultBaseSecondMagicNumber;    // And our base stat - the number in it's base state. It will reset to that by default.
@@ -69,11 +69,22 @@ public abstract class  AdventurerCard extends CustomCard {
         return false;
     }
 
-    public boolean CompareLastCardPlayed(ArrayList<CardTags> CardToCheck){
-        ArrayList<AbstractCard> played = AbstractDungeon.actionManager.cardsPlayedThisTurn;
-        for (CardTags t: CardToCheck) {
-            if(CompareLastCardPlayed(t)){
+    public boolean CompareLastCardPlayed(CardRarity t){
+        if(!AbstractDungeon.actionManager.cardsPlayedThisTurn.isEmpty()) {
+            ArrayList<AbstractCard> played = AbstractDungeon.actionManager.cardsPlayedThisTurn;
+            if (played.get(played.size() - 1).rarity == t) {
                 return true;
+            }
+        }
+        return false;
+    }
+
+    public boolean CompareLastCardPlayed(ArrayList<CardTags> CardToCheck){
+        if(!AbstractDungeon.actionManager.cardsPlayedThisTurn.isEmpty()) {
+            for (CardTags t : CardToCheck) {
+                if (CompareLastCardPlayed(t)) {
+                    return true;
+                }
             }
         }
         return false;
@@ -89,19 +100,33 @@ public abstract class  AdventurerCard extends CustomCard {
 
     public int ComboBonus (CardTags tag, int amount, float scale)
     {
-        int Bonus = 0;
         if(CompareLastCardPlayed(tag)){
-            Bonus = amount + LevelScaling(scale);
+            return amount + LevelScaling(scale);
         }
-        return Bonus;
+        return 0;
+    }
+
+    public int ComboBonus (CardRarity tag, int amount, float scale)
+    {
+        if(CompareLastCardPlayed(tag)){
+            return amount + LevelScaling(scale);
+        }
+        return 0;
     }
 
     public int ComboBonus (ArrayList<CardTags> tags, int amount, float scale)
     {
-        int Bonus = 0;
         if(CompareLastCardPlayed(tags)){
-            Bonus = amount + LevelScaling(scale);
+            return amount + LevelScaling(scale);
         }
-        return Bonus;
+        return 0;
+    }
+
+    public AdventurerCard GetLastCard (){
+        if(!AbstractDungeon.actionManager.cardsPlayedThisTurn.isEmpty()) {
+            ArrayList<AbstractCard> played = AbstractDungeon.actionManager.cardsPlayedThisTurn;
+                return (AdventurerCard)played.get(played.size() - 1);
+        }
+        return null;
     }
 }

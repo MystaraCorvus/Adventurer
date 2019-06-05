@@ -1,13 +1,11 @@
 package Adventurer;
 
 import Adventurer.characters.Adventurer;
-import Adventurer.relics.*;
 import Adventurer.relics.Novice.*;
 import Adventurer.variables.LevelScalingOneSixth;
 import basemod.BaseMod;
 import basemod.ModLabeledToggleButton;
 import basemod.ModPanel;
-import basemod.helpers.RelicType;
 import basemod.interfaces.*;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.files.FileHandle;
@@ -426,32 +424,35 @@ public class AdventurerMod implements
         //Common
 
         ///Attack
-        BaseMod.addCard(new ComboStrike());
+        BaseMod.addCard(new Strike());
 
         ///Skill
         BaseMod.addCard(new LesserWeak());
-        BaseMod.addCard(new LesserPoison());
 
         ///Power
+        BaseMod.addCard(new LevelBoost());
 
         //Uncommon
 
         ///Attack
+        BaseMod.addCard(new ShieldBash());
 
         ///Skill
         BaseMod.addCard(new LesserVulnerability());
 
         ///Power
+        BaseMod.addCard(new TakeRest());
 
         //Rare
 
         ///Attack
+        BaseMod.addCard(new ScalingPain());
 
         ///Skill
+        BaseMod.addCard(new LesserPoison());
 
         ///Power
         BaseMod.addCard(new AdventurerForm());
-        BaseMod.addCard(new TakeRest());
 
         
         logger.info("Making sure the cards are unlocked.");
@@ -462,14 +463,19 @@ public class AdventurerMod implements
         UnlockTracker.unlockCard(Strike_Adventurer.ID);
         UnlockTracker.unlockCard(Defend_Adventurer.ID);
 
-        UnlockTracker.unlockCard(ComboStrike.ID);
+        UnlockTracker.unlockCard(Strike.ID);
 
         UnlockTracker.unlockCard(AdventurerForm.ID);
         UnlockTracker.unlockCard(TakeRest.ID);
         UnlockTracker.unlockCard(LesserVulnerability.ID);
         UnlockTracker.unlockCard(LesserWeak.ID);
         UnlockTracker.unlockCard(LesserPoison.ID);
-        
+
+        UnlockTracker.unlockCard(ScalingPain.ID);
+        UnlockTracker.unlockCard(LevelBoost.ID);
+
+        UnlockTracker.unlockCard(ShieldBash.ID);
+
         logger.info("Done adding cards!");
     }
     

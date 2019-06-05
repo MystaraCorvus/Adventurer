@@ -62,8 +62,8 @@
     "NAME": "Take a rest",
     "DESCRIPTION": "At the end of combat, heal !M! HP and increase playtime by 1 minute."
   },
-  "Adventurer:ComboStrike": {
-    "NAME": "Improved Strike",
+  "Adventurer:Strike": {
+    "NAME": "Strike",
     "DESCRIPTION": "Deal !D! Damage. NL adventurer:Combo: Lesser Strike NL (Combo bonus damage: 2 + 1.5 Level)"
   },
   "Adventurer:LesserVulnerability": {
@@ -77,5 +77,17 @@
   "Adventurer:LesserPoison": {
     "NAME": "Lesser Poison",
     "DESCRIPTION": "Apply !M! Poison."
+  },
+  "Adventurer:ScalingPain": {
+    "NAME": "Scaling Pain",
+    "DESCRIPTION": "Deal !D! damage."
+  },
+  "Adventurer:LevelBoost": {
+    "NAME": "Level Boost",
+    "DESCRIPTION": "Gain !M! temporarily Level."
+  },
+  "Adventurer:ShieldBash": {
+    "NAME": "Shield Bash",
+    "DESCRIPTION": "Deal !D! damage."
   }
 }
