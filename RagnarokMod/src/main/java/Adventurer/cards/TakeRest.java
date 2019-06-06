@@ -8,6 +8,8 @@ import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 
+import static Adventurer.AdventurerMod.makeID;
+
 public class TakeRest extends AdventurerCard {
 
     /*
@@ -18,7 +20,7 @@ public class TakeRest extends AdventurerCard {
 
     // TEXT DECLARATION
 
-    public static final String ID = TakeRest.class.getSimpleName();
+    public static final String ID = makeID(TakeRest.class.getSimpleName());
 
     // /TEXT DECLARATION/
 
@@ -28,7 +30,6 @@ public class TakeRest extends AdventurerCard {
     private static final CardRarity RARITY = CardRarity.UNCOMMON;
     private static final CardTarget TARGET = CardTarget.SELF;
     private static final CardType TYPE = CardType.POWER;
-    public static final CardColor COLOR = Adventurer.Enums.COLOR_GRAY;
 
     private static final int COST = 1;
 
@@ -40,7 +41,7 @@ public class TakeRest extends AdventurerCard {
 
     public TakeRest() {
 
-        super(ID, COST, TYPE, COLOR, RARITY, TARGET);
+        super(ID, COST, TYPE, RARITY, TARGET);
 
         this.baseMagicNumber = this.MAGIC;
         this.magicNumber = this.baseMagicNumber;

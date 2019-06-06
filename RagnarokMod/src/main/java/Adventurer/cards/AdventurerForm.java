@@ -8,6 +8,8 @@ import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 
+import static Adventurer.AdventurerMod.makeID;
+
 public class AdventurerForm extends AdventurerCard {
 
     /*
@@ -18,7 +20,7 @@ public class AdventurerForm extends AdventurerCard {
 
     // TEXT DECLARATION 
 
-    public static final String ID = AdventurerForm.class.getSimpleName();
+    public static final String ID = makeID(AdventurerForm.class.getSimpleName());
 
     // /TEXT DECLARATION/
 
@@ -28,7 +30,6 @@ public class AdventurerForm extends AdventurerCard {
     private static final CardRarity RARITY = CardRarity.RARE;
     private static final CardTarget TARGET = CardTarget.SELF;
     private static final CardType TYPE = CardType.POWER;
-    public static final CardColor COLOR = Adventurer.Enums.COLOR_GRAY;
 
     private static final int COST = 3;
     private static final int UPGRADE_COST = 2;
@@ -40,7 +41,7 @@ public class AdventurerForm extends AdventurerCard {
 
     public AdventurerForm() {
 
-        super(ID, COST, TYPE, COLOR, RARITY, TARGET);
+        super(ID, COST, TYPE, RARITY, TARGET);
         magicNumber = baseMagicNumber = MAGIC;
 
         this.tags.add(BaseModCardTags.FORM); //Tag your strike, defend and form cards so that they work correctly.

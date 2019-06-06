@@ -25,7 +25,7 @@ public class InitializeButtonsPatches {
         try {
             @SuppressWarnings("unchecked")
             ArrayList<AbstractCampfireOption> campfireButtons = (ArrayList<AbstractCampfireOption>) ReflectionHacks.getPrivate(campfire, CampfireUI.class, "buttons");
-            if(AbstractDungeon.player.chosenClass == Adventurer.Enums.ADVENTURER) {
+            if(AbstractDungeon.player.chosenClass == AdventurerEnum.ADVENTURER) {
                 campfireButtons.add(new LevelUpOption());
                 float x = 950.f;
                 float y = 990.0f - (270.0f * (float)((campfireButtons.size() + 1) / 2));

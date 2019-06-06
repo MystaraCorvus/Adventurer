@@ -9,6 +9,8 @@ import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 
+import static Adventurer.AdventurerMod.makeID;
+
 // "How come this card extends CustomCard and not DynamicCard like all the rest?"
 // Skip this question until you start figuring out the AbstractDefaultCard/AbstractDynamicCard and just extend DynamicCard
 // for your own ones like all the other cards.
@@ -30,7 +32,7 @@ public class ShieldBash extends AdventurerCard {
     // TEXT DECLARATION
 
 
-    public static final String ID = ShieldBash.class.getSimpleName();
+    public static final String ID = makeID(ShieldBash.class.getSimpleName());
 
     // Setting the image as as easy as can possibly be now. You just need to provide the image name
     // and make sure it's in the correct folder. That's all.
@@ -47,7 +49,6 @@ public class ShieldBash extends AdventurerCard {
     private static final CardRarity RARITY = CardRarity.UNCOMMON;
     private static final CardTarget TARGET = CardTarget.ENEMY;
     private static final CardType TYPE = CardType.ATTACK;
-    public static final CardColor COLOR = Adventurer.Enums.COLOR_GRAY;
 
     private static final int COST = 1;
     private static final int DAMAGE = 6;
@@ -63,7 +64,7 @@ public class ShieldBash extends AdventurerCard {
     // /STAT DECLARATION/
 
     public ShieldBash() {
-        super(ID, COST, TYPE, COLOR, RARITY, TARGET);
+        super(ID, COST, TYPE, RARITY, TARGET);
 
         // Aside from baseDamage/MagicNumber/Block there's also a few more.
         // Just type this.base and let intelliJ auto complete for you, or, go read up AbstractCard

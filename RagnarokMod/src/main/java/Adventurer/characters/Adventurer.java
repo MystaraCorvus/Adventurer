@@ -1,5 +1,7 @@
 package Adventurer.characters;
 
+import Adventurer.patches.AdventurerColor;
+import Adventurer.patches.AdventurerEnum;
 import Adventurer.relics.Novice.AdventurerNovice;
 import basemod.abstracts.CustomPlayer;
 import basemod.animations.SpriterAnimation;
@@ -7,14 +9,12 @@ import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.math.MathUtils;
 import com.esotericsoftware.spine.AnimationState;
-import com.evacipated.cardcrawl.modthespire.lib.SpireEnum;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.core.EnergyManager;
 import com.megacrit.cardcrawl.core.Settings;
-import com.megacrit.cardcrawl.helpers.CardLibrary;
 import com.megacrit.cardcrawl.helpers.FontHelper;
 import com.megacrit.cardcrawl.helpers.ScreenShake;
 import com.megacrit.cardcrawl.localization.CharacterStrings;
@@ -28,7 +28,6 @@ import java.util.ArrayList;
 
 import Adventurer.AdventurerMod;
 import static Adventurer.AdventurerMod.*;
-import static Adventurer.characters.Adventurer.Enums.COLOR_GRAY;
 
 //Wiki-page https://github.com/daviscook477/BaseMod/wiki/Custom-Characters
 //and https://github.com/daviscook477/BaseMod/wiki/Migrating-to-5.0
@@ -36,24 +35,6 @@ import static Adventurer.characters.Adventurer.Enums.COLOR_GRAY;
 
 public class Adventurer extends CustomPlayer {
     public static final Logger logger = LogManager.getLogger(AdventurerMod.class.getName());
-
-    // =============== CHARACTER ENUMERATORS =================
-    // These are enums for your Characters color (both general color and for the card library) as well as
-    // an enum for the name of the player class - IRONCLAD, THE_SILENT, DEFECT, YOUR_CLASS ...
-    // These are all necessary for creating a character. If you want to find out where and how exactly they are used
-    // in the basegame (for fun and education) Ctrl+click on the PlayerClass, CardColor and/or LibraryType below and go down the
-    // Ctrl+click rabbit hole
-
-    public static class Enums {
-        @SpireEnum
-        public static AbstractPlayer.PlayerClass ADVENTURER;
-        @SpireEnum(name = "DEFAULT_GRAY_COLOR") // These two HAVE to have the same absolutely identical name.
-        public static AbstractCard.CardColor COLOR_GRAY;
-        @SpireEnum(name = "DEFAULT_GRAY_COLOR") @SuppressWarnings("unused")
-        public static CardLibrary.LibraryType LIBRARY_COLOR;
-    }
-
-    // =============== CHARACTER ENUMERATORS  =================
 
 
     // =============== BASE STATS =================
@@ -155,15 +136,15 @@ public class Adventurer extends CustomPlayer {
         ArrayList<String> retVal = new ArrayList<>();
 
         logger.info("Begin loading starter Deck Strings");
-        retVal.add(Strike_Adventurer.ID);
-        retVal.add(Strike_Adventurer.ID);
-        retVal.add(Strike_Adventurer.ID);
-        retVal.add(Strike_Adventurer.ID);
-        retVal.add(Defend_Adventurer.ID);
-        retVal.add(Defend_Adventurer.ID);
-        retVal.add(Defend_Adventurer.ID);
-        retVal.add(Defend_Adventurer.ID);
 
+        retVal.add(Strike_Adventurer.ID);
+        retVal.add(Strike_Adventurer.ID);
+        retVal.add(Strike_Adventurer.ID);
+        retVal.add(Strike_Adventurer.ID);
+        retVal.add(Defend_Adventurer.ID);
+        retVal.add(Defend_Adventurer.ID);
+        retVal.add(Defend_Adventurer.ID);
+        retVal.add(Defend_Adventurer.ID);
         /*
         retVal.add(Strike.ID);
         retVal.add(DefaultUncommonAttack.ID);
@@ -182,19 +163,21 @@ public class Adventurer extends CustomPlayer {
         retVal.add(OrbSkill.ID);
 
             */
-
+        logger.info("End loading starter Deck Strings");
         return retVal;
     }
 
 
     // Starting Relics
     public ArrayList<String> getStartingRelics() {
+        logger.info("Begin loading starter Relics");
         ArrayList<String> retVal = new ArrayList<>();
 
         retVal.add(AdventurerNovice.ID);
 
         UnlockTracker.markRelicAsSeen(AdventurerNovice.ID);
 
+        logger.info("End loading starter Relics");
         return retVal;
     }
 
@@ -223,13 +206,13 @@ public class Adventurer extends CustomPlayer {
     // Should return the card color enum to be associated with your character.
     @Override
     public AbstractCard.CardColor getCardColor() {
-        return COLOR_GRAY;
+        return AdventurerColor.ADVENTURER;
     }
 
     // Should return a color object to be used to color the trail of moving cards
     @Override
     public Color getCardTrailColor() {
-        return AdventurerMod.DEFAULT_GRAY;
+        return AdventurerMod.GAINSBORO;
     }
 
     // Should return a BitmapFont object that you can use to customize how your
@@ -260,20 +243,20 @@ public class Adventurer extends CustomPlayer {
     // Should return a new instance of your character, sending name as its name parameter.
     @Override
     public AbstractPlayer newInstance() {
-        return new Adventurer(name, chosenClass);
+        return new Adventurer(name, AdventurerEnum.ADVENTURER);
     }
 
     // Should return a Color object to be used to color the miniature card images in run history.
     @Override
     public Color getCardRenderColor() {
-        return AdventurerMod.DEFAULT_GRAY;
+        return AdventurerMod.GAINSBORO;
     }
 
     // Should return a Color object to be used as screen tint effect when your
     // character attacks the heart.
     @Override
     public Color getSlashAttackColor() {
-        return AdventurerMod.DEFAULT_GRAY;
+        return AdventurerMod.GAINSBORO;
     }
 
     // Should return an AttackEffect array of any size greater than 0. These effects

@@ -12,11 +12,10 @@ import static Adventurer.AdventurerMod.makeID;
 
 public class LesserPoison extends AdventurerCard{
 
-    public static final String ID = LesserPoison.class.getSimpleName();
+    public static final String ID = makeID(LesserPoison.class.getSimpleName());
     private static final CardRarity RARITY = CardRarity.RARE;
     private static final CardTarget TARGET = CardTarget.ENEMY;
     private static final CardType TYPE = CardType.SKILL;
-    public static final CardColor COLOR = Adventurer.Enums.COLOR_GRAY;
 
     private float Scaling = 0.25f;
 
@@ -27,7 +26,7 @@ public class LesserPoison extends AdventurerCard{
     private static final int COST = 1;
 
     public LesserPoison() {
-        super(ID,  COST, TYPE, COLOR, RARITY, TARGET);
+        super(ID, COST, TYPE, RARITY, TARGET);
 
 
         this.baseMagicNumber = NUM_APPLY;

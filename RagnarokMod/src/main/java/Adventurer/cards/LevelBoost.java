@@ -9,6 +9,8 @@ import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 
+import static Adventurer.AdventurerMod.makeID;
+
 public class LevelBoost extends AdventurerCard {
 
     /*
@@ -19,7 +21,7 @@ public class LevelBoost extends AdventurerCard {
 
     // TEXT DECLARATION
 
-    public static final String ID = LevelBoost.class.getSimpleName();
+    public static final String ID = makeID(LevelBoost.class.getSimpleName());
 
     // /TEXT DECLARATION/
 
@@ -29,7 +31,6 @@ public class LevelBoost extends AdventurerCard {
     private static final CardRarity RARITY = CardRarity.COMMON;
     private static final CardTarget TARGET = CardTarget.SELF;
     private static final CardType TYPE = CardType.POWER;
-    public static final CardColor COLOR = Adventurer.Enums.COLOR_GRAY;
 
     private static final int COST = 1;
     private static final int UPGRADE_COST = 0;
@@ -41,7 +42,7 @@ public class LevelBoost extends AdventurerCard {
 
     public LevelBoost() {
 
-        super(ID, COST, TYPE, COLOR, RARITY, TARGET);
+        super(ID, COST, TYPE, RARITY, TARGET);
         this.magicNumber = this.baseMagicNumber = MAGIC;
     }
 

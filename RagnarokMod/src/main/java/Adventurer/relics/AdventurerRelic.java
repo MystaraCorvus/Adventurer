@@ -28,11 +28,6 @@ public abstract class AdventurerRelic extends CustomRelic {
         return DESCRIPTIONS[0]; // DESCRIPTIONS pulls from your localization file
     }
 
-    @Override
-    public AbstractRelic makeCopy() { // always override this method to return a new instance of your relic
-        return new AdventurerNovice();
-    }
-
     public static boolean HasClassRelic() {
         if (AbstractDungeon.player != null) {
             if(AbstractDungeon.player.hasRelic(AdventurerNovice.ID)) {
@@ -126,4 +121,5 @@ public abstract class AdventurerRelic extends CustomRelic {
         }
         return 0;
     }
+
 }

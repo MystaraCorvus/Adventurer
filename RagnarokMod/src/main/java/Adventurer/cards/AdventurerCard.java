@@ -1,22 +1,16 @@
 package Adventurer.cards;
 
+import Adventurer.patches.AdventurerColor;
 import Adventurer.powers.AdventurerPower;
-import Adventurer.powers.TemporarilyLevelUpPower;
 import Adventurer.relics.AdventurerRelic;
-import Adventurer.relics.Novice.AdventurerNovice;
-import Adventurer.util.AdventurerTags;
 import basemod.abstracts.CustomCard;
-import com.badlogic.gdx.graphics.Texture;
 import com.megacrit.cardcrawl.cards.AbstractCard;
-import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
-import com.megacrit.cardcrawl.monsters.AbstractMonster;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 
 import static Adventurer.AdventurerMod.makeCardPath;
-import static Adventurer.AdventurerMod.makeID;
+import static Adventurer.AdventurerMod.reverseID;
 import static com.megacrit.cardcrawl.core.CardCrawlGame.languagePack;
 
 public abstract class AdventurerCard extends CustomCard {
@@ -29,11 +23,10 @@ public abstract class AdventurerCard extends CustomCard {
     public AdventurerCard(final String id,
                                final int cost,
                                final CardType type,
-                               final CardColor color,
                                final CardRarity rarity,
                                final CardTarget target) {
 
-        super(makeID(id), languagePack.getCardStrings(makeID(id)).NAME, makeCardPath(id + ".png"), cost, languagePack.getCardStrings(makeID(id)).DESCRIPTION, type, color, rarity, target);
+        super(id, languagePack.getCardStrings(id).NAME, makeCardPath(reverseID(id) + ".png"), cost, languagePack.getCardStrings(id).DESCRIPTION, type, AdventurerColor.ADVENTURER, rarity, target);
 
         // Set all the things to their default values.
         isCostModified = false;

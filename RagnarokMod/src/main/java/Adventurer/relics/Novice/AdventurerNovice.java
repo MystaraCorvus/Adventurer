@@ -1,6 +1,7 @@
 package Adventurer.relics.Novice;
 
 import Adventurer.relics.AdventurerRelic;
+import com.megacrit.cardcrawl.relics.AbstractRelic;
 
 public class AdventurerNovice extends AdventurerRelic {
 
@@ -13,5 +14,9 @@ public class AdventurerNovice extends AdventurerRelic {
     }
 
 
+    @Override
+    public AbstractRelic makeCopy() { // always override this method to return a new instance of your relic
+        return new AdventurerNovice();
+    }
 }
 

@@ -1,11 +1,14 @@
 package Adventurer;
 
 import Adventurer.characters.Adventurer;
+import Adventurer.patches.AdventurerColor;
+import Adventurer.patches.AdventurerEnum;
 import Adventurer.relics.Novice.*;
 import Adventurer.variables.LevelScalingOneSixth;
 import basemod.BaseMod;
 import basemod.ModLabeledToggleButton;
 import basemod.ModPanel;
+import basemod.helpers.RelicType;
 import basemod.interfaces.*;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.files.FileHandle;
@@ -73,7 +76,8 @@ public class AdventurerMod implements
         EditKeywordsSubscriber,
         EditCharactersSubscriber,
         PostInitializeSubscriber,
-        PostCampfireSubscriber {
+        PostCampfireSubscriber,
+        PostDungeonInitializeSubscriber {
     // Make sure to implement the subscribers *you* are using (read basemod wiki). Editing cards? EditCardsSubscriber.
     // Making relics? EditRelicsSubscriber. etc., etc., for a full list and how to make your own, visit the basemod wiki.
     public static final Logger logger = LogManager.getLogger(AdventurerMod.class.getName());
@@ -93,7 +97,7 @@ public class AdventurerMod implements
     
     // Colors (RGB)
     // Character Color
-    public static final Color DEFAULT_GRAY = CardHelper.getColor(64.0f, 70.0f, 70.0f);
+    public static final Color GAINSBORO = CardHelper.getColor(220.0f, 220.0f, 220.0f);
     
     // Potion Colors in RGB
     public static final Color PLACEHOLDER_POTION_LIQUID = CardHelper.getColor(209.0f, 53.0f, 18.0f); // Orange-ish Red
@@ -197,10 +201,10 @@ public class AdventurerMod implements
         
         logger.info("Done subscribing");
         
-        logger.info("Creating the color " + Adventurer.Enums.COLOR_GRAY.toString());
+        logger.info("Creating the color " + AdventurerColor.ADVENTURER.toString());
         
-        BaseMod.addColor(Adventurer.Enums.COLOR_GRAY, DEFAULT_GRAY, DEFAULT_GRAY, DEFAULT_GRAY,
-                DEFAULT_GRAY, DEFAULT_GRAY, DEFAULT_GRAY, DEFAULT_GRAY,
+        BaseMod.addColor(AdventurerColor.ADVENTURER, GAINSBORO, GAINSBORO, GAINSBORO,
+                GAINSBORO, GAINSBORO, GAINSBORO, GAINSBORO,
                 ATTACK_DEFAULT_GRAY, SKILL_DEFAULT_GRAY, POWER_DEFAULT_GRAY, ENERGY_ORB_DEFAULT_GRAY,
                 ATTACK_DEFAULT_GRAY_PORTRAIT, SKILL_DEFAULT_GRAY_PORTRAIT, POWER_DEFAULT_GRAY_PORTRAIT,
                 ENERGY_ORB_DEFAULT_GRAY_PORTRAIT, CARD_ENERGY_ORB);
@@ -282,13 +286,13 @@ public class AdventurerMod implements
     
     @Override
     public void receiveEditCharacters() {
-        logger.info("Beginning to edit characters. " + "Add " + Adventurer.Enums.ADVENTURER.toString());
+        logger.info("Beginning to edit characters. " + "Add " + AdventurerEnum.ADVENTURER.toString());
         
-        BaseMod.addCharacter(new Adventurer("the Adventurer", Adventurer.Enums.ADVENTURER),
-                THE_DEFAULT_BUTTON, THE_DEFAULT_PORTRAIT, Adventurer.Enums.ADVENTURER);
+        BaseMod.addCharacter(new Adventurer("The Adventurer", AdventurerEnum.ADVENTURER),
+                THE_DEFAULT_BUTTON, THE_DEFAULT_PORTRAIT, AdventurerEnum.ADVENTURER);
         
         receiveEditPotions();
-        logger.info("Added " + Adventurer.Enums.ADVENTURER.toString());
+        logger.info("Added " + AdventurerEnum.ADVENTURER.toString());
     }
     
     // =============== /LOAD THE CHARACTER/ =================
@@ -353,7 +357,7 @@ public class AdventurerMod implements
         // Class Specific Potion. If you want your potion to not be class-specific,
         // just remove the player class at the end (in this case the "TheDefaultEnum.ADVENTURER".
         // Remember, you can press ctrl+P inside parentheses like addPotions)
-        BaseMod.addPotion(PlaceholderPotion.class, PLACEHOLDER_POTION_LIQUID, PLACEHOLDER_POTION_HYBRID, PLACEHOLDER_POTION_SPOTS, PlaceholderPotion.POTION_ID, Adventurer.Enums.ADVENTURER);
+        BaseMod.addPotion(PlaceholderPotion.class, PLACEHOLDER_POTION_LIQUID, PLACEHOLDER_POTION_HYBRID, PLACEHOLDER_POTION_SPOTS, PlaceholderPotion.POTION_ID, AdventurerEnum.ADVENTURER);
         
         logger.info("Done editing potions");
     }
@@ -366,32 +370,29 @@ public class AdventurerMod implements
     @Override
     public void receiveEditRelics() {
         logger.info("Adding relics");
-        
+
         // This adds a character specific relic. Only when you play with the mentioned color, will you get this relic.
         /*
         BaseMod.addRelicToCustomPool(new PlaceholderRelic(), Adventurer.Enums.COLOR_GRAY);
         BaseMod.addRelicToCustomPool(new BottledPlaceholderRelic(), Adventurer.Enums.COLOR_GRAY);
         BaseMod.addRelicToCustomPool(new DefaultClickableRelic(), Adventurer.Enums.COLOR_GRAY);
         */
-        BaseMod.addRelicToCustomPool(new AdventurerNovice(), Adventurer.Enums.COLOR_GRAY);
-        BaseMod.addRelicToCustomPool(new AcolyteNovice(), Adventurer.Enums.COLOR_GRAY);
-        BaseMod.addRelicToCustomPool(new ArcherNovice(), Adventurer.Enums.COLOR_GRAY);
-        BaseMod.addRelicToCustomPool(new MagicianNovice(), Adventurer.Enums.COLOR_GRAY);
-        BaseMod.addRelicToCustomPool(new MerchantNovice(), Adventurer.Enums.COLOR_GRAY);
-        BaseMod.addRelicToCustomPool(new SwordsmanNovice(), Adventurer.Enums.COLOR_GRAY);
+        BaseMod.addRelicToCustomPool(new AdventurerNovice(), AdventurerColor.ADVENTURER);
+        BaseMod.addRelicToCustomPool(new AcolyteNovice(), AdventurerColor.ADVENTURER);
+        BaseMod.addRelicToCustomPool(new ArcherNovice(), AdventurerColor.ADVENTURER);
+        BaseMod.addRelicToCustomPool(new MagicianNovice(), AdventurerColor.ADVENTURER);
+        BaseMod.addRelicToCustomPool(new MerchantNovice(), AdventurerColor.ADVENTURER);
+        BaseMod.addRelicToCustomPool(new SwordsmanNovice(), AdventurerColor.ADVENTURER);
 
-
-        // This adds a relic to the Shared pool. Every character can find this relic.
-        //BaseMod.addRelic(new PlaceholderRelic2(), RelicType.SHARED);
-        
-        // Mark relics as seen (the others are all starters so they're marked as seen in the character file
-        UnlockTracker.markRelicAsSeen(AdventurerNovice.ID);
         UnlockTracker.markRelicAsSeen(AcolyteNovice.ID);
         UnlockTracker.markRelicAsSeen(ArcherNovice.ID);
         UnlockTracker.markRelicAsSeen(MagicianNovice.ID);
         UnlockTracker.markRelicAsSeen(MerchantNovice.ID);
         UnlockTracker.markRelicAsSeen(SwordsmanNovice.ID);
+        UnlockTracker.markRelicAsSeen(AdventurerNovice.ID);
+
         logger.info("Done adding relics!");
+
     }
     
     // ================ /ADD RELICS/ ===================
@@ -560,6 +561,10 @@ public class AdventurerMod implements
         return getModID() + ":" + idText;
     }
 
+    public static String reverseID(String idText) {
+        String[] parts = idText.split(":");
+        return parts[1];
+    }
 
     public static int maxOptionsRestRoom = 1;
     public static int curOptionsRestRoom = 0;
@@ -573,7 +578,7 @@ public class AdventurerMod implements
         }
 
         curOptionsRestRoom++;
-        if(curOptionsRestRoom < maxOptionsRestRoom){
+        if (curOptionsRestRoom < maxOptionsRestRoom) {
             return false;
         } else {
             maxOptionsRestRoom = 1;
@@ -582,4 +587,12 @@ public class AdventurerMod implements
         }
     }
 
+    @Override
+    public void receivePostDungeonInitialize() {
+        AbstractDungeon.bossRelicPool.clear();
+
+        AbstractDungeon.bossRelicPool.add(ArcherNovice.ID);
+        AbstractDungeon.bossRelicPool.add(MagicianNovice.ID);
+        AbstractDungeon.bossRelicPool.add(SwordsmanNovice.ID);
+    }
 }

@@ -12,11 +12,10 @@ import static Adventurer.AdventurerMod.makeID;
 
 public class LesserWeak extends AdventurerCard{
 
-    public static final String ID = LesserWeak.class.getSimpleName();
+    public static final String ID = makeID(LesserWeak.class.getSimpleName());
     private static final CardRarity RARITY = CardRarity.COMMON;
     private static final CardTarget TARGET = CardTarget.ENEMY;
     private static final CardType TYPE = CardType.SKILL;
-    public static final CardColor COLOR = Adventurer.Enums.COLOR_GRAY;
 
     private float Scaling = 0.25f;
 
@@ -27,7 +26,7 @@ public class LesserWeak extends AdventurerCard{
     private static final int COST = 1;
 
     public LesserWeak() {
-        super(ID, COST, TYPE, COLOR, RARITY, TARGET);
+        super(ID, COST, TYPE, RARITY, TARGET);
 
 
         this.baseMagicNumber = NUM_APPLY;

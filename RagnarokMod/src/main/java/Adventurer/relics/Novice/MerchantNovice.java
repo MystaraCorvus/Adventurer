@@ -1,6 +1,7 @@
 package Adventurer.relics.Novice;
 
 import Adventurer.relics.AdventurerRelic;
+import com.megacrit.cardcrawl.relics.AbstractRelic;
 
 public class MerchantNovice  extends AdventurerRelic {
     public static final String ID = "Adventurer:MerchantNovice";
@@ -9,5 +10,9 @@ public class MerchantNovice  extends AdventurerRelic {
 
     public MerchantNovice() {
         super(ID,  IMG, IMG_OTL, RelicTier.SHOP, LandingSound.MAGICAL);
+    }
+    @Override
+    public AbstractRelic makeCopy() { // always override this method to return a new instance of your relic
+        return new MerchantNovice();
     }
 }

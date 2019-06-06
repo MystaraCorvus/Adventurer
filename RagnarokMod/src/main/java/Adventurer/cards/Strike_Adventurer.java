@@ -18,11 +18,10 @@ import static Adventurer.AdventurerMod.makeID;
 
 public class Strike_Adventurer extends AdventurerCard {
 
-    public static final String ID = Strike_Adventurer.class.getSimpleName();
+    public static final String ID = makeID(Strike_Adventurer.class.getSimpleName());
     private static final CardRarity RARITY = CardRarity.BASIC;
     private static final CardTarget TARGET = CardTarget.ENEMY;
     private static final CardType TYPE = CardType.ATTACK;
-    public static final CardColor COLOR = Adventurer.Enums.COLOR_GRAY;
 
     private static final int DAMAGE = 6;
     private static final int UPGRADE_PLUS_DMG = 3;
@@ -33,7 +32,7 @@ public class Strike_Adventurer extends AdventurerCard {
     private static final int COST = 1;
 
     public Strike_Adventurer() {
-        super(ID, COST, TYPE, COLOR, RARITY, TARGET);
+        super(ID, COST, TYPE, RARITY, TARGET);
 
         this.baseDamage = DAMAGE;
 
