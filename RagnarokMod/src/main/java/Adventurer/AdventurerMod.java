@@ -378,12 +378,15 @@ public class AdventurerMod implements
         BaseMod.addRelicToCustomPool(new DefaultClickableRelic(), Adventurer.Enums.COLOR_GRAY);
         */
         BaseMod.addRelicToCustomPool(new AdventurerNovice(), AdventurerColor.ADVENTURER);
+
+        BaseMod.addRelicToCustomPool(new ThiefNovice(), AdventurerColor.ADVENTURER);
         BaseMod.addRelicToCustomPool(new AcolyteNovice(), AdventurerColor.ADVENTURER);
         BaseMod.addRelicToCustomPool(new ArcherNovice(), AdventurerColor.ADVENTURER);
         BaseMod.addRelicToCustomPool(new MagicianNovice(), AdventurerColor.ADVENTURER);
         BaseMod.addRelicToCustomPool(new MerchantNovice(), AdventurerColor.ADVENTURER);
         BaseMod.addRelicToCustomPool(new SwordsmanNovice(), AdventurerColor.ADVENTURER);
 
+        UnlockTracker.markRelicAsSeen(ThiefNovice.ID);
         UnlockTracker.markRelicAsSeen(AcolyteNovice.ID);
         UnlockTracker.markRelicAsSeen(ArcherNovice.ID);
         UnlockTracker.markRelicAsSeen(MagicianNovice.ID);
@@ -594,5 +597,6 @@ public class AdventurerMod implements
         AbstractDungeon.bossRelicPool.add(ArcherNovice.ID);
         AbstractDungeon.bossRelicPool.add(MagicianNovice.ID);
         AbstractDungeon.bossRelicPool.add(SwordsmanNovice.ID);
+        AbstractDungeon.bossRelicPool.add(ThiefNovice.ID);
     }
 }

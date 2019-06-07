@@ -3,9 +3,11 @@ package Adventurer.relics;
 import Adventurer.AdventurerMod;
 import Adventurer.relics.Novice.*;
 import basemod.abstracts.CustomRelic;
+import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.helpers.ImageMaster;
 import com.megacrit.cardcrawl.relics.AbstractRelic;
+import com.megacrit.cardcrawl.screens.CharSelectInfo;
 
 public abstract class AdventurerRelic extends CustomRelic {
 
@@ -16,6 +18,7 @@ public abstract class AdventurerRelic extends CustomRelic {
     @Override
     public void onEquip() {
         if (counter < 0) counter = 0;
+
     }
 
     @Override

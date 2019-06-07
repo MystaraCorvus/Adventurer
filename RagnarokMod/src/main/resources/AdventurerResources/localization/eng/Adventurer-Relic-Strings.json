@@ -46,6 +46,14 @@
       "YOU ARE MINE!"
     ]
   },
+  "Adventurer:ThiefNovice": {
+    "NAME": "Thief Novice",
+    "FLAVOR": "Test Test Test Test",
+    "DESCRIPTIONS": [
+      "Double Test",
+      "YOU ARE MINE!"
+    ]
+  },
   "Adventurer:PlaceholderRelic": {
     "NAME": "Placeholder Energy Relic",
     "FLAVOR": "The snake is a friend.",
