@@ -98,6 +98,7 @@ public class AdventurerMod implements
     // Colors (RGB)
     // Character Color
     public static final Color ADVENTURER_GRAY = CardHelper.getColor(191.0f, 213.0f, 215.0f);
+    public static final Color THIEF_GREEN = CardHelper.getColor(155.0f, 234.0f, 203.0f);
     
     // Potion Colors in RGB
     public static final Color PLACEHOLDER_POTION_LIQUID = CardHelper.getColor(209.0f, 53.0f, 18.0f); // Orange-ish Red
@@ -117,6 +118,20 @@ public class AdventurerMod implements
     private static final String SKILL_DEFAULT_GRAY_PORTRAIT = "AdventurerResources/images/1024/bg_skill_default_gray.png";
     private static final String POWER_DEFAULT_GRAY_PORTRAIT = "AdventurerResources/images/1024/bg_power_default_gray.png";
     private static final String ENERGY_ORB_DEFAULT_GRAY_PORTRAIT = "AdventurerResources/images/1024/card_default_gray_orb.png";
+
+    ///GREEN
+    // Card backgrounds - The actual rectangular card.
+    private static final String ATTACK_DEFAULT_GREEN = "AdventurerResources/images/512/bg_attack_default_gray.png";
+    private static final String SKILL_DEFAULT_GREEN = "AdventurerResources/images/512/bg_skill_default_gray.png";
+    private static final String POWER_DEFAULT_GREEN = "AdventurerResources/images/512/bg_power_default_gray.png";
+
+    private static final String ENERGY_ORB_DEFAULT_GREEN = "AdventurerResources/images/512/card_default_gray_orb.png";
+    private static final String CARD_ENERGY_ORB_GREEN = "AdventurerResources/images/512/card_small_orb.png";
+
+    private static final String ATTACK_DEFAULT_GREEN_PORTRAIT = "AdventurerResources/images/1024/bg_attack_default_gray.png";
+    private static final String SKILL_DEFAULT_GREEN_PORTRAIT = "AdventurerResources/images/1024/bg_skill_default_gray.png";
+    private static final String POWER_DEFAULT_GREEN_PORTRAIT = "AdventurerResources/images/1024/bg_power_default_gray.png";
+    private static final String ENERGY_ORB_DEFAULT_GREEN_PORTRAIT = "AdventurerResources/images/1024/card_default_gray_orb.png";
 
     // Character assets
     private static final String THE_DEFAULT_BUTTON = "AdventurerResources/images/charSelect/DefaultCharacterButton.png";
@@ -204,6 +219,17 @@ public class AdventurerMod implements
                 ATTACK_DEFAULT_GRAY_PORTRAIT, SKILL_DEFAULT_GRAY_PORTRAIT, POWER_DEFAULT_GRAY_PORTRAIT,
                 ENERGY_ORB_DEFAULT_GRAY_PORTRAIT, CARD_ENERGY_ORB);
         
+        logger.info("Done creating the color");
+
+        ///THIEF
+        logger.info("Creating the color " + AdventurerColor.ADVENTURER.toString());
+
+        BaseMod.addColor(AdventurerColor.THIEF, THIEF_GREEN, THIEF_GREEN, THIEF_GREEN,
+                THIEF_GREEN, THIEF_GREEN, THIEF_GREEN, THIEF_GREEN,
+                ATTACK_DEFAULT_GREEN, SKILL_DEFAULT_GREEN, POWER_DEFAULT_GREEN, ENERGY_ORB_DEFAULT_GREEN,
+                ATTACK_DEFAULT_GREEN_PORTRAIT, SKILL_DEFAULT_GREEN_PORTRAIT, POWER_DEFAULT_GREEN_PORTRAIT,
+                ENERGY_ORB_DEFAULT_GREEN_PORTRAIT, CARD_ENERGY_ORB_GREEN);
+
         logger.info("Done creating the color");
 
         logger.info("Adding mod settings");
