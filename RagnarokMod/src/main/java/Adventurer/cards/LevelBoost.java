@@ -1,6 +1,7 @@
 package Adventurer.cards;
 
 import Adventurer.characters.Adventurer;
+import Adventurer.patches.AdventurerColor;
 import Adventurer.powers.AdventurerFormPower;
 import Adventurer.powers.TemporarilyLevelUpPower;
 import basemod.helpers.BaseModCardTags;
@@ -32,6 +33,8 @@ public class LevelBoost extends AdventurerCard {
     private static final CardTarget TARGET = CardTarget.SELF;
     private static final CardType TYPE = CardType.POWER;
 
+    private static final CardColor COLOR = AdventurerColor.ADVENTURER;
+
     private static final int COST = 1;
     private static final int UPGRADE_COST = 0;
 
@@ -42,7 +45,7 @@ public class LevelBoost extends AdventurerCard {
 
     public LevelBoost() {
 
-        super(ID, COST, TYPE, RARITY, TARGET);
+        super(ID, COST, TYPE, COLOR, RARITY, TARGET);
         this.magicNumber = this.baseMagicNumber = MAGIC;
     }
 

@@ -1,5 +1,6 @@
 package Adventurer.cards;
 
+import Adventurer.patches.AdventurerColor;
 import basemod.helpers.BaseModCardTags;
 import com.megacrit.cardcrawl.actions.defect.AnimateOrbAction;
 import com.megacrit.cardcrawl.actions.defect.ChannelAction;
@@ -17,14 +18,16 @@ public class LesserLightningBolt extends AdventurerCard {
 
     public static final String ID = makeID(Defend_Adventurer.class.getSimpleName());
 
-    private static final CardRarity RARITY = CardRarity.BASIC;
+    private static final CardRarity RARITY = CardRarity.UNCOMMON;
     private static final CardTarget TARGET = CardTarget.ENEMY;
-    private static final CardType TYPE = CardType.SKILL;
+    private static final CardType TYPE = CardType.ATTACK;
+
+    private static final CardColor COLOR = AdventurerColor.ADVENTURER;
 
     private static final int COST = 1;
 
     public LesserLightningBolt() {
-        super(ID, COST, TYPE, RARITY, TARGET);
+        super(ID, COST, TYPE, COLOR, RARITY, TARGET);
         this.showEvokeValue = true;
         this.showEvokeOrbCount = 1;
         this.baseMagicNumber = 1;

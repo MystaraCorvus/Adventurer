@@ -1,10 +1,6 @@
 package Adventurer.cards;
 
-import Adventurer.characters.Adventurer;
-import Adventurer.powers.TemporarilyLevelUpPower;
-import Adventurer.relics.AdventurerRelic;
-import Adventurer.relics.Novice.AdventurerNovice;
-import Adventurer.util.AdventurerTags;
+import Adventurer.patches.AdventurerColor;
 import basemod.helpers.BaseModCardTags;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
@@ -13,7 +9,6 @@ import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 
-import static Adventurer.AdventurerMod.makeCardPath;
 import static Adventurer.AdventurerMod.makeID;
 
 public class Strike_Adventurer extends AdventurerCard {
@@ -22,6 +17,8 @@ public class Strike_Adventurer extends AdventurerCard {
     private static final CardRarity RARITY = CardRarity.BASIC;
     private static final CardTarget TARGET = CardTarget.ENEMY;
     private static final CardType TYPE = CardType.ATTACK;
+
+    private static final CardColor COLOR = AdventurerColor.ADVENTURER;
 
     private static final int DAMAGE = 6;
     private static final int UPGRADE_PLUS_DMG = 3;
@@ -32,7 +29,7 @@ public class Strike_Adventurer extends AdventurerCard {
     private static final int COST = 1;
 
     public Strike_Adventurer() {
-        super(ID, COST, TYPE, RARITY, TARGET);
+        super(ID, COST, TYPE, COLOR, RARITY, TARGET);
 
         this.baseDamage = DAMAGE;
 

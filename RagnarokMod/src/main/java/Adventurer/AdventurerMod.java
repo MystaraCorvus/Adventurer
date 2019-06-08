@@ -8,7 +8,6 @@ import Adventurer.variables.LevelScalingOneSixth;
 import basemod.BaseMod;
 import basemod.ModLabeledToggleButton;
 import basemod.ModPanel;
-import basemod.helpers.RelicType;
 import basemod.interfaces.*;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.files.FileHandle;
@@ -38,6 +37,7 @@ import Adventurer.variables.DefaultSecondMagicNumber;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.nio.charset.StandardCharsets;
+import java.util.Collections;
 import java.util.Properties;
 
 //TODO: DON'T MASS RENAME/REFACTOR
@@ -97,20 +97,14 @@ public class AdventurerMod implements
     
     // Colors (RGB)
     // Character Color
-    public static final Color GAINSBORO = CardHelper.getColor(220.0f, 220.0f, 220.0f);
+    public static final Color ADVENTURER_GRAY = CardHelper.getColor(191.0f, 213.0f, 215.0f);
     
     // Potion Colors in RGB
     public static final Color PLACEHOLDER_POTION_LIQUID = CardHelper.getColor(209.0f, 53.0f, 18.0f); // Orange-ish Red
     public static final Color PLACEHOLDER_POTION_HYBRID = CardHelper.getColor(255.0f, 230.0f, 230.0f); // Near White
     public static final Color PLACEHOLDER_POTION_SPOTS = CardHelper.getColor(100.0f, 25.0f, 10.0f); // Super Dark Red/Brown
-    
-    // ONCE YOU CHANGE YOUR MOD ID (BELOW, YOU CAN'T MISS IT) CHANGE THESE PATHS!!!!!!!!!!!
-    // ONCE YOU CHANGE YOUR MOD ID (BELOW, YOU CAN'T MISS IT) CHANGE THESE PATHS!!!!!!!!!!!
-    // ONCE YOU CHANGE YOUR MOD ID (BELOW, YOU CAN'T MISS IT) CHANGE THESE PATHS!!!!!!!!!!!
-    // ONCE YOU CHANGE YOUR MOD ID (BELOW, YOU CAN'T MISS IT) CHANGE THESE PATHS!!!!!!!!!!!
-    // ONCE YOU CHANGE YOUR MOD ID (BELOW, YOU CAN'T MISS IT) CHANGE THESE PATHS!!!!!!!!!!!
-    // ONCE YOU CHANGE YOUR MOD ID (BELOW, YOU CAN'T MISS IT) CHANGE THESE PATHS!!!!!!!!!!!
-  
+
+    ///GRAY
     // Card backgrounds - The actual rectangular card.
     private static final String ATTACK_DEFAULT_GRAY = "AdventurerResources/images/512/bg_attack_default_gray.png";
     private static final String SKILL_DEFAULT_GRAY = "AdventurerResources/images/512/bg_skill_default_gray.png";
@@ -200,18 +194,18 @@ public class AdventurerMod implements
         // Change their locations to reflect your actual ID rather than Adventurer. They get loaded before getID is a thing.
         
         logger.info("Done subscribing");
-        
+
+        ///ADVENTURER
         logger.info("Creating the color " + AdventurerColor.ADVENTURER.toString());
         
-        BaseMod.addColor(AdventurerColor.ADVENTURER, GAINSBORO, GAINSBORO, GAINSBORO,
-                GAINSBORO, GAINSBORO, GAINSBORO, GAINSBORO,
+        BaseMod.addColor(AdventurerColor.ADVENTURER, ADVENTURER_GRAY, ADVENTURER_GRAY, ADVENTURER_GRAY,
+                ADVENTURER_GRAY, ADVENTURER_GRAY, ADVENTURER_GRAY, ADVENTURER_GRAY,
                 ATTACK_DEFAULT_GRAY, SKILL_DEFAULT_GRAY, POWER_DEFAULT_GRAY, ENERGY_ORB_DEFAULT_GRAY,
                 ATTACK_DEFAULT_GRAY_PORTRAIT, SKILL_DEFAULT_GRAY_PORTRAIT, POWER_DEFAULT_GRAY_PORTRAIT,
                 ENERGY_ORB_DEFAULT_GRAY_PORTRAIT, CARD_ENERGY_ORB);
         
         logger.info("Done creating the color");
-        
-        
+
         logger.info("Adding mod settings");
         // This loads the mod settings.
         // The actual mod Button is added below in receivePostInitialize()
@@ -378,7 +372,6 @@ public class AdventurerMod implements
         BaseMod.addRelicToCustomPool(new DefaultClickableRelic(), Adventurer.Enums.COLOR_GRAY);
         */
         BaseMod.addRelicToCustomPool(new AdventurerNovice(), AdventurerColor.ADVENTURER);
-
         BaseMod.addRelicToCustomPool(new ThiefNovice(), AdventurerColor.ADVENTURER);
         BaseMod.addRelicToCustomPool(new AcolyteNovice(), AdventurerColor.ADVENTURER);
         BaseMod.addRelicToCustomPool(new ArcherNovice(), AdventurerColor.ADVENTURER);
@@ -439,7 +432,7 @@ public class AdventurerMod implements
         //Uncommon
 
         ///Attack
-        BaseMod.addCard(new ShieldBash());
+        BaseMod.addCard(new LesserLightningBolt());
 
         ///Skill
         BaseMod.addCard(new LesserVulnerability());
@@ -593,10 +586,10 @@ public class AdventurerMod implements
     @Override
     public void receivePostDungeonInitialize() {
         AbstractDungeon.bossRelicPool.clear();
-
         AbstractDungeon.bossRelicPool.add(ArcherNovice.ID);
         AbstractDungeon.bossRelicPool.add(MagicianNovice.ID);
         AbstractDungeon.bossRelicPool.add(SwordsmanNovice.ID);
         AbstractDungeon.bossRelicPool.add(ThiefNovice.ID);
+        Collections.shuffle(AbstractDungeon.bossRelicPool);
     }
 }

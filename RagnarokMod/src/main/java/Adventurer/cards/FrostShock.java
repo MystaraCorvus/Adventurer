@@ -1,5 +1,6 @@
 package Adventurer.cards;
 
+import Adventurer.patches.AdventurerColor;
 import com.megacrit.cardcrawl.actions.defect.AnimateOrbAction;
 import com.megacrit.cardcrawl.actions.defect.ChannelAction;
 import com.megacrit.cardcrawl.actions.defect.EvokeOrbAction;
@@ -21,10 +22,12 @@ public class FrostShock extends AdventurerCard {
     private static final CardTarget TARGET = CardTarget.ENEMY;
     private static final CardType TYPE = CardType.SKILL;
 
+    private static final CardColor COLOR = AdventurerColor.ADVENTURER;
+
     private static final int COST = 1;
 
     public FrostShock() {
-        super(ID, COST, TYPE, RARITY, TARGET);
+        super(ID, COST, TYPE, COLOR, RARITY, TARGET);
         this.showEvokeValue = true;
         this.showEvokeOrbCount = 1;
         this.baseMagicNumber = 1;

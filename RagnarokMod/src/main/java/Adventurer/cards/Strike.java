@@ -1,8 +1,6 @@
 package Adventurer.cards;
 
-import Adventurer.characters.Adventurer;
-import Adventurer.util.AdventurerTags;
-import basemod.helpers.BaseModCardTags;
+import Adventurer.patches.AdventurerColor;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;
@@ -51,6 +49,8 @@ public class Strike extends AdventurerCard {
     private static final CardTarget TARGET = CardTarget.ENEMY;
     private static final CardType TYPE = CardType.ATTACK;
 
+    private static final CardColor COLOR = AdventurerColor.ADVENTURER;
+
     private static final int COST = 1;
     private static final int DAMAGE = 6;
     private static final int UPGRADE_PLUS_DMG = 3;
@@ -68,7 +68,7 @@ public class Strike extends AdventurerCard {
     // /STAT DECLARATION/
 
     public Strike() {
-        super(ID, COST, TYPE, RARITY, TARGET);
+        super(ID, COST, TYPE, COLOR, RARITY, TARGET);
 
         // Aside from baseDamage/MagicNumber/Block there's also a few more.
         // Just type this.base and let intelliJ auto complete for you, or, go read up AbstractCard

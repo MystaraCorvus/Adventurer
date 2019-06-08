@@ -23,10 +23,11 @@ public abstract class AdventurerCard extends CustomCard {
     public AdventurerCard(final String id,
                                final int cost,
                                final CardType type,
+                               final CardColor color,
                                final CardRarity rarity,
                                final CardTarget target) {
 
-        super(id, languagePack.getCardStrings(id).NAME, makeCardPath(reverseID(id) + ".png"), cost, languagePack.getCardStrings(id).DESCRIPTION, type, AdventurerColor.ADVENTURER, rarity, target);
+        super(id, languagePack.getCardStrings(id).NAME, makeCardPath(reverseID(id) + ".png"), cost, languagePack.getCardStrings(id).DESCRIPTION, type, color, rarity, target);
 
         // Set all the things to their default values.
         isCostModified = false;

@@ -1,6 +1,7 @@
 package Adventurer.cards;
 
 import Adventurer.characters.Adventurer;
+import Adventurer.patches.AdventurerColor;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;
@@ -49,6 +50,8 @@ public class ScalingPain extends AdventurerCard {
     private static final CardTarget TARGET = CardTarget.ENEMY;
     private static final CardType TYPE = CardType.ATTACK;
 
+    private static final CardColor COLOR = AdventurerColor.ADVENTURER;
+
     private static final int COST = 3;
     private static final int DAMAGE = 12;
     private static final int UPGRADE_PLUS_DMG = 6;
@@ -65,7 +68,7 @@ public class ScalingPain extends AdventurerCard {
     // /STAT DECLARATION/
 
     public ScalingPain() {
-        super(ID, COST, TYPE, RARITY, TARGET);
+        super(ID, COST, TYPE, COLOR, RARITY, TARGET);
 
         // Aside from baseDamage/MagicNumber/Block there's also a few more.
         // Just type this.base and let intelliJ auto complete for you, or, go read up AbstractCard

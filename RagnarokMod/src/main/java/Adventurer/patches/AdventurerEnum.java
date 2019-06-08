@@ -8,4 +8,8 @@ public class AdventurerEnum
 {
     @SpireEnum
     public static AbstractPlayer.PlayerClass ADVENTURER;
+
+    @SpireEnum
+    public static AbstractPlayer.PlayerClass THIEF;
+
 }

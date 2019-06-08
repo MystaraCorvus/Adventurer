@@ -1,10 +1,12 @@
 package Adventurer.cards;
 
 import Adventurer.characters.Adventurer;
+import Adventurer.patches.AdventurerColor;
 import Adventurer.powers.AdventurerFormPower;
 import basemod.helpers.BaseModCardTags;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
+import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 
@@ -31,6 +33,8 @@ public class AdventurerForm extends AdventurerCard {
     private static final CardTarget TARGET = CardTarget.SELF;
     private static final CardType TYPE = CardType.POWER;
 
+    private static final CardColor COLOR = AdventurerColor.ADVENTURER;
+
     private static final int COST = 3;
     private static final int UPGRADE_COST = 2;
 
@@ -41,7 +45,7 @@ public class AdventurerForm extends AdventurerCard {
 
     public AdventurerForm() {
 
-        super(ID, COST, TYPE, RARITY, TARGET);
+        super(ID, COST, TYPE, COLOR, RARITY, TARGET);
         magicNumber = baseMagicNumber = MAGIC;
 
         this.tags.add(BaseModCardTags.FORM); //Tag your strike, defend and form cards so that they work correctly.

@@ -1,6 +1,7 @@
 package Adventurer.cards;
 
 import Adventurer.characters.Adventurer;
+import Adventurer.patches.AdventurerColor;
 import Adventurer.powers.TakeRestPower;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
@@ -31,6 +32,8 @@ public class TakeRest extends AdventurerCard {
     private static final CardTarget TARGET = CardTarget.SELF;
     private static final CardType TYPE = CardType.POWER;
 
+    private static final CardColor COLOR = AdventurerColor.ADVENTURER;
+
     private static final int COST = 1;
 
     private static final int MAGIC = 7;
@@ -41,7 +44,7 @@ public class TakeRest extends AdventurerCard {
 
     public TakeRest() {
 
-        super(ID, COST, TYPE, RARITY, TARGET);
+        super(ID, COST, TYPE, COLOR, RARITY, TARGET);
 
         this.baseMagicNumber = this.MAGIC;
         this.magicNumber = this.baseMagicNumber;

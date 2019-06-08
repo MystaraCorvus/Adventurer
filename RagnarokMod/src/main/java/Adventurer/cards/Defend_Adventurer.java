@@ -1,6 +1,7 @@
 package Adventurer.cards;
 
 import Adventurer.characters.Adventurer;
+import Adventurer.patches.AdventurerColor;
 import Adventurer.relics.Novice.AdventurerNovice;
 import basemod.helpers.BaseModCardTags;
 import com.megacrit.cardcrawl.actions.common.GainBlockAction;
@@ -20,6 +21,8 @@ public class Defend_Adventurer extends AdventurerCard {
     private static final CardTarget TARGET = CardTarget.SELF;
     private static final CardType TYPE = CardType.SKILL;
 
+    private static final CardColor COLOR = AdventurerColor.ADVENTURER;
+
     private static final int COST = 1;
     private static final int BLOCK = 5;
     private static final int UPGRADE_PLUS_BLOCK = 3;
@@ -29,7 +32,7 @@ public class Defend_Adventurer extends AdventurerCard {
 
 
     public Defend_Adventurer() {
-        super(ID, COST, TYPE, RARITY, TARGET);
+        super(ID, COST, TYPE, COLOR, RARITY, TARGET);
         baseBlock = BLOCK;
 
         this.tags.add(BaseModCardTags.BASIC_DEFEND); //Tag your strike, defend and form (Wraith form, Demon form, Echo form, etc.) cards so that they function correctly.

@@ -11,6 +11,10 @@ public class MerchantNovice  extends AdventurerRelic {
     public MerchantNovice() {
         super(ID,  IMG, IMG_OTL, RelicTier.SHOP, LandingSound.MAGICAL);
     }
+    public void onEquip() {
+        super.onEquip();
+    }
+
     @Override
     public AbstractRelic makeCopy() { // always override this method to return a new instance of your relic
         return new MerchantNovice();

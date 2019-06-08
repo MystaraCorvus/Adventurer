@@ -2,12 +2,17 @@ package Adventurer.relics;
 
 import Adventurer.AdventurerMod;
 import Adventurer.relics.Novice.*;
+import Adventurer.util.AdventurerTag;
 import basemod.abstracts.CustomRelic;
-import com.megacrit.cardcrawl.characters.AbstractPlayer;
+import com.megacrit.cardcrawl.cards.AbstractCard;
+import com.megacrit.cardcrawl.cards.CardGroup;
+import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.helpers.ImageMaster;
 import com.megacrit.cardcrawl.relics.AbstractRelic;
-import com.megacrit.cardcrawl.screens.CharSelectInfo;
+import com.megacrit.cardcrawl.vfx.cardManip.ShowCardAndObtainEffect;
+
+import java.util.Iterator;
 
 public abstract class AdventurerRelic extends CustomRelic {
 
@@ -19,6 +24,49 @@ public abstract class AdventurerRelic extends CustomRelic {
     public void onEquip() {
         if (counter < 0) counter = 0;
 
+    }
+
+    public void SwitchClassDeck(CardGroup newDeck){
+        Iterator i = AbstractDungeon.player.masterDeck.group.iterator();
+        for (; i.hasNext(); ) {
+            AbstractCard e = (AbstractCard)i.next();
+            if (!(e.tags.contains(AdventurerTag.STAY))) {
+                i.remove();
+            }
+        }
+
+        for (int j = 0; j < newDeck.group.size(); j++) {
+            //group.group.get(j).upgrade();
+            AbstractDungeon.effectList.add(new ShowCardAndObtainEffect(newDeck.group.get(j), (float) Settings.WIDTH / 2.0F, (float) Settings.HEIGHT / 2.0F));
+        }
+
+        /*
+        Iterator i = AbstractDungeon.player.masterDeck.group.iterator();
+        while(true) {
+            AbstractCard e;
+            do {
+                if (!i.hasNext()) {
+                    if (this.count > 0) {
+                        CardGroup group = new CardGroup(CardGroup.CardGroupType.UNSPECIFIED);
+                        for(int j = 0; j < this.count; ++j) {
+                            AbstractCard card = AbstractDungeon.returnTrulyRandomCard().makeCopy();
+                            UnlockTracker.markCardAsSeen(card.cardID);
+                            card.isSeen = true;
+                            group.addToBottom(card);
+                        }
+                        for (int j = 0 ; j < thiefDeck.group.size() ; j++) {
+                            group.group.get(j).upgrade();
+                            AbstractDungeon.effectList.add(new ShowCardAndObtainEffect(thiefDeck.group.get(j), (float) Settings.WIDTH / 2.0F, (float) Settings.HEIGHT / 2.0F));
+                        }
+                    }
+                    return;
+                }
+                e = (AbstractCard)i.next();
+            } while(e.tags.contains(AdventurerTag.STAY));
+            i.remove();
+            ++this.count;
+        }
+         */
     }
 
     @Override
@@ -80,9 +128,6 @@ public abstract class AdventurerRelic extends CustomRelic {
     }
 
     public static AdventurerRelic GetClassRelic() {
-        if(AbstractDungeon.player.hasRelic(AdventurerNovice.ID)) {
-            return (AdventurerRelic)AbstractDungeon.player.getRelic(AdventurerNovice.ID);
-        }
         if(AbstractDungeon.player.hasRelic(SwordsmanNovice.ID)) {
             return (AdventurerRelic)AbstractDungeon.player.getRelic(SwordsmanNovice.ID);
         }
@@ -97,6 +142,9 @@ public abstract class AdventurerRelic extends CustomRelic {
         }
         if(AbstractDungeon.player.hasRelic(AcolyteNovice.ID)) {
             return (AdventurerRelic)AbstractDungeon.player.getRelic(AcolyteNovice.ID);
+        }
+        if(AbstractDungeon.player.hasRelic(AdventurerNovice.ID)) {
+            return (AdventurerRelic)AbstractDungeon.player.getRelic(AdventurerNovice.ID);
         }
         return null;
     }
@@ -125,4 +173,20 @@ public abstract class AdventurerRelic extends CustomRelic {
         return 0;
     }
 
+    @Override
+    public void obtain() {
+        if(ClassRelicID() != null) {
+            if (AbstractDungeon.player.hasRelic(ClassRelicID())) {
+                this.counter = GetClassRelic().counter;
+                for (int i = 0; i < AbstractDungeon.player.relics.size(); ++i) {
+                    if (AbstractDungeon.player.relics.get(i).relicId.equals(ClassRelicID())) {
+                        this.instantObtain(AbstractDungeon.player, i, true);
+                        break;
+                    }
+                }
+            } else {
+                super.obtain();
+            }
+        }
+    }
 }

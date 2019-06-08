@@ -13,6 +13,9 @@ public class AcolyteNovice  extends AdventurerRelic {
         super(ID,  IMG, IMG_OTL, RelicTier.SPECIAL, LandingSound.MAGICAL);
     }
 
+    public void onEquip() {
+        super.onEquip();
+    }
 
     @Override
     public AbstractRelic makeCopy() { // always override this method to return a new instance of your relic
