@@ -16,6 +16,8 @@ import java.util.Iterator;
 
 public abstract class AdventurerRelic extends CustomRelic {
 
+    //private int count = 0;
+
     public AdventurerRelic(final String ID, final String IMG, final String IMG_OTL, final AbstractRelic.RelicTier TIER, AbstractRelic.LandingSound SOUND) {
         super(ID, ImageMaster.loadImage(IMG), ImageMaster.loadImage(IMG_OTL), TIER, SOUND);
     }
@@ -24,49 +26,6 @@ public abstract class AdventurerRelic extends CustomRelic {
     public void onEquip() {
         if (counter < 0) counter = 0;
 
-    }
-
-    public void SwitchClassDeck(CardGroup newDeck){
-        Iterator i = AbstractDungeon.player.masterDeck.group.iterator();
-        for (; i.hasNext(); ) {
-            AbstractCard e = (AbstractCard)i.next();
-            if (!(e.tags.contains(AdventurerTag.STAY))) {
-                i.remove();
-            }
-        }
-
-        for (int j = 0; j < newDeck.group.size(); j++) {
-            //group.group.get(j).upgrade();
-            AbstractDungeon.effectList.add(new ShowCardAndObtainEffect(newDeck.group.get(j), (float) Settings.WIDTH / 2.0F, (float) Settings.HEIGHT / 2.0F));
-        }
-
-        /*
-        Iterator i = AbstractDungeon.player.masterDeck.group.iterator();
-        while(true) {
-            AbstractCard e;
-            do {
-                if (!i.hasNext()) {
-                    if (this.count > 0) {
-                        CardGroup group = new CardGroup(CardGroup.CardGroupType.UNSPECIFIED);
-                        for(int j = 0; j < this.count; ++j) {
-                            AbstractCard card = AbstractDungeon.returnTrulyRandomCard().makeCopy();
-                            UnlockTracker.markCardAsSeen(card.cardID);
-                            card.isSeen = true;
-                            group.addToBottom(card);
-                        }
-                        for (int j = 0 ; j < thiefDeck.group.size() ; j++) {
-                            group.group.get(j).upgrade();
-                            AbstractDungeon.effectList.add(new ShowCardAndObtainEffect(thiefDeck.group.get(j), (float) Settings.WIDTH / 2.0F, (float) Settings.HEIGHT / 2.0F));
-                        }
-                    }
-                    return;
-                }
-                e = (AbstractCard)i.next();
-            } while(e.tags.contains(AdventurerTag.STAY));
-            i.remove();
-            ++this.count;
-        }
-         */
     }
 
     @Override
@@ -178,6 +137,12 @@ public abstract class AdventurerRelic extends CustomRelic {
         if(ClassRelicID() != null) {
             if (AbstractDungeon.player.hasRelic(ClassRelicID())) {
                 this.counter = GetClassRelic().counter;
+                for (Iterator i = AbstractDungeon.player.masterDeck.group.iterator(); i.hasNext(); ) {
+                    AbstractCard e = (AbstractCard)i.next();
+                    if (!(e.tags.contains(AdventurerTag.STAY))) {
+                        i.remove();
+                    }
+                }
                 for (int i = 0; i < AbstractDungeon.player.relics.size(); ++i) {
                     if (AbstractDungeon.player.relics.get(i).relicId.equals(ClassRelicID())) {
                         this.instantObtain(AbstractDungeon.player, i, true);
@@ -189,4 +154,35 @@ public abstract class AdventurerRelic extends CustomRelic {
             }
         }
     }
+
+    /*
+    public void SwitchClassDeck(CardGroup newDeck){
+
+        Iterator i = AbstractDungeon.player.masterDeck.group.iterator();
+        while(true) {
+            AbstractCard e;
+            do {
+                if (!i.hasNext()) {
+                    if (this.count > 0) {
+                        CardGroup group = new CardGroup(CardGroup.CardGroupType.UNSPECIFIED);
+                        for(int j = 0; j < this.count; ++j) {
+                            AbstractCard card = AbstractDungeon.returnTrulyRandomCard().makeCopy();
+                            UnlockTracker.markCardAsSeen(card.cardID);
+                            card.isSeen = true;
+                            group.addToBottom(card);
+                        }
+                        for (int j = 0 ; j < DECK.group.size() ; j++) {
+                            group.group.get(j).upgrade();
+                            AbstractDungeon.effectList.add(new ShowCardAndObtainEffect(DECK.group.get(j), (float) Settings.WIDTH / 2.0F, (float) Settings.HEIGHT / 2.0F));
+                        }
+                    }
+                    return;
+                }
+                e = (AbstractCard)i.next();
+            } while(e.tags.contains(AdventurerTag.STAY));
+            i.remove();
+            ++this.count;
+        }
+    }
+    */
 }

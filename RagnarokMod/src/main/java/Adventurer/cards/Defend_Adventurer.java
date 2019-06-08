@@ -48,6 +48,7 @@ public class Defend_Adventurer extends AdventurerCard {
     // Actions the card should do.
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
+        System.out.println("TROLOLOLOLOLOLOLOLOLOLO");
         AbstractDungeon.actionManager.addToBottom(new GainBlockAction(p, p, block));
     }
 

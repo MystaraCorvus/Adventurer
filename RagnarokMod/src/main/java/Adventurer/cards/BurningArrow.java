@@ -16,7 +16,7 @@ import static Adventurer.AdventurerMod.makeID;
 
 public class BurningArrow extends AdventurerCard {
 
-    public static final String ID = makeID(Defend_Adventurer.class.getSimpleName());
+    public static final String ID = makeID(BurningArrow.class.getSimpleName());
 
     private static final CardRarity RARITY = CardRarity.COMMON;
     private static final CardTarget TARGET = CardTarget.ENEMY;

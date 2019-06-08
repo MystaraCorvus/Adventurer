@@ -3,11 +3,11 @@ package Adventurer.relics.Novice;
 import Adventurer.cards.ShieldBash;
 import Adventurer.relics.AdventurerRelic;
 import com.megacrit.cardcrawl.actions.common.DrawCardAction;
-import com.megacrit.cardcrawl.actions.common.RelicAboveCreatureAction;
 import com.megacrit.cardcrawl.cards.CardGroup;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.relics.AbstractRelic;
+import com.megacrit.cardcrawl.vfx.cardManip.ShowCardAndObtainEffect;
 
 public class ThiefNovice extends AdventurerRelic {
 
@@ -15,23 +15,21 @@ public class ThiefNovice extends AdventurerRelic {
     private static final String IMG = "AdventurerResources/images/relics/Thief.png";
     private static final String IMG_OTL = "AdventurerResources/images/relics/outline/ClassRelic.png";
 
-    public CardGroup thiefDeck = new CardGroup(CardGroup.CardGroupType.UNSPECIFIED);
+    public CardGroup DECK = new CardGroup(CardGroup.CardGroupType.UNSPECIFIED);
 
-    //private int count = 0;
 
     public ThiefNovice() {
-        super(ID,  IMG, IMG_OTL, RelicTier.BOSS, LandingSound.MAGICAL);
+        super(ID, IMG, IMG_OTL, RelicTier.BOSS, LandingSound.MAGICAL);
 
-
-        thiefDeck.group.add(new ShieldBash().makeCopy());
-        thiefDeck.group.add(new ShieldBash().makeCopy());
-        thiefDeck.group.add(new ShieldBash().makeCopy());
-        thiefDeck.group.add(new ShieldBash().makeCopy());
-        thiefDeck.group.add(new ShieldBash().makeCopy());
-        thiefDeck.group.add(new ShieldBash().makeCopy());
-        thiefDeck.group.add(new ShieldBash().makeCopy());
-        thiefDeck.group.add(new ShieldBash().makeCopy());
-        thiefDeck.group.add(new ShieldBash().makeCopy());
+        DECK.group.add(new ShieldBash().makeCopy());
+        DECK.group.add(new ShieldBash().makeCopy());
+        DECK.group.add(new ShieldBash().makeCopy());
+        DECK.group.add(new ShieldBash().makeCopy());
+        DECK.group.add(new ShieldBash().makeCopy());
+        DECK.group.add(new ShieldBash().makeCopy());
+        DECK.group.add(new ShieldBash().makeCopy());
+        DECK.group.add(new ShieldBash().makeCopy());
+        DECK.group.add(new ShieldBash().makeCopy());
     }
 
     @Override
@@ -45,8 +43,10 @@ public class ThiefNovice extends AdventurerRelic {
     }
 
     public void onEquip() {
-        super.onEquip();
-        SwitchClassDeck(thiefDeck);
+        for (int j = 0; j < DECK.group.size(); j++) {
+            //group.group.get(j).upgrade();
+            AbstractDungeon.effectList.add(new ShowCardAndObtainEffect(DECK.group.get(j), (float) Settings.WIDTH / 2.0F, (float) Settings.HEIGHT / 2.0F));
+        }
     }
 
     public void onUnequip() {

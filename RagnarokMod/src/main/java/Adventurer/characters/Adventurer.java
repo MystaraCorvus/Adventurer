@@ -138,14 +138,15 @@ public class Adventurer extends CustomPlayer {
         logger.info("Begin loading starter Deck Strings");
 
         retVal.add(Strike_Adventurer.ID);
-        retVal.add(Strike_Adventurer.ID);
-        retVal.add(Strike_Adventurer.ID);
-        retVal.add(Strike_Adventurer.ID);
-        retVal.add(Defend_Adventurer.ID);
-        retVal.add(Defend_Adventurer.ID);
-        retVal.add(Defend_Adventurer.ID);
-        retVal.add(Defend_Adventurer.ID);
+
         /*
+        retVal.add(Strike_Adventurer.ID);
+        retVal.add(Strike_Adventurer.ID);
+        retVal.add(Strike_Adventurer.ID);
+        retVal.add(Defend_Adventurer.ID);
+        retVal.add(Defend_Adventurer.ID);
+        retVal.add(Defend_Adventurer.ID);
+        retVal.add(Defend_Adventurer.ID);
         retVal.add(Strike.ID);
         retVal.add(DefaultUncommonAttack.ID);
         retVal.add(DefaultRareAttack.ID);

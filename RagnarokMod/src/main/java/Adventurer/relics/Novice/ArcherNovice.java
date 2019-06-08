@@ -1,10 +1,14 @@
 package Adventurer.relics.Novice;
 
+import Adventurer.cards.ShieldBash;
 import Adventurer.relics.AdventurerRelic;
 import com.megacrit.cardcrawl.actions.common.DrawCardAction;
 import com.megacrit.cardcrawl.actions.common.RelicAboveCreatureAction;
+import com.megacrit.cardcrawl.cards.CardGroup;
+import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.relics.AbstractRelic;
+import com.megacrit.cardcrawl.vfx.cardManip.ShowCardAndObtainEffect;
 
 public class ArcherNovice  extends AdventurerRelic {
 
@@ -12,12 +16,27 @@ public class ArcherNovice  extends AdventurerRelic {
     private static final String IMG = "AdventurerResources/images/relics/Archer.png";
     private static final String IMG_OTL = "AdventurerResources/images/relics/outline/ClassRelic.png";
 
+    public CardGroup DECK = new CardGroup(CardGroup.CardGroupType.UNSPECIFIED);
+
     public ArcherNovice() {
-        super(ID,  IMG, IMG_OTL, RelicTier.BOSS, LandingSound.MAGICAL);
+        super(ID, IMG, IMG_OTL, RelicTier.BOSS, LandingSound.MAGICAL);
+        DECK.group.add(new ShieldBash().makeCopy());
+        DECK.group.add(new ShieldBash().makeCopy());
+        DECK.group.add(new ShieldBash().makeCopy());
+        DECK.group.add(new ShieldBash().makeCopy());
+        DECK.group.add(new ShieldBash().makeCopy());
+        DECK.group.add(new ShieldBash().makeCopy());
+        DECK.group.add(new ShieldBash().makeCopy());
+        DECK.group.add(new ShieldBash().makeCopy());
+        DECK.group.add(new ShieldBash().makeCopy());
     }
 
     public void onEquip() {
-        super.onEquip();
+        for (int j = 0; j < DECK.group.size(); j++) {
+            //group.group.get(j).upgrade();
+            AbstractDungeon.effectList.add(new ShowCardAndObtainEffect(DECK.group.get(j), (float) Settings.WIDTH / 2.0F, (float) Settings.HEIGHT / 2.0F));
+        }
+
     }
 
     @Override

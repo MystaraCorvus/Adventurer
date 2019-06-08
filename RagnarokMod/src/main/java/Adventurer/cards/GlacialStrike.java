@@ -16,7 +16,7 @@ import static Adventurer.AdventurerMod.makeID;
 
 public class GlacialStrike extends AdventurerCard {
 
-    public static final String ID = makeID(Defend_Adventurer.class.getSimpleName());
+    public static final String ID = makeID(GlacialStrike.class.getSimpleName());
 
     private static final CardRarity RARITY = CardRarity.UNCOMMON;
     private static final CardTarget TARGET = CardTarget.ENEMY;

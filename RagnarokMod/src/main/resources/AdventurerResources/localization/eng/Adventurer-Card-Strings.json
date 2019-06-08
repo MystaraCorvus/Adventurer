@@ -89,5 +89,21 @@
   "Adventurer:ShieldBash": {
     "NAME": "Shield Bash",
     "DESCRIPTION": "Deal !D! damage."
+  },
+  "Adventurer:BurningArrow": {
+    "NAME": "Burning Arrow",
+    "DESCRIPTION": "Deal !D! damage."
+  },
+  "Adventurer:FrostShock": {
+    "NAME": "Frost Shock",
+    "DESCRIPTION": "Gain !M! temporarily Level."
+  },
+  "Adventurer:LesserLightningBolt": {
+    "NAME": "Lesser Lightningbolt",
+    "DESCRIPTION": "Deal !D! damage."
+  },
+  "Adventurer:GlacialStrike": {
+    "NAME": "Glacial Strike",
+    "DESCRIPTION": "Deal !D! damage."
   }
 }

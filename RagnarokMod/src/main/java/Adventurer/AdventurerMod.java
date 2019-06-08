@@ -121,17 +121,17 @@ public class AdventurerMod implements
 
     ///GREEN
     // Card backgrounds - The actual rectangular card.
-    private static final String ATTACK_DEFAULT_GREEN = "AdventurerResources/images/512/bg_attack_default_gray.png";
-    private static final String SKILL_DEFAULT_GREEN = "AdventurerResources/images/512/bg_skill_default_gray.png";
-    private static final String POWER_DEFAULT_GREEN = "AdventurerResources/images/512/bg_power_default_gray.png";
+    private static final String ATTACK_DEFAULT_GREEN = "AdventurerResources/images/512/bg_attack_green.png";
+    private static final String SKILL_DEFAULT_GREEN = "AdventurerResources/images/512/bg_skill_green.png";
+    private static final String POWER_DEFAULT_GREEN = "AdventurerResources/images/512/bg_power_green.png";
 
-    private static final String ENERGY_ORB_DEFAULT_GREEN = "AdventurerResources/images/512/card_default_gray_orb.png";
-    private static final String CARD_ENERGY_ORB_GREEN = "AdventurerResources/images/512/card_small_orb.png";
+    private static final String ENERGY_ORB_DEFAULT_GREEN = "AdventurerResources/images/512/card_green_orb.png";
+    private static final String CARD_ENERGY_ORB_GREEN = "AdventurerResources/images/512/card_small_orb_green.png";
 
-    private static final String ATTACK_DEFAULT_GREEN_PORTRAIT = "AdventurerResources/images/1024/bg_attack_default_gray.png";
-    private static final String SKILL_DEFAULT_GREEN_PORTRAIT = "AdventurerResources/images/1024/bg_skill_default_gray.png";
-    private static final String POWER_DEFAULT_GREEN_PORTRAIT = "AdventurerResources/images/1024/bg_power_default_gray.png";
-    private static final String ENERGY_ORB_DEFAULT_GREEN_PORTRAIT = "AdventurerResources/images/1024/card_default_gray_orb.png";
+    private static final String ATTACK_DEFAULT_GREEN_PORTRAIT = "AdventurerResources/images/1024/bg_attack_green.png";
+    private static final String SKILL_DEFAULT_GREEN_PORTRAIT = "AdventurerResources/images/1024/bg_skill_green.png";
+    private static final String POWER_DEFAULT_GREEN_PORTRAIT = "AdventurerResources/images/1024/bg_power_green.png";
+    private static final String ENERGY_ORB_DEFAULT_GREEN_PORTRAIT = "AdventurerResources/images/1024/card_green_orb.png";
 
     // Character assets
     private static final String THE_DEFAULT_BUTTON = "AdventurerResources/images/charSelect/DefaultCharacterButton.png";
@@ -222,7 +222,7 @@ public class AdventurerMod implements
         logger.info("Done creating the color");
 
         ///THIEF
-        logger.info("Creating the color " + AdventurerColor.ADVENTURER.toString());
+        logger.info("Creating the color " + AdventurerColor.THIEF.toString());
 
         BaseMod.addColor(AdventurerColor.THIEF, THIEF_GREEN, THIEF_GREEN, THIEF_GREEN,
                 THIEF_GREEN, THIEF_GREEN, THIEF_GREEN, THIEF_GREEN,
@@ -459,6 +459,7 @@ public class AdventurerMod implements
 
         ///Attack
         BaseMod.addCard(new LesserLightningBolt());
+        BaseMod.addCard(new ShieldBash());
 
         ///Skill
         BaseMod.addCard(new LesserVulnerability());
