@@ -105,5 +105,9 @@
   "Adventurer:GlacialStrike": {
     "NAME": "Glacial Strike",
     "DESCRIPTION": "Deal !D! damage."
+  },
+  "Adventurer:DarkRampage": {
+    "NAME": "Dark Rampage",
+    "DESCRIPTION": "Deal !D! damage."
   }
 }

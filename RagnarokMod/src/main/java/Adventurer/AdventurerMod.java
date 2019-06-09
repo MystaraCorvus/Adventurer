@@ -458,6 +458,7 @@ public class AdventurerMod implements
         //Uncommon
 
         ///Attack
+        BaseMod.addCard(new DarkRampage());
         BaseMod.addCard(new LesserLightningBolt());
         BaseMod.addCard(new ShieldBash());
 
