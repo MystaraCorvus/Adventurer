@@ -4,6 +4,7 @@ import Adventurer.characters.Adventurer;
 import Adventurer.patches.AdventurerColor;
 import Adventurer.powers.AdventurerFormPower;
 import Adventurer.powers.TemporarilyLevelUpPower;
+import Adventurer.util.AdventurerTag;
 import basemod.helpers.BaseModCardTags;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
@@ -36,7 +37,6 @@ public class LevelBoost extends AdventurerCard {
     private static final CardColor COLOR = AdventurerColor.ADVENTURER;
 
     private static final int COST = 1;
-    private static final int UPGRADE_COST = 0;
 
     private static final int MAGIC = 2;
 
@@ -56,13 +56,13 @@ public class LevelBoost extends AdventurerCard {
         AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(p, p, new TemporarilyLevelUpPower(p, p, this.magicNumber), this.magicNumber));
     }
 
-    //Upgraded stats.
+
     @Override
     public void upgrade() {
         if (!upgraded) {
             upgradeName();
-            upgradeBaseCost(UPGRADE_COST);
             initializeDescription();
+            this.tags.add(AdventurerTag.STAY);
         }
     }
 }

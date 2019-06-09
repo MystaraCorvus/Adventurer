@@ -107,17 +107,17 @@ public class AdventurerMod implements
 
     ///GRAY
     // Card backgrounds - The actual rectangular card.
-    private static final String ATTACK_DEFAULT_GRAY = "AdventurerResources/images/512/bg_attack_default_gray.png";
-    private static final String SKILL_DEFAULT_GRAY = "AdventurerResources/images/512/bg_skill_default_gray.png";
-    private static final String POWER_DEFAULT_GRAY = "AdventurerResources/images/512/bg_power_default_gray.png";
+    private static final String ATTACK_DEFAULT_GRAY = "AdventurerResources/images/512/bg_attack_red.png";
+    private static final String SKILL_DEFAULT_GRAY = "AdventurerResources/images/512/bg_skill_red.png";
+    private static final String POWER_DEFAULT_GRAY = "AdventurerResources/images/512/bg_power_red.png";
 
-    private static final String ENERGY_ORB_DEFAULT_GRAY = "AdventurerResources/images/512/card_default_gray_orb.png";
-    private static final String CARD_ENERGY_ORB = "AdventurerResources/images/512/card_small_orb.png";
+    private static final String ENERGY_ORB_DEFAULT_GRAY = "AdventurerResources/images/512/card_red_orb.png";
+    private static final String CARD_ENERGY_ORB = "AdventurerResources/images/512/card_small_orb_red.png";
 
-    private static final String ATTACK_DEFAULT_GRAY_PORTRAIT = "AdventurerResources/images/1024/bg_attack_default_gray.png";
-    private static final String SKILL_DEFAULT_GRAY_PORTRAIT = "AdventurerResources/images/1024/bg_skill_default_gray.png";
-    private static final String POWER_DEFAULT_GRAY_PORTRAIT = "AdventurerResources/images/1024/bg_power_default_gray.png";
-    private static final String ENERGY_ORB_DEFAULT_GRAY_PORTRAIT = "AdventurerResources/images/1024/card_default_gray_orb.png";
+    private static final String ATTACK_DEFAULT_GRAY_PORTRAIT = "AdventurerResources/images/1024/bg_attack_red.png";
+    private static final String SKILL_DEFAULT_GRAY_PORTRAIT = "AdventurerResources/images/1024/bg_skill_red.png";
+    private static final String POWER_DEFAULT_GRAY_PORTRAIT = "AdventurerResources/images/1024/bg_power_red.png";
+    private static final String ENERGY_ORB_DEFAULT_GRAY_PORTRAIT = "AdventurerResources/images/1024/card_red_orb.png";
 
     ///GREEN
     // Card backgrounds - The actual rectangular card.
@@ -458,6 +458,7 @@ public class AdventurerMod implements
         //Uncommon
 
         ///Attack
+        BaseMod.addCard(new DarkImpulse());
         BaseMod.addCard(new DarkRampage());
         BaseMod.addCard(new LesserLightningBolt());
         BaseMod.addCard(new ShieldBash());

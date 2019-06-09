@@ -1,6 +1,7 @@
 package Adventurer.cards;
 
 import Adventurer.patches.AdventurerColor;
+import Adventurer.util.AdventurerTag;
 import com.megacrit.cardcrawl.actions.defect.AnimateOrbAction;
 import com.megacrit.cardcrawl.actions.defect.ChannelAction;
 import com.megacrit.cardcrawl.actions.defect.EvokeOrbAction;
@@ -30,8 +31,6 @@ public class BurningArrow extends AdventurerCard {
         super(ID, COST, TYPE, COLOR, RARITY, TARGET);
         this.showEvokeValue = true;
         this.showEvokeOrbCount = 1;
-        this.baseMagicNumber = 1;
-        this.magicNumber = this.baseMagicNumber;
     }
 
     @Override
@@ -48,10 +47,12 @@ public class BurningArrow extends AdventurerCard {
         AbstractDungeon.actionManager.addToBottom(new EvokeOrbAction(1));
     }
 
-
     @Override
     public void upgrade() {
-        upgradeName();
-        initializeDescription();
+        if (!upgraded) {
+            upgradeName();
+            initializeDescription();
+            this.tags.add(AdventurerTag.STAY);
+        }
     }
 }

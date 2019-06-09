@@ -3,6 +3,7 @@ package Adventurer.cards;
 import Adventurer.characters.Adventurer;
 import Adventurer.patches.AdventurerColor;
 import Adventurer.powers.AdventurerFormPower;
+import Adventurer.util.AdventurerTag;
 import basemod.helpers.BaseModCardTags;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
@@ -36,8 +37,6 @@ public class AdventurerForm extends AdventurerCard {
     private static final CardColor COLOR = AdventurerColor.ADVENTURER;
 
     private static final int COST = 3;
-    private static final int UPGRADE_COST = 2;
-
     private static final int MAGIC = 1;
 
     // /STAT DECLARATION/
@@ -58,13 +57,12 @@ public class AdventurerForm extends AdventurerCard {
         AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(p, p, new AdventurerFormPower(p, p, this.magicNumber), this.magicNumber));
     }
 
-    //Upgraded stats.
     @Override
     public void upgrade() {
         if (!upgraded) {
             upgradeName();
-            upgradeBaseCost(UPGRADE_COST);
             initializeDescription();
+            this.tags.add(AdventurerTag.STAY);
         }
     }
 }

@@ -2,6 +2,7 @@ package Adventurer.cards;
 
 import Adventurer.actions.TargetedDarkEvokeAction;
 import Adventurer.patches.AdventurerColor;
+import Adventurer.util.AdventurerTag;
 import com.megacrit.cardcrawl.actions.defect.AnimateOrbAction;
 import com.megacrit.cardcrawl.actions.defect.ChannelAction;
 import com.megacrit.cardcrawl.actions.defect.RemoveNextOrbAction;
@@ -29,9 +30,6 @@ public class DarkRampage extends AdventurerCard {
     public DarkRampage() {
         super(ID, COST, TYPE, COLOR, RARITY, TARGET);
         this.showEvokeValue = true;
-        this.showEvokeOrbCount = 1;
-        this.baseMagicNumber = 1;
-        this.magicNumber = this.baseMagicNumber;
     }
 
     @Override
@@ -39,32 +37,29 @@ public class DarkRampage extends AdventurerCard {
 
         AbstractOrb orb = null;
         for (int i = 0; i < AbstractDungeon.player.orbs.size(); i++) {
-            //System.out.println(new Dark().ID.contentEquals(AbstractDungeon.player.orbs.get(i).ID));
-            //if(.ID.contentEquals(AbstractDungeon.player.orbs.get(i).ID)){
-
             orb = AbstractDungeon.player.orbs.get(i);
-            System.out.println(orb.ID);
-
-                //}
+            if (orb instanceof Dark) break;
         }
+
         if (orb.ID == null) {
-            System.out.println(orb.ID == null);
             orb = new Dark();
             AbstractDungeon.actionManager.addToBottom(new ChannelAction(orb));
         }
-        AbstractDungeon.actionManager.addToBottom(new AnimateOrbAction(1));
 
+        AbstractDungeon.actionManager.addToBottom(new AnimateOrbAction(1));
         AbstractDungeon.actionManager.addToBottom(new TargetedDarkEvokeAction(abstractPlayer, abstractMonster, orb));
         if(!upgraded) {
             AbstractDungeon.actionManager.addToBottom(new RemoveNextOrbAction());
         }
     }
 
-
     @Override
     public void upgrade() {
-        upgradeName();
-        initializeDescription();
+        if (!upgraded) {
+            upgradeName();
+            initializeDescription();
+            this.tags.add(AdventurerTag.STAY);
+        }
     }
 }
 //AbstractDungeon.actionManager.addToBottom(new AnimateOrbAction(1));

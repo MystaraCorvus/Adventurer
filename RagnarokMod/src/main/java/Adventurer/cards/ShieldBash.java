@@ -1,6 +1,7 @@
 package Adventurer.cards;
 
 import Adventurer.patches.AdventurerColor;
+import Adventurer.util.AdventurerTag;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;
@@ -53,9 +54,6 @@ public class ShieldBash extends AdventurerCard {
 
     private static final int COST = 1;
     private static final int DAMAGE = 6;
-    private static final int UPGRADE_PLUS_DMG = 3;
-
-    private int modifiedValue = DAMAGE;
 
     // Hey want a second damage/magic/block/unique number??? Great!
     // Go check out DefaultAttackWithVariable and theDefault.variable.DefaultCustomVariable
@@ -69,7 +67,7 @@ public class ShieldBash extends AdventurerCard {
 
         // Aside from baseDamage/MagicNumber/Block there's also a few more.
         // Just type this.base and let intelliJ auto complete for you, or, go read up AbstractCard
-        this.baseDamage = DAMAGE;
+        this.baseDamage = this.DAMAGE;
         this.tags.add(CardTags.STRIKE);
     }
 
@@ -90,19 +88,16 @@ public class ShieldBash extends AdventurerCard {
         {
             Bonus = (int)(GetLastCard().block * 0.5f);
         }
-        this.baseDamage = modifiedValue + Bonus;
+        this.baseDamage = this.DAMAGE + Bonus;
         super.applyPowers();
         initializeDescription();
 }
-
-    // Upgraded stats.
     @Override
     public void upgrade() {
         if (!upgraded) {
             upgradeName();
-            upgradeDamage(UPGRADE_PLUS_DMG);
-            modifiedValue += UPGRADE_PLUS_DMG;
             initializeDescription();
+            this.tags.add(AdventurerTag.STAY);
         }
     }
 }

@@ -1,6 +1,7 @@
 package Adventurer.cards;
 
 import Adventurer.patches.AdventurerColor;
+import Adventurer.util.AdventurerTag;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;
@@ -53,12 +54,9 @@ public class Strike extends AdventurerCard {
 
     private static final int COST = 1;
     private static final int DAMAGE = 6;
-    private static final int UPGRADE_PLUS_DMG = 3;
 
     private int ComboAmount = 2;
     private float Scaling = 1.5f;
-
-    private int modifiedValue = DAMAGE;
 
     // Hey want a second damage/magic/block/unique number??? Great!
     // Go check out DefaultAttackWithVariable and theDefault.variable.DefaultCustomVariable
@@ -91,19 +89,16 @@ public class Strike extends AdventurerCard {
         if (CompareLastCardPlayed(CardRarity.BASIC) && CompareLastCardPlayed(CardTags.STRIKE)) {
             ComboBonus = ComboAmount + LevelScaling(Scaling);
         }
-        this.baseDamage = modifiedValue + ComboBonus;
+        this.baseDamage = this.DAMAGE + ComboBonus;
         super.applyPowers();
         initializeDescription();
 }
-
-    // Upgraded stats.
     @Override
     public void upgrade() {
         if (!upgraded) {
             upgradeName();
-            upgradeDamage(UPGRADE_PLUS_DMG);
-            modifiedValue += UPGRADE_PLUS_DMG;
             initializeDescription();
+            this.tags.add(AdventurerTag.STAY);
         }
     }
 }

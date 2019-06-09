@@ -3,6 +3,7 @@ package Adventurer.cards;
 import Adventurer.actions.TargetedDarkEvokeAction;
 import Adventurer.actions.TargetedLightningEvokeAction;
 import Adventurer.patches.AdventurerColor;
+import Adventurer.util.AdventurerTag;
 import com.megacrit.cardcrawl.actions.defect.*;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
@@ -46,12 +47,13 @@ public class LesserLightningBolt extends AdventurerCard {
             AbstractDungeon.actionManager.addToBottom(new RemoveNextOrbAction());
         }
     }
-
-
     @Override
     public void upgrade() {
-        upgradeName();
-        initializeDescription();
+        if (!upgraded) {
+            upgradeName();
+            initializeDescription();
+            this.tags.add(AdventurerTag.STAY);
+        }
     }
 }
 //AbstractDungeon.actionManager.addToBottom(new AnimateOrbAction(1));

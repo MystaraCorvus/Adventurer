@@ -109,5 +109,9 @@
   "Adventurer:DarkRampage": {
     "NAME": "Dark Rampage",
     "DESCRIPTION": "Deal !D! damage."
+  },
+  "Adventurer:DarkImpulse": {
+    "NAME": "Dark Impulse",
+    "DESCRIPTION": "Deal !M! damage."
   }
 }

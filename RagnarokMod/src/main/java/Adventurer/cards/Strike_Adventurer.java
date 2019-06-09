@@ -1,6 +1,7 @@
 package Adventurer.cards;
 
 import Adventurer.patches.AdventurerColor;
+import Adventurer.util.AdventurerTag;
 import basemod.helpers.BaseModCardTags;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
@@ -21,8 +22,6 @@ public class Strike_Adventurer extends AdventurerCard {
     private static final CardColor COLOR = AdventurerColor.ADVENTURER;
 
     private static final int DAMAGE = 6;
-    private static final int UPGRADE_PLUS_DMG = 3;
-    private int modifiedValue = DAMAGE;
 
     private float Scaling = 0.6f;
 
@@ -47,7 +46,7 @@ public class Strike_Adventurer extends AdventurerCard {
 
     public void applyPowers()
     {
-        this.baseDamage = (modifiedValue + LevelScaling(Scaling));
+        this.baseDamage = (this.DAMAGE + LevelScaling(Scaling));
         super.applyPowers();
         initializeDescription();
     }
@@ -56,9 +55,8 @@ public class Strike_Adventurer extends AdventurerCard {
     public void upgrade() {
         if (!upgraded) {
             upgradeName();
-            upgradeDamage(UPGRADE_PLUS_DMG);
-            modifiedValue += UPGRADE_PLUS_DMG;
             initializeDescription();
+            this.tags.add(AdventurerTag.STAY);
         }
     }
 }

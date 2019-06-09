@@ -3,6 +3,7 @@ package Adventurer.cards;
 import Adventurer.characters.Adventurer;
 import Adventurer.patches.AdventurerColor;
 import Adventurer.relics.Novice.AdventurerNovice;
+import Adventurer.util.AdventurerTag;
 import basemod.helpers.BaseModCardTags;
 import com.megacrit.cardcrawl.actions.common.GainBlockAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
@@ -25,8 +26,6 @@ public class Defend_Adventurer extends AdventurerCard {
 
     private static final int COST = 1;
     private static final int BLOCK = 5;
-    private static final int UPGRADE_PLUS_BLOCK = 3;
-    private int modifiedValue = BLOCK;
 
     private float Scaling = 0.6f;
 
@@ -40,7 +39,7 @@ public class Defend_Adventurer extends AdventurerCard {
 
     public void applyPowers()
     {
-        this.baseBlock = (modifiedValue + LevelScaling(Scaling));
+        this.baseBlock = (this.BLOCK + LevelScaling(Scaling));
         super.applyPowers();
         initializeDescription();
     }
@@ -52,14 +51,13 @@ public class Defend_Adventurer extends AdventurerCard {
         AbstractDungeon.actionManager.addToBottom(new GainBlockAction(p, p, block));
     }
 
-    //Upgraded stats.
+
     @Override
     public void upgrade() {
         if (!upgraded) {
             upgradeName();
-            upgradeBlock(UPGRADE_PLUS_BLOCK);
-            modifiedValue += UPGRADE_PLUS_BLOCK;
             initializeDescription();
+            this.tags.add(AdventurerTag.STAY);
         }
     }
 }

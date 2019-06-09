@@ -1,6 +1,7 @@
 package Adventurer.cards;
 
 import Adventurer.patches.AdventurerColor;
+import Adventurer.util.AdventurerTag;
 import com.megacrit.cardcrawl.actions.defect.AnimateOrbAction;
 import com.megacrit.cardcrawl.actions.defect.ChannelAction;
 import com.megacrit.cardcrawl.actions.defect.EvokeOrbAction;
@@ -50,11 +51,12 @@ public class GlacialStrike extends AdventurerCard {
         AbstractDungeon.actionManager.addToBottom(new AnimateOrbAction(1));
         AbstractDungeon.actionManager.addToBottom(new EvokeOrbAction(1));
     }
-
-
     @Override
     public void upgrade() {
-        upgradeName();
-        initializeDescription();
+        if (!upgraded) {
+            upgradeName();
+            initializeDescription();
+            this.tags.add(AdventurerTag.STAY);
+        }
     }
 }

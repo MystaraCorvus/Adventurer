@@ -3,6 +3,7 @@ package Adventurer.cards;
 import Adventurer.characters.Adventurer;
 import Adventurer.patches.AdventurerColor;
 import Adventurer.powers.TakeRestPower;
+import Adventurer.util.AdventurerTag;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
@@ -35,9 +36,7 @@ public class TakeRest extends AdventurerCard {
     private static final CardColor COLOR = AdventurerColor.ADVENTURER;
 
     private static final int COST = 1;
-
     private static final int MAGIC = 7;
-    private static final int UPGRADE_MAGIC = 3;
 
     // /STAT DECLARATION/
 
@@ -63,13 +62,13 @@ public class TakeRest extends AdventurerCard {
     {
         return new TakeRest();
     }
-    //Upgraded stats.
+
     @Override
     public void upgrade() {
         if (!upgraded) {
             upgradeName();
-            upgradeMagicNumber(UPGRADE_MAGIC);
             initializeDescription();
+            this.tags.add(AdventurerTag.STAY);
         }
     }
 }
