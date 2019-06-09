@@ -99,6 +99,11 @@ public class AdventurerMod implements
     // Character Color
     public static final Color ADVENTURER_GRAY = CardHelper.getColor(191.0f, 213.0f, 215.0f);
     public static final Color THIEF_GREEN = CardHelper.getColor(155.0f, 234.0f, 203.0f);
+    public static final Color ARCHER_YELLOW = CardHelper.getColor(255.0f, 210.0f, 50.0f);
+    public static final Color ACOLYTE_PURPLE = CardHelper.getColor(231.0f, 186.0f, 255.0f);
+    public static final Color MAGICIAN_BLUE = CardHelper.getColor(193.0f, 207.0f, 255.0f);
+    public static final Color MERCHANT_ORANGE = CardHelper.getColor(254.0f, 195.0f, 144.0f);
+    public static final Color SWORDSMAN_RED = CardHelper.getColor(253.0f, 187.0f, 193.0f);
     
     // Potion Colors in RGB
     public static final Color PLACEHOLDER_POTION_LIQUID = CardHelper.getColor(209.0f, 53.0f, 18.0f); // Orange-ish Red
@@ -107,17 +112,17 @@ public class AdventurerMod implements
 
     ///GRAY
     // Card backgrounds - The actual rectangular card.
-    private static final String ATTACK_DEFAULT_GRAY = "AdventurerResources/images/512/bg_attack_red.png";
-    private static final String SKILL_DEFAULT_GRAY = "AdventurerResources/images/512/bg_skill_red.png";
-    private static final String POWER_DEFAULT_GRAY = "AdventurerResources/images/512/bg_power_red.png";
+    private static final String ATTACK_DEFAULT_GRAY = "AdventurerResources/images/512/bg_attack_gray.png";
+    private static final String SKILL_DEFAULT_GRAY = "AdventurerResources/images/512/bg_skill_gray.png";
+    private static final String POWER_DEFAULT_GRAY = "AdventurerResources/images/512/bg_power_gray.png";
 
-    private static final String ENERGY_ORB_DEFAULT_GRAY = "AdventurerResources/images/512/card_red_orb.png";
-    private static final String CARD_ENERGY_ORB = "AdventurerResources/images/512/card_small_orb_red.png";
+    private static final String ENERGY_ORB_DEFAULT_GRAY = "AdventurerResources/images/512/card_gray_orb.png";
+    private static final String CARD_ENERGY_ORB = "AdventurerResources/images/512/card_small_orb_gray.png";
 
-    private static final String ATTACK_DEFAULT_GRAY_PORTRAIT = "AdventurerResources/images/1024/bg_attack_red.png";
-    private static final String SKILL_DEFAULT_GRAY_PORTRAIT = "AdventurerResources/images/1024/bg_skill_red.png";
-    private static final String POWER_DEFAULT_GRAY_PORTRAIT = "AdventurerResources/images/1024/bg_power_red.png";
-    private static final String ENERGY_ORB_DEFAULT_GRAY_PORTRAIT = "AdventurerResources/images/1024/card_red_orb.png";
+    private static final String ATTACK_DEFAULT_GRAY_PORTRAIT = "AdventurerResources/images/1024/bg_attack_gray.png";
+    private static final String SKILL_DEFAULT_GRAY_PORTRAIT = "AdventurerResources/images/1024/bg_skill_gray.png";
+    private static final String POWER_DEFAULT_GRAY_PORTRAIT = "AdventurerResources/images/1024/bg_power_gray.png";
+    private static final String ENERGY_ORB_DEFAULT_GRAY_PORTRAIT = "AdventurerResources/images/1024/card_gray_orb.png";
 
     ///GREEN
     // Card backgrounds - The actual rectangular card.
@@ -132,6 +137,79 @@ public class AdventurerMod implements
     private static final String SKILL_DEFAULT_GREEN_PORTRAIT = "AdventurerResources/images/1024/bg_skill_green.png";
     private static final String POWER_DEFAULT_GREEN_PORTRAIT = "AdventurerResources/images/1024/bg_power_green.png";
     private static final String ENERGY_ORB_DEFAULT_GREEN_PORTRAIT = "AdventurerResources/images/1024/card_green_orb.png";
+
+    ///RED
+    // Card backgrounds - The actual rectangular card.
+    private static final String ATTACK_DEFAULT_RED = "AdventurerResources/images/512/bg_attack_red.png";
+    private static final String SKILL_DEFAULT_RED = "AdventurerResources/images/512/bg_skill_red.png";
+    private static final String POWER_DEFAULT_RED = "AdventurerResources/images/512/bg_power_red.png";
+
+    private static final String ENERGY_ORB_DEFAULT_RED = "AdventurerResources/images/512/card_red_orb.png";
+    private static final String CARD_ENERGY_ORB_RED = "AdventurerResources/images/512/card_small_orb_red.png";
+
+    private static final String ATTACK_DEFAULT_RED_PORTRAIT = "AdventurerResources/images/1024/bg_attack_red.png";
+    private static final String SKILL_DEFAULT_RED_PORTRAIT = "AdventurerResources/images/1024/bg_skill_red.png";
+    private static final String POWER_DEFAULT_RED_PORTRAIT = "AdventurerResources/images/1024/bg_power_red.png";
+    private static final String ENERGY_ORB_DEFAULT_RED_PORTRAIT = "AdventurerResources/images/1024/card_red_orb.png";
+
+
+    ///BLUE
+    // Card backgrounds - The actual rectangular card.
+    private static final String ATTACK_DEFAULT_BLUE = "AdventurerResources/images/512/bg_attack_blue.png";
+    private static final String SKILL_DEFAULT_BLUE = "AdventurerResources/images/512/bg_skill_blue.png";
+    private static final String POWER_DEFAULT_BLUE = "AdventurerResources/images/512/bg_power_blue.png";
+
+    private static final String ENERGY_ORB_DEFAULT_BLUE = "AdventurerResources/images/512/card_blue_orb.png";
+    private static final String CARD_ENERGY_ORB_BLUE = "AdventurerResources/images/512/card_small_orb_blue.png";
+
+    private static final String ATTACK_DEFAULT_BLUE_PORTRAIT = "AdventurerResources/images/1024/bg_attack_blue.png";
+    private static final String SKILL_DEFAULT_BLUE_PORTRAIT = "AdventurerResources/images/1024/bg_skill_blue.png";
+    private static final String POWER_DEFAULT_BLUE_PORTRAIT = "AdventurerResources/images/1024/bg_power_blue.png";
+    private static final String ENERGY_ORB_DEFAULT_BLUE_PORTRAIT = "AdventurerResources/images/1024/card_blue_orb.png";
+
+
+    ///YELLOW
+    // Card backgrounds - The actual rectangular card.
+    private static final String ATTACK_DEFAULT_YELLOW = "AdventurerResources/images/512/bg_attack_yellow.png";
+    private static final String SKILL_DEFAULT_YELLOW = "AdventurerResources/images/512/bg_skill_yellow.png";
+    private static final String POWER_DEFAULT_YELLOW = "AdventurerResources/images/512/bg_power_yellow.png";
+
+    private static final String ENERGY_ORB_DEFAULT_YELLOW = "AdventurerResources/images/512/card_yellow_orb.png";
+    private static final String CARD_ENERGY_ORB_YELLOW = "AdventurerResources/images/512/card_small_orb_yellow.png";
+
+    private static final String ATTACK_DEFAULT_YELLOW_PORTRAIT = "AdventurerResources/images/1024/bg_attack_yellow.png";
+    private static final String SKILL_DEFAULT_YELLOW_PORTRAIT = "AdventurerResources/images/1024/bg_skill_yellow.png";
+    private static final String POWER_DEFAULT_YELLOW_PORTRAIT = "AdventurerResources/images/1024/bg_power_yellow.png";
+    private static final String ENERGY_ORB_DEFAULT_YELLOW_PORTRAIT = "AdventurerResources/images/1024/card_yellow_orb.png";
+
+
+    ///ORANGE
+    // Card backgrounds - The actual rectangular card.
+    private static final String ATTACK_DEFAULT_ORANGE = "AdventurerResources/images/512/bg_attack_orange.png";
+    private static final String SKILL_DEFAULT_ORANGE = "AdventurerResources/images/512/bg_skill_orange.png";
+    private static final String POWER_DEFAULT_ORANGE = "AdventurerResources/images/512/bg_power_orange.png";
+
+    private static final String ENERGY_ORB_DEFAULT_ORANGE = "AdventurerResources/images/512/card_orange_orb.png";
+    private static final String CARD_ENERGY_ORB_ORANGE = "AdventurerResources/images/512/card_small_orb_orange.png";
+
+    private static final String ATTACK_DEFAULT_ORANGE_PORTRAIT = "AdventurerResources/images/1024/bg_attack_orange.png";
+    private static final String SKILL_DEFAULT_ORANGE_PORTRAIT = "AdventurerResources/images/1024/bg_skill_orange.png";
+    private static final String POWER_DEFAULT_ORANGE_PORTRAIT = "AdventurerResources/images/1024/bg_power_orange.png";
+    private static final String ENERGY_ORB_DEFAULT_ORANGE_PORTRAIT = "AdventurerResources/images/1024/card_orange_orb.png";
+
+    ///PURPLE
+    // Card backgrounds - The actual rectangular card.
+    private static final String ATTACK_DEFAULT_PURPLE = "AdventurerResources/images/512/bg_attack_purple.png";
+    private static final String SKILL_DEFAULT_PURPLE = "AdventurerResources/images/512/bg_skill_purple.png";
+    private static final String POWER_DEFAULT_PURPLE = "AdventurerResources/images/512/bg_power_purple.png";
+
+    private static final String ENERGY_ORB_DEFAULT_PURPLE = "AdventurerResources/images/512/card_purple_orb.png";
+    private static final String CARD_ENERGY_ORB_PURPLE = "AdventurerResources/images/512/card_small_orb_purple.png";
+
+    private static final String ATTACK_DEFAULT_PURPLE_PORTRAIT = "AdventurerResources/images/1024/bg_attack_purple.png";
+    private static final String SKILL_DEFAULT_PURPLE_PORTRAIT = "AdventurerResources/images/1024/bg_skill_purple.png";
+    private static final String POWER_DEFAULT_PURPLE_PORTRAIT = "AdventurerResources/images/1024/bg_power_purple.png";
+    private static final String ENERGY_ORB_DEFAULT_PURPLE_PORTRAIT = "AdventurerResources/images/1024/card_purple_orb.png";
 
     // Character assets
     private static final String THE_DEFAULT_BUTTON = "AdventurerResources/images/charSelect/DefaultCharacterButton.png";
@@ -229,6 +307,61 @@ public class AdventurerMod implements
                 ATTACK_DEFAULT_GREEN, SKILL_DEFAULT_GREEN, POWER_DEFAULT_GREEN, ENERGY_ORB_DEFAULT_GREEN,
                 ATTACK_DEFAULT_GREEN_PORTRAIT, SKILL_DEFAULT_GREEN_PORTRAIT, POWER_DEFAULT_GREEN_PORTRAIT,
                 ENERGY_ORB_DEFAULT_GREEN_PORTRAIT, CARD_ENERGY_ORB_GREEN);
+
+        logger.info("Done creating the color");
+
+        ///ACOLYTE
+        logger.info("Creating the color " + AdventurerColor.ACOLYTE.toString());
+
+        BaseMod.addColor(AdventurerColor.ACOLYTE, ACOLYTE_PURPLE, ACOLYTE_PURPLE, ACOLYTE_PURPLE,
+                ACOLYTE_PURPLE, ACOLYTE_PURPLE, ACOLYTE_PURPLE, ACOLYTE_PURPLE,
+                ATTACK_DEFAULT_PURPLE, SKILL_DEFAULT_PURPLE, POWER_DEFAULT_PURPLE, ENERGY_ORB_DEFAULT_PURPLE,
+                ATTACK_DEFAULT_PURPLE_PORTRAIT, SKILL_DEFAULT_PURPLE_PORTRAIT, POWER_DEFAULT_PURPLE_PORTRAIT,
+                ENERGY_ORB_DEFAULT_PURPLE_PORTRAIT, CARD_ENERGY_ORB_PURPLE);
+
+        logger.info("Done creating the color");
+
+        ///ARCHER
+        logger.info("Creating the color " + AdventurerColor.ARCHER.toString());
+
+        BaseMod.addColor(AdventurerColor.ARCHER, ARCHER_YELLOW, ARCHER_YELLOW, ARCHER_YELLOW,
+                ARCHER_YELLOW, ARCHER_YELLOW, ARCHER_YELLOW, ARCHER_YELLOW,
+                ATTACK_DEFAULT_YELLOW, SKILL_DEFAULT_YELLOW, POWER_DEFAULT_YELLOW, ENERGY_ORB_DEFAULT_YELLOW,
+                ATTACK_DEFAULT_YELLOW_PORTRAIT, SKILL_DEFAULT_YELLOW_PORTRAIT, POWER_DEFAULT_YELLOW_PORTRAIT,
+                ENERGY_ORB_DEFAULT_YELLOW_PORTRAIT, CARD_ENERGY_ORB_YELLOW);
+
+        logger.info("Done creating the color");
+
+        ///MAGICIAN
+        logger.info("Creating the color " + AdventurerColor.MAGICIAN.toString());
+
+        BaseMod.addColor(AdventurerColor.MAGICIAN, MAGICIAN_BLUE, MAGICIAN_BLUE, MAGICIAN_BLUE,
+                MAGICIAN_BLUE, MAGICIAN_BLUE, MAGICIAN_BLUE, MAGICIAN_BLUE,
+                ATTACK_DEFAULT_BLUE, SKILL_DEFAULT_BLUE, POWER_DEFAULT_BLUE, ENERGY_ORB_DEFAULT_BLUE,
+                ATTACK_DEFAULT_BLUE_PORTRAIT, SKILL_DEFAULT_BLUE_PORTRAIT, POWER_DEFAULT_BLUE_PORTRAIT,
+                ENERGY_ORB_DEFAULT_BLUE_PORTRAIT, CARD_ENERGY_ORB_BLUE);
+
+        logger.info("Done creating the color");
+
+        ///SWORDSMAN
+        logger.info("Creating the color " + AdventurerColor.SWORDSMAN.toString());
+
+        BaseMod.addColor(AdventurerColor.SWORDSMAN, SWORDSMAN_RED, SWORDSMAN_RED, SWORDSMAN_RED,
+                SWORDSMAN_RED, SWORDSMAN_RED, SWORDSMAN_RED, SWORDSMAN_RED,
+                ATTACK_DEFAULT_RED, SKILL_DEFAULT_RED, POWER_DEFAULT_RED, ENERGY_ORB_DEFAULT_RED,
+                ATTACK_DEFAULT_RED_PORTRAIT, SKILL_DEFAULT_RED_PORTRAIT, POWER_DEFAULT_RED_PORTRAIT,
+                ENERGY_ORB_DEFAULT_RED_PORTRAIT, CARD_ENERGY_ORB_RED);
+
+        logger.info("Done creating the color");
+
+        ///MERCHANT
+        logger.info("Creating the color " + AdventurerColor.MERCHANT.toString());
+
+        BaseMod.addColor(AdventurerColor.MERCHANT, MERCHANT_ORANGE, MERCHANT_ORANGE, MERCHANT_ORANGE,
+                MERCHANT_ORANGE, MERCHANT_ORANGE, MERCHANT_ORANGE, MERCHANT_ORANGE,
+                ATTACK_DEFAULT_ORANGE, SKILL_DEFAULT_ORANGE, POWER_DEFAULT_ORANGE, ENERGY_ORB_DEFAULT_ORANGE,
+                ATTACK_DEFAULT_ORANGE_PORTRAIT, SKILL_DEFAULT_ORANGE_PORTRAIT, POWER_DEFAULT_ORANGE_PORTRAIT,
+                ENERGY_ORB_DEFAULT_ORANGE_PORTRAIT, CARD_ENERGY_ORB_ORANGE);
 
         logger.info("Done creating the color");
 
