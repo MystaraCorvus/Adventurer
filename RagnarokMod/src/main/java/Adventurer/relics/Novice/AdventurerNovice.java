@@ -1,7 +1,6 @@
 package Adventurer.relics.Novice;
 
-import Adventurer.cards.LesserPoison;
-import Adventurer.cards.ShieldBash;
+import Adventurer.cards.*;
 import Adventurer.relics.AdventurerRelic;
 import com.megacrit.cardcrawl.cards.CardGroup;
 import com.megacrit.cardcrawl.core.Settings;
@@ -19,23 +18,18 @@ public class AdventurerNovice extends AdventurerRelic {
 
     public AdventurerNovice() {
         super(ID, IMG, IMG_OTL, RelicTier.STARTER, LandingSound.MAGICAL);
-        DECK.group.add(new ShieldBash().makeCopy());
-        DECK.group.add(new ShieldBash().makeCopy());
-        DECK.group.add(new ShieldBash().makeCopy());
-        DECK.group.add(new ShieldBash().makeCopy());
-        DECK.group.add(new ShieldBash().makeCopy());
-        DECK.group.add(new ShieldBash().makeCopy());
-        DECK.group.add(new ShieldBash().makeCopy());
-        DECK.group.add(new ShieldBash().makeCopy());
-        DECK.group.add(new ShieldBash().makeCopy());
+        this.DECK.group.add(new Strike_Adventurer());
+        this.DECK.group.add(new Strike_Adventurer());
+        this.DECK.group.add(new Strike_Adventurer());
+        this.DECK.group.add(new Strike_Adventurer());
+        this.DECK.group.add(new Defend_Adventurer());
+        this.DECK.group.add(new Defend_Adventurer());
+        this.DECK.group.add(new Defend_Adventurer());
+        this.DECK.group.add(new Defend_Adventurer());
     }
 
     public void onEquip() {
         super.onEquip();
-        for (int j = 0; j < DECK.group.size(); j++) {
-            //group.group.get(j).upgrade();
-            AbstractDungeon.effectList.add(new ShowCardAndObtainEffect(DECK.group.get(j), (float) Settings.WIDTH / 2.0F, (float) Settings.HEIGHT / 2.0F));
-        }
     }
 
     @Override

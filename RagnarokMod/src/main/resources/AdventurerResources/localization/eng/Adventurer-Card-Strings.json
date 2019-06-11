@@ -46,11 +46,61 @@
     "NAME": "Get Orb",
     "DESCRIPTION": "Channel 1 Default Orb."
   },
+  "Adventurer:Strike_Acolyte": {
+    "NAME": "Lesser Strike",
+    "DESCRIPTION": "adventurer:Class_Specific. NL Deal !D! Damage. NL (Bonus from adventurer:Level: !Adventurer:OneSixth!. The factor is 0.6)"
+  },
+  "Adventurer:Defend_Acolyte": {
+    "NAME": "Lesser Defend",
+    "DESCRIPTION": "Gain !B! Block. NL (Bonus from adventurer:Level: !Adventurer:OneSixth!. The factor is 0.6)"
+  },
   "Adventurer:Strike_Adventurer": {
+    "NAME": "Lesser Strike",
+    "DESCRIPTION": "adventurer:Class_Specific. NL Deal !D! Damage. NL (Bonus from adventurer:Level: !Adventurer:OneSixth!. The factor is 0.6).",
+    "UPGRADE_DESCRIPTION": "Deal !D! Damage. NL (Bonus from adventurer:Level: !Adventurer:OneSixth!. The factor is 0.6)."
+  },
+  "Adventurer:Defend_Adventurer": {
+    "NAME": "Lesser Defend",
+    "DESCRIPTION": "adventurer:Class_Specific. NL Gain !B! Block. NL (Bonus from adventurer:Level: !Adventurer:OneSixth!. The factor is 0.6).",
+    "UPGRADE_DESCRIPTION": "Gain !B! Block. NL (Bonus from adventurer:Level: !Adventurer:OneSixth!. The factor is 0.6)."
+  },
+  "Adventurer:Strike_Archer": {
     "NAME": "Lesser Strike",
     "DESCRIPTION": "Deal !D! Damage. NL (Bonus from adventurer:Level: !Adventurer:OneSixth!. The factor is 0.6)"
   },
-  "Adventurer:Defend_Adventurer": {
+  "Adventurer:Defend_Archer": {
+    "NAME": "Lesser Defend",
+    "DESCRIPTION": "Gain !B! Block. NL (Bonus from adventurer:Level: !Adventurer:OneSixth!. The factor is 0.6)"
+  },
+  "Adventurer:Strike_Magician": {
+    "NAME": "Lesser Strike",
+    "DESCRIPTION": "Deal !D! Damage. NL (Bonus from adventurer:Level: !Adventurer:OneSixth!. The factor is 0.6)"
+  },
+  "Adventurer:Defend_Magician": {
+    "NAME": "Lesser Defend",
+    "DESCRIPTION": "Gain !B! Block. NL (Bonus from adventurer:Level: !Adventurer:OneSixth!. The factor is 0.6)"
+  },
+  "Adventurer:Strike_Merchant": {
+    "NAME": "Lesser Strike",
+    "DESCRIPTION": "Deal !D! Damage. NL (Bonus from adventurer:Level: !Adventurer:OneSixth!. The factor is 0.6)"
+  },
+  "Adventurer:Defend_Merchant": {
+    "NAME": "Lesser Defend",
+    "DESCRIPTION": "Gain !B! Block. NL (Bonus from adventurer:Level: !Adventurer:OneSixth!. The factor is 0.6)"
+  },
+  "Adventurer:Strike_Swordsman": {
+    "NAME": "Lesser Strike",
+    "DESCRIPTION": "Deal !D! Damage. NL (Bonus from adventurer:Level: !Adventurer:OneSixth!. The factor is 0.6)"
+  },
+  "Adventurer:Defend_Swordsman": {
+    "NAME": "Lesser Defend",
+    "DESCRIPTION": "Gain !B! Block. NL (Bonus from adventurer:Level: !Adventurer:OneSixth!. The factor is 0.6)"
+  },
+  "Adventurer:Strike_Thief": {
+    "NAME": "Lesser Strike",
+    "DESCRIPTION": "Deal !D! Damage. NL (Bonus from adventurer:Level: !Adventurer:OneSixth!. The factor is 0.6)"
+  },
+  "Adventurer:Defend_Thief": {
     "NAME": "Lesser Defend",
     "DESCRIPTION": "Gain !B! Block. NL (Bonus from adventurer:Level: !Adventurer:OneSixth!. The factor is 0.6)"
   },
@@ -113,5 +163,9 @@
   "Adventurer:DarkImpulse": {
     "NAME": "Dark Impulse",
     "DESCRIPTION": "Deal !M! damage."
+  },
+  "Adventurer:FirstAid": {
+    "NAME": "First Aid",
+    "DESCRIPTION": "Gain !M! regen."
   }
 }

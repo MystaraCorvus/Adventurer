@@ -5,7 +5,7 @@ import com.megacrit.cardcrawl.cards.AbstractCard;
 
 public class AdventurerColor
 {
-    @SpireEnum
+    @SpireEnum(name = "ADVENTURER")
     public static AbstractCard.CardColor ADVENTURER;
     @SpireEnum
     public static AbstractCard.CardColor THIEF;

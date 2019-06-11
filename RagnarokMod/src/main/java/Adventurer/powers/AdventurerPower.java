@@ -54,6 +54,7 @@ public abstract class AdventurerPower extends AbstractPower {
     }
 
     public static int GetTemporarilyLevel(){
+
         if((AbstractDungeon.player != null) && AbstractDungeon.player.hasPower(TemporarilyLevelUpPower.ME))
         {
             return AbstractDungeon.player.getPower(TemporarilyLevelUpPower.ME).amount;

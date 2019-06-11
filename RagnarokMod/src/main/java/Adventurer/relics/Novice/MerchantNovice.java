@@ -1,12 +1,16 @@
 package Adventurer.relics.Novice;
 
-import Adventurer.cards.ShieldBash;
+import Adventurer.cards.*;
 import Adventurer.relics.AdventurerRelic;
+import Adventurer.util.AdventurerTag;
+import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.CardGroup;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.relics.AbstractRelic;
 import com.megacrit.cardcrawl.vfx.cardManip.ShowCardAndObtainEffect;
+
+import java.util.Iterator;
 
 public class MerchantNovice  extends AdventurerRelic {
     public static final String ID = "Adventurer:MerchantNovice";
@@ -17,22 +21,17 @@ public class MerchantNovice  extends AdventurerRelic {
 
     public MerchantNovice() {
         super(ID, IMG, IMG_OTL, RelicTier.SHOP, LandingSound.MAGICAL);
-        DECK.group.add(new ShieldBash().makeCopy());
-        DECK.group.add(new ShieldBash().makeCopy());
-        DECK.group.add(new ShieldBash().makeCopy());
-        DECK.group.add(new ShieldBash().makeCopy());
-        DECK.group.add(new ShieldBash().makeCopy());
-        DECK.group.add(new ShieldBash().makeCopy());
-        DECK.group.add(new ShieldBash().makeCopy());
-        DECK.group.add(new ShieldBash().makeCopy());
-        DECK.group.add(new ShieldBash().makeCopy());
+        this.DECK.group.add(new Strike_Merchant());
+        this.DECK.group.add(new Strike_Merchant());
+        this.DECK.group.add(new Strike_Merchant());
+        this.DECK.group.add(new Strike_Merchant());
+        this.DECK.group.add(new Defend_Merchant());
+        this.DECK.group.add(new Defend_Merchant());
+        this.DECK.group.add(new Defend_Merchant());
+        this.DECK.group.add(new Defend_Merchant());
     }
     public void onEquip() {
-
-        for (int j = 0; j < DECK.group.size(); j++) {
-            //group.group.get(j).upgrade();
-            AbstractDungeon.effectList.add(new ShowCardAndObtainEffect(DECK.group.get(j), (float) Settings.WIDTH / 2.0F, (float) Settings.HEIGHT / 2.0F));
-        }
+        super.onEquip();
     }
 
     @Override

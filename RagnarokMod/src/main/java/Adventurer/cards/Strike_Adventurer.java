@@ -54,9 +54,7 @@ public class Strike_Adventurer extends AdventurerCard {
     @Override
     public void upgrade() {
         if (!upgraded) {
-            upgradeName();
-            initializeDescription();
-            this.tags.add(AdventurerTag.STAY);
+            super.upgrade();
         }
     }
 }

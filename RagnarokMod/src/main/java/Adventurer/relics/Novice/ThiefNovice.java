@@ -1,6 +1,6 @@
 package Adventurer.relics.Novice;
 
-import Adventurer.cards.ShieldBash;
+import Adventurer.cards.*;
 import Adventurer.relics.AdventurerRelic;
 import com.megacrit.cardcrawl.actions.common.DrawCardAction;
 import com.megacrit.cardcrawl.cards.CardGroup;
@@ -17,19 +17,16 @@ public class ThiefNovice extends AdventurerRelic {
 
     public CardGroup DECK = new CardGroup(CardGroup.CardGroupType.UNSPECIFIED);
 
-
     public ThiefNovice() {
         super(ID, IMG, IMG_OTL, RelicTier.BOSS, LandingSound.MAGICAL);
-
-        DECK.group.add(new ShieldBash().makeCopy());
-        DECK.group.add(new ShieldBash().makeCopy());
-        DECK.group.add(new ShieldBash().makeCopy());
-        DECK.group.add(new ShieldBash().makeCopy());
-        DECK.group.add(new ShieldBash().makeCopy());
-        DECK.group.add(new ShieldBash().makeCopy());
-        DECK.group.add(new ShieldBash().makeCopy());
-        DECK.group.add(new ShieldBash().makeCopy());
-        DECK.group.add(new ShieldBash().makeCopy());
+        this.DECK.group.add(new Strike_Thief());
+        this.DECK.group.add(new Strike_Thief());
+        this.DECK.group.add(new Strike_Thief());
+        this.DECK.group.add(new Strike_Thief());
+        this.DECK.group.add(new Defend_Thief());
+        this.DECK.group.add(new Defend_Thief());
+        this.DECK.group.add(new Defend_Thief());
+        this.DECK.group.add(new Defend_Thief());
     }
 
     @Override
@@ -43,10 +40,7 @@ public class ThiefNovice extends AdventurerRelic {
     }
 
     public void onEquip() {
-        for (int j = 0; j < DECK.group.size(); j++) {
-            //group.group.get(j).upgrade();
-            AbstractDungeon.effectList.add(new ShowCardAndObtainEffect(DECK.group.get(j), (float) Settings.WIDTH / 2.0F, (float) Settings.HEIGHT / 2.0F));
-        }
+        super.onEquip();
     }
 
     public void onUnequip() {

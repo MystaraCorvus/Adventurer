@@ -3,7 +3,9 @@ package Adventurer;
 import Adventurer.characters.Adventurer;
 import Adventurer.patches.AdventurerColor;
 import Adventurer.patches.AdventurerEnum;
+import Adventurer.relics.AdventurerRelic;
 import Adventurer.relics.Novice.*;
+import Adventurer.util.AdventurerTag;
 import Adventurer.variables.LevelScalingOneSixth;
 import basemod.BaseMod;
 import basemod.ModLabeledToggleButton;
@@ -17,6 +19,9 @@ import com.evacipated.cardcrawl.mod.stslib.Keyword;
 import com.evacipated.cardcrawl.modthespire.lib.SpireConfig;
 import com.evacipated.cardcrawl.modthespire.lib.SpireInitializer;
 import com.google.gson.Gson;
+import com.megacrit.cardcrawl.cards.AbstractCard;
+import com.megacrit.cardcrawl.cards.CardGroup;
+import com.megacrit.cardcrawl.cards.curses.AscendersBane;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.dungeons.TheCity;
@@ -37,7 +42,9 @@ import Adventurer.variables.DefaultSecondMagicNumber;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.nio.charset.StandardCharsets;
+import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Iterator;
 import java.util.Properties;
 
 //TODO: DON'T MASS RENAME/REFACTOR
@@ -77,14 +84,16 @@ public class AdventurerMod implements
         EditCharactersSubscriber,
         PostInitializeSubscriber,
         PostCampfireSubscriber,
-        PostDungeonInitializeSubscriber {
+        PostDungeonInitializeSubscriber,
+        StartActSubscriber,
+        StartGameSubscriber    {
     // Make sure to implement the subscribers *you* are using (read basemod wiki). Editing cards? EditCardsSubscriber.
     // Making relics? EditRelicsSubscriber. etc., etc., for a full list and how to make your own, visit the basemod wiki.
     public static final Logger logger = LogManager.getLogger(AdventurerMod.class.getName());
-    private static String modID;
+    private static String modID = "Adventurer";
 
     // Mod-settings settings. This is if you want an on/off savable button
-    public static Properties theDefaultDefaultSettings = new Properties();
+    public static Properties theAdventurerDefaultSettings = new Properties();
     public static final String ENABLE_PLACEHOLDER_SETTINGS = "enablePlaceholder";
     public static boolean enablePlaceholder = true; // The boolean we'll be setting on/off (true/false)
 
@@ -112,103 +121,103 @@ public class AdventurerMod implements
 
     ///GRAY
     // Card backgrounds - The actual rectangular card.
-    private static final String ATTACK_DEFAULT_GRAY = "AdventurerResources/images/512/bg_attack_gray.png";
-    private static final String SKILL_DEFAULT_GRAY = "AdventurerResources/images/512/bg_skill_gray.png";
-    private static final String POWER_DEFAULT_GRAY = "AdventurerResources/images/512/bg_power_gray.png";
+    private static final String ATTACK_DEFAULT_GRAY = "AdventurerResources/images/512/bg_attack_adventurer.png";
+    private static final String SKILL_DEFAULT_GRAY = "AdventurerResources/images/512/bg_skill_adventurer.png";
+    private static final String POWER_DEFAULT_GRAY = "AdventurerResources/images/512/bg_power_adventurer.png";
 
     private static final String ENERGY_ORB_DEFAULT_GRAY = "AdventurerResources/images/512/card_gray_orb.png";
     private static final String CARD_ENERGY_ORB = "AdventurerResources/images/512/card_small_orb_gray.png";
 
-    private static final String ATTACK_DEFAULT_GRAY_PORTRAIT = "AdventurerResources/images/1024/bg_attack_gray.png";
-    private static final String SKILL_DEFAULT_GRAY_PORTRAIT = "AdventurerResources/images/1024/bg_skill_gray.png";
-    private static final String POWER_DEFAULT_GRAY_PORTRAIT = "AdventurerResources/images/1024/bg_power_gray.png";
+    private static final String ATTACK_DEFAULT_GRAY_PORTRAIT = "AdventurerResources/images/1024/bg_attack_adventurer.png";
+    private static final String SKILL_DEFAULT_GRAY_PORTRAIT = "AdventurerResources/images/1024/bg_skill_adventurer.png";
+    private static final String POWER_DEFAULT_GRAY_PORTRAIT = "AdventurerResources/images/1024/bg_power_adventurer.png";
     private static final String ENERGY_ORB_DEFAULT_GRAY_PORTRAIT = "AdventurerResources/images/1024/card_gray_orb.png";
 
     ///GREEN
     // Card backgrounds - The actual rectangular card.
-    private static final String ATTACK_DEFAULT_GREEN = "AdventurerResources/images/512/bg_attack_green.png";
-    private static final String SKILL_DEFAULT_GREEN = "AdventurerResources/images/512/bg_skill_green.png";
-    private static final String POWER_DEFAULT_GREEN = "AdventurerResources/images/512/bg_power_green.png";
+    private static final String ATTACK_DEFAULT_GREEN = "AdventurerResources/images/512/bg_attack_thief.png";
+    private static final String SKILL_DEFAULT_GREEN = "AdventurerResources/images/512/bg_skill_thief.png";
+    private static final String POWER_DEFAULT_GREEN = "AdventurerResources/images/512/bg_power_thief.png";
 
     private static final String ENERGY_ORB_DEFAULT_GREEN = "AdventurerResources/images/512/card_green_orb.png";
     private static final String CARD_ENERGY_ORB_GREEN = "AdventurerResources/images/512/card_small_orb_green.png";
 
-    private static final String ATTACK_DEFAULT_GREEN_PORTRAIT = "AdventurerResources/images/1024/bg_attack_green.png";
-    private static final String SKILL_DEFAULT_GREEN_PORTRAIT = "AdventurerResources/images/1024/bg_skill_green.png";
-    private static final String POWER_DEFAULT_GREEN_PORTRAIT = "AdventurerResources/images/1024/bg_power_green.png";
+    private static final String ATTACK_DEFAULT_GREEN_PORTRAIT = "AdventurerResources/images/1024/bg_attack_thief.png";
+    private static final String SKILL_DEFAULT_GREEN_PORTRAIT = "AdventurerResources/images/1024/bg_skill_thief.png";
+    private static final String POWER_DEFAULT_GREEN_PORTRAIT = "AdventurerResources/images/1024/bg_power_thief.png";
     private static final String ENERGY_ORB_DEFAULT_GREEN_PORTRAIT = "AdventurerResources/images/1024/card_green_orb.png";
 
     ///RED
     // Card backgrounds - The actual rectangular card.
-    private static final String ATTACK_DEFAULT_RED = "AdventurerResources/images/512/bg_attack_red.png";
-    private static final String SKILL_DEFAULT_RED = "AdventurerResources/images/512/bg_skill_red.png";
-    private static final String POWER_DEFAULT_RED = "AdventurerResources/images/512/bg_power_red.png";
+    private static final String ATTACK_DEFAULT_RED = "AdventurerResources/images/512/bg_attack_swordsman.png";
+    private static final String SKILL_DEFAULT_RED = "AdventurerResources/images/512/bg_skill_swordsman.png";
+    private static final String POWER_DEFAULT_RED = "AdventurerResources/images/512/bg_power_swordsman.png";
 
     private static final String ENERGY_ORB_DEFAULT_RED = "AdventurerResources/images/512/card_red_orb.png";
     private static final String CARD_ENERGY_ORB_RED = "AdventurerResources/images/512/card_small_orb_red.png";
 
-    private static final String ATTACK_DEFAULT_RED_PORTRAIT = "AdventurerResources/images/1024/bg_attack_red.png";
-    private static final String SKILL_DEFAULT_RED_PORTRAIT = "AdventurerResources/images/1024/bg_skill_red.png";
-    private static final String POWER_DEFAULT_RED_PORTRAIT = "AdventurerResources/images/1024/bg_power_red.png";
+    private static final String ATTACK_DEFAULT_RED_PORTRAIT = "AdventurerResources/images/1024/bg_attack_swordsman.png";
+    private static final String SKILL_DEFAULT_RED_PORTRAIT = "AdventurerResources/images/1024/bg_skill_swordsman.png";
+    private static final String POWER_DEFAULT_RED_PORTRAIT = "AdventurerResources/images/1024/bg_power_swordsman.png";
     private static final String ENERGY_ORB_DEFAULT_RED_PORTRAIT = "AdventurerResources/images/1024/card_red_orb.png";
 
 
     ///BLUE
     // Card backgrounds - The actual rectangular card.
-    private static final String ATTACK_DEFAULT_BLUE = "AdventurerResources/images/512/bg_attack_blue.png";
-    private static final String SKILL_DEFAULT_BLUE = "AdventurerResources/images/512/bg_skill_blue.png";
-    private static final String POWER_DEFAULT_BLUE = "AdventurerResources/images/512/bg_power_blue.png";
+    private static final String ATTACK_DEFAULT_BLUE = "AdventurerResources/images/512/bg_attack_magician.png";
+    private static final String SKILL_DEFAULT_BLUE = "AdventurerResources/images/512/bg_skill_magician.png";
+    private static final String POWER_DEFAULT_BLUE = "AdventurerResources/images/512/bg_power_magician.png";
 
     private static final String ENERGY_ORB_DEFAULT_BLUE = "AdventurerResources/images/512/card_blue_orb.png";
     private static final String CARD_ENERGY_ORB_BLUE = "AdventurerResources/images/512/card_small_orb_blue.png";
 
-    private static final String ATTACK_DEFAULT_BLUE_PORTRAIT = "AdventurerResources/images/1024/bg_attack_blue.png";
-    private static final String SKILL_DEFAULT_BLUE_PORTRAIT = "AdventurerResources/images/1024/bg_skill_blue.png";
-    private static final String POWER_DEFAULT_BLUE_PORTRAIT = "AdventurerResources/images/1024/bg_power_blue.png";
+    private static final String ATTACK_DEFAULT_BLUE_PORTRAIT = "AdventurerResources/images/1024/bg_attack_magician.png";
+    private static final String SKILL_DEFAULT_BLUE_PORTRAIT = "AdventurerResources/images/1024/bg_skill_magician.png";
+    private static final String POWER_DEFAULT_BLUE_PORTRAIT = "AdventurerResources/images/1024/bg_power_magician.png";
     private static final String ENERGY_ORB_DEFAULT_BLUE_PORTRAIT = "AdventurerResources/images/1024/card_blue_orb.png";
 
 
     ///YELLOW
     // Card backgrounds - The actual rectangular card.
-    private static final String ATTACK_DEFAULT_YELLOW = "AdventurerResources/images/512/bg_attack_yellow.png";
-    private static final String SKILL_DEFAULT_YELLOW = "AdventurerResources/images/512/bg_skill_yellow.png";
-    private static final String POWER_DEFAULT_YELLOW = "AdventurerResources/images/512/bg_power_yellow.png";
+    private static final String ATTACK_DEFAULT_YELLOW = "AdventurerResources/images/512/bg_attack_archer.png";
+    private static final String SKILL_DEFAULT_YELLOW = "AdventurerResources/images/512/bg_skill_archer.png";
+    private static final String POWER_DEFAULT_YELLOW = "AdventurerResources/images/512/bg_power_archer.png";
 
     private static final String ENERGY_ORB_DEFAULT_YELLOW = "AdventurerResources/images/512/card_yellow_orb.png";
     private static final String CARD_ENERGY_ORB_YELLOW = "AdventurerResources/images/512/card_small_orb_yellow.png";
 
-    private static final String ATTACK_DEFAULT_YELLOW_PORTRAIT = "AdventurerResources/images/1024/bg_attack_yellow.png";
-    private static final String SKILL_DEFAULT_YELLOW_PORTRAIT = "AdventurerResources/images/1024/bg_skill_yellow.png";
-    private static final String POWER_DEFAULT_YELLOW_PORTRAIT = "AdventurerResources/images/1024/bg_power_yellow.png";
+    private static final String ATTACK_DEFAULT_YELLOW_PORTRAIT = "AdventurerResources/images/1024/bg_attack_archer.png";
+    private static final String SKILL_DEFAULT_YELLOW_PORTRAIT = "AdventurerResources/images/1024/bg_skill_archer.png";
+    private static final String POWER_DEFAULT_YELLOW_PORTRAIT = "AdventurerResources/images/1024/bg_power_archer.png";
     private static final String ENERGY_ORB_DEFAULT_YELLOW_PORTRAIT = "AdventurerResources/images/1024/card_yellow_orb.png";
 
 
     ///ORANGE
     // Card backgrounds - The actual rectangular card.
-    private static final String ATTACK_DEFAULT_ORANGE = "AdventurerResources/images/512/bg_attack_orange.png";
-    private static final String SKILL_DEFAULT_ORANGE = "AdventurerResources/images/512/bg_skill_orange.png";
-    private static final String POWER_DEFAULT_ORANGE = "AdventurerResources/images/512/bg_power_orange.png";
+    private static final String ATTACK_DEFAULT_ORANGE = "AdventurerResources/images/512/bg_attack_merchant.png";
+    private static final String SKILL_DEFAULT_ORANGE = "AdventurerResources/images/512/bg_skill_merchant.png";
+    private static final String POWER_DEFAULT_ORANGE = "AdventurerResources/images/512/bg_power_merchant.png";
 
     private static final String ENERGY_ORB_DEFAULT_ORANGE = "AdventurerResources/images/512/card_orange_orb.png";
     private static final String CARD_ENERGY_ORB_ORANGE = "AdventurerResources/images/512/card_small_orb_orange.png";
 
-    private static final String ATTACK_DEFAULT_ORANGE_PORTRAIT = "AdventurerResources/images/1024/bg_attack_orange.png";
-    private static final String SKILL_DEFAULT_ORANGE_PORTRAIT = "AdventurerResources/images/1024/bg_skill_orange.png";
-    private static final String POWER_DEFAULT_ORANGE_PORTRAIT = "AdventurerResources/images/1024/bg_power_orange.png";
+    private static final String ATTACK_DEFAULT_ORANGE_PORTRAIT = "AdventurerResources/images/1024/bg_attack_merchant.png";
+    private static final String SKILL_DEFAULT_ORANGE_PORTRAIT = "AdventurerResources/images/1024/bg_skill_merchant.png";
+    private static final String POWER_DEFAULT_ORANGE_PORTRAIT = "AdventurerResources/images/1024/bg_power_merchant.png";
     private static final String ENERGY_ORB_DEFAULT_ORANGE_PORTRAIT = "AdventurerResources/images/1024/card_orange_orb.png";
 
     ///PURPLE
     // Card backgrounds - The actual rectangular card.
-    private static final String ATTACK_DEFAULT_PURPLE = "AdventurerResources/images/512/bg_attack_purple.png";
-    private static final String SKILL_DEFAULT_PURPLE = "AdventurerResources/images/512/bg_skill_purple.png";
-    private static final String POWER_DEFAULT_PURPLE = "AdventurerResources/images/512/bg_power_purple.png";
+    private static final String ATTACK_DEFAULT_PURPLE = "AdventurerResources/images/512/bg_attack_acolyte.png";
+    private static final String SKILL_DEFAULT_PURPLE = "AdventurerResources/images/512/bg_skill_acolyte.png";
+    private static final String POWER_DEFAULT_PURPLE = "AdventurerResources/images/512/bg_power_acolyte.png";
 
     private static final String ENERGY_ORB_DEFAULT_PURPLE = "AdventurerResources/images/512/card_purple_orb.png";
     private static final String CARD_ENERGY_ORB_PURPLE = "AdventurerResources/images/512/card_small_orb_purple.png";
 
-    private static final String ATTACK_DEFAULT_PURPLE_PORTRAIT = "AdventurerResources/images/1024/bg_attack_purple.png";
-    private static final String SKILL_DEFAULT_PURPLE_PORTRAIT = "AdventurerResources/images/1024/bg_skill_purple.png";
-    private static final String POWER_DEFAULT_PURPLE_PORTRAIT = "AdventurerResources/images/1024/bg_power_purple.png";
+    private static final String ATTACK_DEFAULT_PURPLE_PORTRAIT = "AdventurerResources/images/1024/bg_attack_acolyte.png";
+    private static final String SKILL_DEFAULT_PURPLE_PORTRAIT = "AdventurerResources/images/1024/bg_skill_acolyte.png";
+    private static final String POWER_DEFAULT_PURPLE_PORTRAIT = "AdventurerResources/images/1024/bg_power_acolyte.png";
     private static final String ENERGY_ORB_DEFAULT_PURPLE_PORTRAIT = "AdventurerResources/images/1024/card_purple_orb.png";
 
     // Character assets
@@ -368,9 +377,9 @@ public class AdventurerMod implements
         logger.info("Adding mod settings");
         // This loads the mod settings.
         // The actual mod Button is added below in receivePostInitialize()
-        theDefaultDefaultSettings.setProperty(ENABLE_PLACEHOLDER_SETTINGS, "FALSE"); // This is the default setting. It's actually set...
+        theAdventurerDefaultSettings.setProperty(ENABLE_PLACEHOLDER_SETTINGS, "FALSE"); // This is the default setting. It's actually set...
         try {
-            SpireConfig config = new SpireConfig("defaultMod", "theDefaultConfig", theDefaultDefaultSettings); // ...right here
+            SpireConfig config = new SpireConfig("RagnarokMod", "theAdventurerConfig", theAdventurerDefaultSettings); // ...right here
             // the "fileName" parameter is the name of the file MTS will create where it will save our setting.
             config.load(); // Load the setting and set the boolean to equal it
             enablePlaceholder = config.getBool(ENABLE_PLACEHOLDER_SETTINGS);
@@ -428,7 +437,7 @@ public class AdventurerMod implements
     @SuppressWarnings("unused")
     public static void initialize() {
         logger.info("========================= Initializing Adventurerlocalization Mod. Hi. =========================");
-        AdventurerMod defaultmod = new AdventurerMod();
+        AdventurerMod ragnarokMod = new AdventurerMod();
         logger.info("========================= /Adventurerlocalization Mod Initialized. Hello World./ =========================");
     }
     
@@ -443,7 +452,20 @@ public class AdventurerMod implements
         
         BaseMod.addCharacter(new Adventurer("The Adventurer", AdventurerEnum.ADVENTURER),
                 THE_DEFAULT_BUTTON, THE_DEFAULT_PORTRAIT, AdventurerEnum.ADVENTURER);
-        
+        /*
+        BaseMod.addCharacter(new Adventurer("The THIEF", AdventurerEnum.THIEF),
+                THE_DEFAULT_BUTTON, THE_DEFAULT_PORTRAIT, AdventurerEnum.THIEF);
+        BaseMod.addCharacter(new Adventurer("The ACOLYTE", AdventurerEnum.ACOLYTE),
+                THE_DEFAULT_BUTTON, THE_DEFAULT_PORTRAIT, AdventurerEnum.ACOLYTE);
+        BaseMod.addCharacter(new Adventurer("The ARCHER", AdventurerEnum.ARCHER),
+                THE_DEFAULT_BUTTON, THE_DEFAULT_PORTRAIT, AdventurerEnum.ARCHER);
+        BaseMod.addCharacter(new Adventurer("The MAGICIAN", AdventurerEnum.MAGICIAN),
+                THE_DEFAULT_BUTTON, THE_DEFAULT_PORTRAIT, AdventurerEnum.MAGICIAN);
+        BaseMod.addCharacter(new Adventurer("The SWORDSMAN", AdventurerEnum.SWORDSMAN),
+                THE_DEFAULT_BUTTON, THE_DEFAULT_PORTRAIT, AdventurerEnum.SWORDSMAN);
+        BaseMod.addCharacter(new Adventurer("The MERCHANT", AdventurerEnum.MERCHANT),
+                THE_DEFAULT_BUTTON, THE_DEFAULT_PORTRAIT, AdventurerEnum.MERCHANT);
+        */
         receiveEditPotions();
         logger.info("Added " + AdventurerEnum.ADVENTURER.toString());
     }
@@ -474,7 +496,7 @@ public class AdventurerMod implements
             enablePlaceholder = button.enabled; // The boolean true/false will be whether the button is enabled or not
             try {
                 // And based on that boolean, set the settings and save them
-                SpireConfig config = new SpireConfig("defaultMod", "theDefaultConfig", theDefaultDefaultSettings);
+                SpireConfig config = new SpireConfig("RagnarokMod", "RagnarokModConfig", theAdventurerDefaultSettings);
                 config.setBool(ENABLE_PLACEHOLDER_SETTINGS, enablePlaceholder);
                 config.save();
             } catch (Exception e) {
@@ -575,13 +597,27 @@ public class AdventurerMod implements
 
         // Basic
         BaseMod.addCard(new Strike_Adventurer());
+        BaseMod.addCard(new Strike_Acolyte());
+        BaseMod.addCard(new Strike_Archer());
+        BaseMod.addCard(new Strike_Magician());
+        BaseMod.addCard(new Strike_Merchant());
+        BaseMod.addCard(new Strike_Swordsman());
+        BaseMod.addCard(new Strike_Thief());
         BaseMod.addCard(new Defend_Adventurer());
+        BaseMod.addCard(new Defend_Acolyte());
+        BaseMod.addCard(new Defend_Archer());
+        BaseMod.addCard(new Defend_Magician());
+        BaseMod.addCard(new Defend_Merchant());
+        BaseMod.addCard(new Defend_Swordsman());
+        BaseMod.addCard(new Defend_Thief());
 
         //Common
 
         ///Attack
         BaseMod.addCard(new Strike());
-
+        BaseMod.addCard(new BurningArrow());
+        BaseMod.addCard(new FrostShock());
+        BaseMod.addCard(new GlacialStrike());
         ///Skill
         BaseMod.addCard(new LesserWeak());
 
@@ -600,6 +636,7 @@ public class AdventurerMod implements
         BaseMod.addCard(new LesserVulnerability());
 
         ///Power
+        BaseMod.addCard(new FirstAid());
         BaseMod.addCard(new TakeRest());
 
         //Rare
@@ -609,6 +646,7 @@ public class AdventurerMod implements
 
         ///Skill
         BaseMod.addCard(new LesserPoison());
+        BaseMod.addCard(new FirstAid());
 
         ///Power
         BaseMod.addCard(new AdventurerForm());
@@ -619,9 +657,9 @@ public class AdventurerMod implements
         // This is so that they are all "seen" in the library, for people who like to look at the card list
         // before playing your mod.
 
+
         UnlockTracker.unlockCard(Strike_Adventurer.ID);
         UnlockTracker.unlockCard(Defend_Adventurer.ID);
-
         UnlockTracker.unlockCard(Strike.ID);
 
         UnlockTracker.unlockCard(AdventurerForm.ID);
@@ -753,5 +791,35 @@ public class AdventurerMod implements
         AbstractDungeon.bossRelicPool.add(SwordsmanNovice.ID);
         AbstractDungeon.bossRelicPool.add(ThiefNovice.ID);
         Collections.shuffle(AbstractDungeon.bossRelicPool);
+
+        for (Iterator i = AbstractDungeon.player.masterDeck.group.iterator(); i.hasNext(); ) {
+            AbstractCard e = (AbstractCard)i.next();
+            if (!(e.tags.contains(AdventurerTag.STAY))) {
+                i.remove();
+            }
+        }
+        if (AbstractDungeon.ascensionLevel >= 10) {
+            AbstractDungeon.player.masterDeck.group.add(new AscendersBane());
+        }
+    }
+
+    @Override
+    public void receiveStartAct() {
+        AbstractDungeon.bossRelicPool.clear();
+        ArrayList<String> relics = AdventurerRelic.NotOwnedRelic();
+        for(int i = 0; i < relics.size(); i++) {
+            AbstractDungeon.bossRelicPool.add(relics.get(i));
+        }
+        Collections.shuffle(AbstractDungeon.bossRelicPool);
+    }
+
+    @Override
+    public void receiveStartGame() {
+        while (AbstractDungeon.player.masterDeck.group.size() <= 0) {
+            CardGroup Deck = AdventurerRelic.GetClassRelic().GetDeck();
+            for (int i = 0; i < Deck.size(); i++) {
+                AbstractDungeon.player.masterDeck.group.add(Deck.group.get(i));
+            }
+        }
     }
 }

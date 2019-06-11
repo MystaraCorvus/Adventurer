@@ -50,7 +50,7 @@ public class ShieldBash extends AdventurerCard {
     private static final CardTarget TARGET = CardTarget.ENEMY;
     private static final CardType TYPE = CardType.ATTACK;
 
-    private static final CardColor COLOR = AdventurerColor.THIEF;
+    private static final CardColor COLOR = AdventurerColor.ADVENTURER;
 
     private static final int COST = 1;
     private static final int DAMAGE = 6;

@@ -3,6 +3,7 @@ package Adventurer.cards;
 import Adventurer.patches.AdventurerColor;
 import Adventurer.powers.AdventurerPower;
 import Adventurer.relics.AdventurerRelic;
+import Adventurer.util.AdventurerTag;
 import basemod.abstracts.CustomCard;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
@@ -20,6 +21,8 @@ public abstract class AdventurerCard extends CustomCard {
     public boolean upgradedDefaultSecondMagicNumber; // A boolean to check whether the number has been upgraded or not.
     public boolean isDefaultSecondMagicNumberModified; // A boolean to check whether the number has been modified or not, for coloring purposes. (red/green)
 
+    public static String UPGRADE_DESCRIPTION;
+
     public AdventurerCard(final String id,
                                final int cost,
                                final CardType type,
@@ -30,6 +33,7 @@ public abstract class AdventurerCard extends CustomCard {
         super(id, languagePack.getCardStrings(id).NAME, makeCardPath(reverseID(id) + ".png"), cost, languagePack.getCardStrings(id).DESCRIPTION, type, color, rarity, target);
 
         // Set all the things to their default values.
+        UPGRADE_DESCRIPTION = languagePack.getCardStrings(id).UPGRADE_DESCRIPTION;
         isCostModified = false;
         isCostModifiedForTurn = false;
         isDamageModified = false;
@@ -122,5 +126,14 @@ public abstract class AdventurerCard extends CustomCard {
                 return (AdventurerCard)played.get(played.size() - 1);
         }
         return null;
+    }
+
+
+    @Override
+    public void upgrade() {
+        upgradeName();
+        rawDescription = UPGRADE_DESCRIPTION;
+        initializeDescription();
+        this.tags.add(AdventurerTag.STAY);
     }
 }
