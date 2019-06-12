@@ -19,8 +19,12 @@
     "DESCRIPTION": "Make sure the first element in the NAMES is the same as your PROPER_NAME. The rest is to match keywords like the single word keyword."
   },
   {
+    "PROPER_NAME": "Level Scling",
     "NAMES": [
-      "level"
+      "Level Scling",
+      "Level_Scling",
+      "Level_Scaling",
+      "level_scaling"
     ],
     "DESCRIPTION": "This card gains a bonus from your Level. You can raise your Level in Events and Restsites."
   },

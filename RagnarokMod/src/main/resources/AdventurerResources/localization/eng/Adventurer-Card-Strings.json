@@ -56,13 +56,13 @@
   },
   "Adventurer:Strike_Adventurer": {
     "NAME": "Lesser Strike",
-    "DESCRIPTION": "adventurer:Class_Specific. NL Deal !D! Damage. NL (Bonus from adventurer:Level: !Adventurer:OneSixth!. The factor is 0.6).",
-    "UPGRADE_DESCRIPTION": "Deal !D! Damage. NL (Bonus from adventurer:Level: !Adventurer:OneSixth!. The factor is 0.6)."
+    "DESCRIPTION": "adventurer:Class_Specific. NL Deal !D! Damage. NL (Bonus from adventurer:Level_Scling: !Adventurer:OneSixth!)",
+    "UPGRADE_DESCRIPTION": "Deal !D! Damage. NL (Bonus from adventurer:Level_Scling: !Adventurer:OneSixth!)"
   },
   "Adventurer:Defend_Adventurer": {
     "NAME": "Lesser Defend",
-    "DESCRIPTION": "adventurer:Class_Specific. NL Gain !B! Block. NL (Bonus from adventurer:Level: !Adventurer:OneSixth!. The factor is 0.6).",
-    "UPGRADE_DESCRIPTION": "Gain !B! Block. NL (Bonus from adventurer:Level: !Adventurer:OneSixth!. The factor is 0.6)."
+    "DESCRIPTION": "adventurer:Class_Specific. NL Gain !B! Block. NL (Bonus from adventurer:Level_Scaling: !Adventurer:OneSixth!)",
+    "UPGRADE_DESCRIPTION": "Gain !B! Block. NL (Bonus from adventurer:Level_Scaling: !Adventurer:OneSixth!)"
   },
   "Adventurer:Strike_Archer": {
     "NAME": "Lesser Strike",
@@ -118,7 +118,7 @@
   },
   "Adventurer:LesserVulnerability": {
     "NAME": "Lesser Vulnerability",
-    "DESCRIPTION": "Apply !M! Vulnerability."
+    "DESCRIPTION": "Apply !M! Vulnerable."
   },
   "Adventurer:LesserWeak": {
     "NAME": "Lesser Weak",
